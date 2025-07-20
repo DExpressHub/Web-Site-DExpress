@@ -1,0 +1,48 @@
+<header class="py-4 px-4 md:px-8 flex justify-between items-center">
+    <div class="logo flex items-center space-x-2">
+        <a href="#home"><img src="../../../assets/img/logo.png" alt="Logo DExpress" class="h-12 w-auto" /></a>
+    </div>
+
+    <nav class="hidden md:flex items-center space-x-6">
+        <a href="#home" class="text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200">Home</a>
+        <a href="#search"
+            class="text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200">Profissionais</a>
+        <a href="#apply" class="text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200">Trabalhe
+            Connosco</a>
+        <a href="#how-it-works"
+            class="text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200">Como Funciona</a>
+        <a href="#testimonials"
+            class="text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200">Depoimentos</a>
+        <a href="#contact"
+            class="text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200">Contacto</a>
+    </nav>
+    <div class="flex items-center space-x-3">
+        <!-- <button onclick="openModal('employer')" class="hidden md:block btn-secondary text-sm">Empregador</button> -->
+        <button onclick="openModal('worker')" class="hidden md:block btn-primary text-sm"><i class="fa fa-lock"></i>
+            Entrar</button>
+        <button id="mobile-menu-btn" class="md:hidden text-blue-900 focus:outline-none">
+            <i class="fas fa-bars text-xl"></i>
+        </button>
+    </div>
+</header>
+
+<div id="mobile-menu"
+    class="fixed inset-0 bg-white z-50 transform translate-x-full transition-transform duration-300 md:hidden">
+    <div class="flex justify-end p-4">
+        <button id="close-menu-btn" class="text-blue-900 focus:outline-none">
+            <i class="fas fa-times text-xl"></i>
+        </button>
+    </div>
+    <div class="flex flex-col items-center space-y-6 p-6">
+        <a href="#home" class="text-lg text-gray-800 hover:text-blue-600 font-medium">Home</a>
+        <a href="#search" class="text-lg text-gray-800 hover:text-blue-600 font-medium">Buscar</a>
+        <a href="#apply" class="text-lg text-gray-800 hover:text-blue-600 font-medium">Cadastrar</a>
+        <a href="#how-it-works" class="text-lg text-gray-800 hover:text-blue-600 font-medium">Como Funciona</a>
+        <a href="#testimonials" class="text-lg text-gray-800 hover:text-blue-600 font-medium">Depoimentos</a>
+        <a href="#contact" class="text-lg text-gray-800 hover:text-blue-600 font-medium">Contato</a>
+        <div class="pt-6 flex flex-col space-y-3 w-full">
+            <button onclick="openModal('employer')" class="btn-secondary w-full text-sm">Área do Empregador</button>
+            <button onclick="openModal('worker')" class="btn-primary w-full text-sm">D-Express Login</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,330 @@
+<section id="home" class="hero pt-20">
+    <div class="container mx-auto flex flex-col md:flex-row items-center px-4 md:px-8">
+        <div class="hero-content md:w-1/2 text-left mb-10 md:mb-0">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4 playfair">Conexões que transformam lares e carreiras</h1>
+            <p class="text-base md:text-lg font-light mb-6 opacity-90 max-w-md">Conectamos empregadores a
+                profissionais domésticas qualificadas, com segurança e eficiência.</p>
+            <div class="flex space-x-3">
+                <a href="#search" class="btn-secondary flex items-center text-sm">
+                    <i class="fas fa-search mr-2"></i>
+                    Contratar
+                </a>
+                <a href="#apply" class="btn-primary flex items-center text-sm">
+                    <i class="fas fa-user-plus mr-2"></i>
+                    Trabalhe Connosco
+                </a>
+            </div>
+            <div class="mt-8 flex items-center space-x-3">
+                <div class="flex -space-x-3">
+                    <img src="../../../assets/img/pessoa.jpg" alt="Usuário" class="profile-img">
+                    <img src="../../../assets/img/pessoa1.jpg" alt="Usuário" class="profile-img">
+                    <img src="../../../assets/img/pessoa2.jpg" alt="Usuário" class="profile-img">
+                </div>
+                <div class="text-xs">
+                    <p class="font-semibold">+2.500 profissionais</p>
+                    <p class="opacity-80">cadastradas na plataforma</p>
+                </div>
+            </div>
+        </div>
+        <div class="md:w-1/2 flex justify-center">
+            <div class="hero-image relative max-w-md">
+
+                <div class="absolute -bottom-4 -right-4 bg-white p-3 rounded-lg shadow-lg">
+                    <div class="flex items-center space-x-2">
+                        <div class="text-green-500">
+                            <i class="fas fa-check-circle text-lg"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-800">Referências verificadas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="how-it-works" class="bg-white py-16">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="max-w-2xl mx-auto text-center mb-16">
+            <h2 class="text-4xl md:text-4xl font-bold mb-4 text-blue-900 playfair">Como Funciona?</h2>
+            <p class="text-lg text-gray-600">Um processo simples para conectar empregadores e profissionais
+                domésticas.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <!-- Etapa 1 -->
+            <div class="text-center px-6 py-8 bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+                <div class="feature-icon mx-auto mb-4 text-3xl text-blue-600">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">1. Cadastro</h3>
+                <p class="text-gray-600 text-sm md:text-base">Crie seu perfil em poucos minutos, seja como
+                    empregador ou profissional.</p>
+            </div>
+
+            <!-- Etapa 2 -->
+            <div class="text-center px-6 py-8 bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+                <div class="feature-icon mx-auto mb-4 text-3xl text-blue-600">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">2. Busca</h3>
+                <p class="text-gray-600 text-sm md:text-base">Encontre a melhor correspondência com filtros
+                    personalizados.</p>
+            </div>
+
+            <!-- Etapa 3 -->
+            <div class="text-center px-6 py-8 bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+                <div class="feature-icon mx-auto mb-4 text-3xl text-blue-600">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">3. Conexão</h3>
+                <p class="text-gray-600 text-sm md:text-base">Converse diretamente e finalize a contratação com
+                    facilidade.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="search" class="bg-gray-50">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="max-w-2xl mx-auto text-center mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold mb-3 playfair text-blue-900">Encontre a Profissional Ideal
+            </h2>
+            <p class="text-base text-gray-600">Use filtros para localizar profissionais que atendam suas
+                necessidades.</p>
+        </div>
+        <div class="search-card max-w-7xl mx-auto mb-12">
+            <form id="search-form" class="search-form-container">
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2 text-lg">Localização</label>
+                    <div class="relative">
+                        <!-- <i class="fas fa-map-marker-alt absolute left-4 top-4 text-gray-400 text-lg"></i> -->
+                        <input type="text" placeholder="Cidade ou Bairro" class="input-style w-full pl-14 text-lg"
+                            aria-describedby="location-error">
+                        <p id="location-error" class="error-message">Por favor, insira uma localização válida.</p>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2 text-lg">Especialidade</label>
+                    <div class="relative">
+                        <!-- <i class="fas fa-tasks absolute left-4 top-4 text-gray-400 text-lg"></i> -->
+                        <select class="input-style w-full pl-14 text-lg appearance-none">
+                            <option>Todas as especialidades</option>
+                            <option>Limpeza</option>
+                            <option>Culinária</option>
+                            <option>Cuidados Especiais</option>
+                            <option>Babá</option>
+                        </select>
+                        <i class="fas fa-chevron-down absolute right-4 top-4 text-gray-400 text-lg"></i>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2 text-lg">Disponibilidade</label>
+                    <div class="relative">
+                        <!-- <i class="far fa-clock absolute left-4 top-4 text-gray-400 text-lg"></i> -->
+                        <select class="input-style w-full pl-14 text-lg appearance-none">
+                            <option>Qualquer disponibilidade</option>
+                            <option>Tempo Integral</option>
+                            <option>Meio Período</option>
+                            <option>Diária</option>
+                            <option>Fins de Semana</option>
+                        </select>
+                        <i class="fas fa-chevron-down absolute right-4 top-4 text-gray-400 text-lg"></i>
+                    </div>
+                </div>
+                <div class="btn-container">
+                    <button type="submit" form="search-form" class="btn-primary flex items-center text-lg mt-8">
+                        <i class="fas fa-search mr-2"></i>
+                        Buscar
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div id="search-results" class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12"></div>
+    </div>
+</section>
+
+<section id="apply" class="bg-white" aria-label="Formulário de Cadastro de Profissional">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="max-w-2xl mx-auto text-center mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold mb-3 playfair text-blue-900">Seja uma profissional com
+                visibilidade
+            </h2>
+            <p class="text-base text-gray-600">Destaque suas habilidades e encontre novas oportunidades de trabalho.
+            </p>
+        </div>
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-8">
+            <div class="search-card w-full md:w-1/2">
+               <app-professional-form></app-professional-form>
+
+            </div>
+            <div class="w-full md:w-1/2">
+                <img src="../../../assets/img/fn2.jpg" alt="Profissional doméstica" class="apply-image">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="testimonials" class="bg-gray-50">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="max-w-2xl mx-auto text-center mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold mb-3 playfair text-blue-900">Depoimentos</h2>
+            <p class="text-base text-gray-600">Conheça as experiências de quem usa a D-Express.</p>
+        </div>
+        <div class="relative overflow-hidden">
+            <div id="testimonial-slider" class="flex transition-transform duration-500 ease-in-out">
+                <div class="testimonial-card p-6 flex flex-col space-y-4" aria-hidden="true">
+                    <p class="text-base text-gray-600">"Encontrei uma profissional excepcional para minha casa. O
+                        processo foi simples e confiável."</p>
+                    <div class="flex items-center space-x-4">
+                        <img src="img/avatar.jpg" alt="Ana Costa" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-semibold text-base text-gray-800">Ana Costa</h4>
+                            <p class="text-sm text-blue-600">Benfica, Luanda</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card p-6 flex flex-col space-y-4" aria-hidden="true">
+                    <p class="text-base text-gray-600">"Consegui um emprego como babá com uma família incrível. A
+                        plataforma é muito prática!"</p>
+                    <div class="flex items-center space-x-4">
+                        <img src="img/avatar.jpg" alt="Mariana Silva" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-semibold text-base text-gray-800">Mariana Silva</h4>
+                            <p class="text-sm text-blue-600">Golf II, Luanda</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card p-6 flex flex-col space-y-4" aria-hidden="true">
+                    <p class="text-base text-gray-600">"A verificação de referências me deu confiança para contratar
+                        a profissional certa."</p>
+                    <div class="flex items-center space-x-4">
+                        <img src="img/avatar.jpg" alt="Lucas Mendes" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-semibold text-base text-gray-800">Lucas Mendes</h4>
+                            <p class="text-sm text-blue-600">Zango, Luanda</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button id="prev-slide" class="slider-btn" aria-label="Depoimento anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button id="next-slide" class="slider-btn" aria-label="Próximo depoimento">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="bg-white">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="max-w-2xl mx-auto text-center mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold mb-3 playfair text-blue-900">Entre em Contato</h2>
+            <p class="text-base text-gray-600">Tire dúvidas ou envie sugestões. Estamos prontos para ajudar!</p>
+        </div>
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-8">
+            <div class="search-card w-full md:w-1/2">
+                <form id="contact-form" class="space-y-5">
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-1 text-sm">Nome</label>
+                        <input type="text" placeholder="Seu nome" class="input-style w-full" required
+                            aria-describedby="contact-name-error">
+                        <p id="contact-name-error" class="error-message">Por favor, insira seu nome.</p>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-1 text-sm">Email</label>
+                        <input type="email" placeholder="Seu email" class="input-style w-full" required
+                            aria-describedby="contact-email-error">
+                        <p id="contact-email-error" class="error-message">Por favor, insira um email válido.</p>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-1 text-sm">Mensagem</label>
+                        <textarea placeholder="Sua mensagem..." class="input-style w-full h-24" required></textarea>
+                    </div>
+                    <div class="pt-4">
+                        <button type="submit" class="btn-primary w-full text-sm">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Enviar Mensagem
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="w-full md:w-1/2">
+                <div class="h-96 rounded-lg overflow-hidden shadow-lg">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9537353153167!3d-37.81627927975195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDQ5JzU4LjYiUyAxNDTCsDU3JzEzLjUiRQ!5e0!3m2!1sen!2sus!4v1631234567890"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        title="Mapa de localização"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="employer-modal" class="modal">
+    <div class="modal-content">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-blue-900 playfair">Área do Empregador</h3>
+            <button onclick="closeModal('employer')" class="text-gray-600 hover:text-gray-800 focus:outline-none">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+        </div>
+        <form class="space-y-4">
+            <div>
+                <label class="block text-gray-700 font-medium mb-1 text-sm">Email</label>
+                <input type="email" placeholder="Seu email" class="input-style w-full" required>
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium mb-1 text-sm">Senha</label>
+                <input type="password" placeholder="Sua senha" class="input-style w-full" required>
+            </div>
+            <div class="flex items-center justify-between">
+                <label class="flex items-center space-x-2">
+                    <input type="checkbox" class="h-4 w-4 text-blue-600">
+                    <span class="text-sm text-gray-600">Lembrar-me</span>
+                </label>
+                <a href="#" class="text-blue-600 hover:underline text-xs">Esqueceu a senha?</a>
+            </div>
+            <button type="submit" class="btn-primary w-full text-sm">Entrar</button>
+            <p class="text-center text-gray-600 text-xs mt-3">Não tem conta? <a href="#apply"
+                    class="text-blue-600 hover:underline">Cadastre-se</a></p>
+        </form>
+    </div>
+</div>
+
+<div id="worker-modal" class="modal">
+    <div class="modal-content">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-blue-900 playfair">D-Express Entrar </h3>
+            <button onclick="closeModal('worker')" class="text-gray-600 hover:text-gray-800 focus:outline-none">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+        </div>
+        <form class="space-y-4">
+            <div>
+                <label class="block text-gray-700 font-medium mb-1 text-sm">Email</label>
+                <input type="email" placeholder="Seu email" class="input-style w-full" required>
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium mb-1 text-sm">Senha</label>
+                <input type="password" placeholder="Sua senha" class="input-style w-full" required>
+            </div>
+            <div class="flex items-center justify-between">
+                <label class="flex items-center space-x-2">
+                    <input type="checkbox" class="h-4 w-4 text-blue-600">
+                    <span class="text-sm text-gray-600">Lembrar-me</span>
+                </label>
+                <a href="#" class="text-blue-600 hover:underline text-xs">Esqueceu a senha?</a>
+            </div>
+            <button type="submit" class="btn-primary w-full text-sm">Entrar</button>
+            <p class="text-center text-gray-600 text-xs mt-3">Não tem conta? <a href="#apply"
+                    class="text-blue-600 hover:underline">Cadastre-se</a></p>
+        </form>
+    </div>
+</div>
