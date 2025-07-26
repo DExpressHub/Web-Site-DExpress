@@ -1,0 +1,57 @@
+@import 'tailwindcss';
+
+@config "./../../tailwind.config.js";
+
+@theme {
+  --spacing-8xl: 96rem;
+}
+@layer base {
+  :root {
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(var(--heroui-primary) / 0.5),
+      hsl(var(--heroui-secondary) / 0.5)
+    );
+  }
+}
+.swiper {
+  @apply py-10;
+}
+.slider {
+  @apply flex justify-center;
+}
+
+.swiper-pagination-bullet {
+  @apply w-3 h-3 rounded-md mx-[6px] cursor-pointer inline-block;
+  @apply dark:bg-default-300 bg-default-900 opacity-60;
+  @apply transition-all;
+}
+.swiper-pagination-bullet-active {
+  @apply bg-primary dark:bg-primary w-6 opacity-100;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  @apply w-10 h-10 rounded-full;
+  @apply bg-primary opacity-80 text-white;
+  @apply disabled:opacity-5 disabled:cursor-not-allowed;
+  @apply transition-all;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  @apply opacity-100;
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  @apply text-lg font-bold;
+}
+
+.no-scrollbar {
+  /* Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
