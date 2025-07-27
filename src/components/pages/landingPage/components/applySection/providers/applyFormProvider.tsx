@@ -31,6 +31,7 @@ export function ApplyFormProvider({ children, cities }: ApplyFormProviderType) {
       phoneNumber: formData.get('phoneNumber'),
       optionalPhoneNumber: formData.get('optionalPhoneNumber'),
       email: formData.get('email'),
+      birthDate: formData.get('birthDate'),
       maritalStatus: formData.get('maritalStatus'),
       knownDiseases: formData.get('knownDiseases'),
       desiredPosition: formData.get('desiredPosition'),

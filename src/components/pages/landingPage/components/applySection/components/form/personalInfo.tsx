@@ -42,7 +42,7 @@ export function PersonalInfo() {
           label="Data de Nascimento"
           labelPlacement="outside"
           lang="pt"
-          name="idade"
+          name="birthDate"
         />
         <Input
           isRequired
