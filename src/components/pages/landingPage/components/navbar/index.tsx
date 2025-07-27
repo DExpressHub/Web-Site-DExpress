@@ -44,10 +44,18 @@ export function Navbar() {
           </NavbarItem>
         ))}
 
-        {/* <NavbarItem className="hidden md:flex">
-          <SigninLink />
-        </NavbarItem>
         <NavbarItem className="hidden md:flex">
+          <Button
+            aria-label="Ir para secção Sign In"
+            className="font-medium"
+            color="primary"
+            variant="ghost"
+            onPress={() => navigateTo('sign-in')}
+          >
+            Login
+          </Button>
+        </NavbarItem>
+        {/* <NavbarItem className="hidden md:flex">
           <SignupLink />
         </NavbarItem> */}
         <NavbarItem className="hidden lg:flex">
