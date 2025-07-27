@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react'
+import { addToast } from '@heroui/react'
 
 import { City } from '@/types'
 import { env } from '@/config/env'
@@ -66,13 +67,28 @@ export function ApplyFormProvider({ children, cities }: ApplyFormProviderType) {
       const responseBody = await response.json()
 
       if (!response.ok) {
+        addToast({
+          title: 'Erro ao enviar candidatura',
+          description: responseBody.message || 'Ocorreu um erro ao enviar sua candidatura.',
+          color: 'danger',
+        })
+
         console.log('❌ Erro ao enviar candidatura:', responseBody)
 
         return
       }
-
+      addToast({
+        title: 'Candidatura enviada com sucesso',
+        description: 'Sua candidatura foi enviada com sucesso. Entraremos em contato em breve.',
+        color: 'success',
+      })
       console.log('✅ Candidatura enviada com sucesso:', responseBody)
     } catch (error) {
+      addToast({
+        title: 'Erro inesperado',
+        description: 'Ocorreu um erro inesperado ao enviar sua candidatura.',
+        color: 'danger',
+      })
       console.log('❌ Erro inesperado ao enviar candidatura:', error)
     }
   }
