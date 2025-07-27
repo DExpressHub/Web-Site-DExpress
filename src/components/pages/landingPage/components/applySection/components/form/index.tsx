@@ -13,12 +13,12 @@ function SubmitSection() {
   return (
     <Button
       fullWidth
-      color="primary"
+      color="secondary"
       startContent={<Send className="h-5 w-5" />}
       type="submit"
       variant="ghost"
     >
-      Enviar Cadastro via WhatsApp
+      Enviar Cadastro
     </Button>
   )
 }
