@@ -6,8 +6,8 @@ type UseScrollToSectionProps = {
 
 export function useScrollTo({ onScrollEnd }: UseScrollToSectionProps = {}) {
   const scrollToSection = useCallback(
-    (sectionId: string) => {
-      const element = document.getElementById(sectionId)
+    (target: string) => {
+      const element = document.getElementById(target)
 
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' })

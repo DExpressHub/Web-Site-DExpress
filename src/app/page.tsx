@@ -1,4 +1,8 @@
+import { ApplySection } from '@/components/landingPage/apply'
+import { HeroSection } from '@/components/landingPage/hero'
+import { HowItWorks } from '@/components/landingPage/howItWorks'
 import { Navbar } from '@/components/landingPage/navbar'
+import { SearchSection } from '@/components/landingPage/search'
 
 const TWENTY_FOUR_HOURS_IN_SECONDS = 24 * 60 * 60
 
@@ -43,16 +47,20 @@ const TWENTY_FOUR_HOURS_IN_SECONDS = 24 * 60 * 60
 
 export default function LandingPage() {
   return (
-    <div>
+    <>
       <Navbar />
-      {/* <HeroSection />
+      <HeroSection />
       <HowItWorks />
+      <SearchSection />
+      <ApplySection />
+      {/*
+
       <SearchSection />
       <ApplySection />
       <PlansSection />
       <TestimonialsSection />
       <ContactSection />
       <Footer /> */}
-    </div>
+    </>
   )
 }
