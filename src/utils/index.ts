@@ -1,5 +1,2 @@
 export * from './cn'
-export * from './formatPrice'
-export * from './isNew'
 export * from './truncate'
-export * from './getPropertyFeature'
