@@ -1,32 +1,46 @@
+'use client'
 import { Menu } from 'lucide-react'
+import React from 'react'
 
 import { MenuItemMobile } from './menuItem'
 import { MobileActions } from './actions'
+import { Logo } from './logo'
 
 import { ThemeToggle } from '@/components/toggleTheme'
 import { Button } from '@/components/ui/button'
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet'
 import { cn } from '@/utils'
 
 export function MobileMenu({ className }: { className?: string }) {
+  const [isOpen, setIsOpen] = React.useState(false)
+
   return (
-    <div className={cn('md:hidden flex items-center space-x-2', className)}>
+    <div className={cn('xl:hidden flex items-center space-x-2', className)}>
       <ThemeToggle />
-      <Sheet>
-        <SheetTrigger asChild aria-label="Abrir menu mobile">
+      <Sheet open={isOpen} onOpenChange={setIsOpen}>
+        <SheetTrigger asChild aria-label="Abrir menu mobile" className="cursor-pointer">
           <Button size="icon" variant="ghost">
             <Menu className="h-5 w-5" />
           </Button>
         </SheetTrigger>
-        <SheetContent className="w-[280px] sm:w-[350px]" side="right">
+        <SheetContent className="w-64 " side="right">
+          <SheetHeader>
+            <Logo />
+            <SheetTitle className="sr-only">Menu principal</SheetTitle>
+            <SheetDescription className="sr-only">
+              Menu lateral responsivo para navegação em dispositivos móveis
+            </SheetDescription>
+          </SheetHeader>
+
           <div className="flex flex-col space-y-6 mt-6">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-linear-to-r from-primary to-primary-variant rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">D</span>
-              </div>
-              <span className="font-bold text-xl">D-Express</span>
-            </div>
-            <MenuItemMobile />
+            <MenuItemMobile onClose={() => setIsOpen(false)} />
             <MobileActions />
           </div>
         </SheetContent>

@@ -10,9 +10,9 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Logo />
-          <MenuItem />
-          <DesktopActions className="hidden md:flex items-center space-x-4" />
-          <MobileMenu />
+          <MenuItem className="hidden xl:flex items-center space-x-8" />
+          <DesktopActions className="hidden xl:flex items-center space-x-4" />
+          <MobileMenu className=" xl:hidden" />
         </div>
       </div>
     </Header>

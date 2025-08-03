@@ -7,7 +7,7 @@ import { cn } from '@/utils'
 
 export function DesktopActions({ className }: { className?: string }) {
   return (
-    <div className={cn('hidden md:flex items-center space-x-4', className)}>
+    <div className={cn('hidden xl:flex items-center space-x-4', className)}>
       <ThemeToggle />
       <Link
         className={cn('text-foreground', buttonVariants({ variant: 'ghost', size: 'sm' }))}

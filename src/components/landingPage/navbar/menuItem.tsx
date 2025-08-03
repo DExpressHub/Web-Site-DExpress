@@ -1,14 +1,15 @@
 'use client'
 import { useNavItem } from './useNavItem'
 
+import { cn } from '@/utils'
 import { useScrollTo } from '@/hooks'
 
-export function MenuItem() {
+export function MenuItem({ className }: { className?: string }) {
   const navItems = useNavItem()
   const scrollToSection = useScrollTo()
 
   return (
-    <nav className="hidden md:flex items-center space-x-8">
+    <nav className={cn('hidden xl:flex items-center space-x-8', className)}>
       {navItems.map((item) => (
         <button
           key={item.label}
@@ -22,16 +23,16 @@ export function MenuItem() {
   )
 }
 
-export function MenuItemMobile() {
+export function MenuItemMobile({ onClose }: { onClose?: () => void }) {
   const navItems = useNavItem()
-  const scrollToSection = useScrollTo()
+  const scrollToSection = useScrollTo({ onScrollEnd: onClose })
 
   return (
     <nav className="flex flex-col space-y-4">
       {navItems.map((item) => (
         <button
           key={item.label}
-          className="text-left text-foreground hover:text-primary transition-colors font-medium"
+          className="text-left text-foreground hover:text-primary cursor-pointer transition-colors font-medium"
           onClick={() => scrollToSection(item.href)}
         >
           {item.label}
