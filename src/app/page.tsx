@@ -1,8 +1,8 @@
-import { ApplySection } from '@/components/landingPage/apply'
-import { HeroSection } from '@/components/landingPage/hero'
-import { HowItWorks } from '@/components/landingPage/howItWorks'
-import { Navbar } from '@/components/landingPage/navbar'
-import { SearchSection } from '@/components/landingPage/search'
+import { ApplySection } from '@/presentation/components/landingPage/apply'
+import { HeroSection } from '@/presentation/components/landingPage/hero'
+import { HowItWorks } from '@/presentation/components/landingPage/howItWorks'
+import { Navbar } from '@/presentation/components/landingPage/navbar'
+import { SearchSection } from '@/presentation/components/landingPage/search'
 
 const TWENTY_FOUR_HOURS_IN_SECONDS = 24 * 60 * 60
 

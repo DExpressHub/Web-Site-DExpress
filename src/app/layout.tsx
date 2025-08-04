@@ -1,9 +1,9 @@
-import '@/styles/globals.css'
+import '@/presentation/styles/globals.css'
 
 import { Metadata, Viewport } from 'next'
 
 import { fontPrimary, fontSecondary } from '@/config'
-import { Providers } from '@/providers'
+import { Providers } from '@/presentation/providers'
 import { cn } from '@/utils'
 
 export const metadata: Metadata = {
