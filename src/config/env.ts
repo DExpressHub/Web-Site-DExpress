@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { z } from 'zod'
+import { z } from 'zod';
 
 const envSchema = z.object({
   NEXT_PUBLIC_API_URL: z.string().url(),
@@ -16,4 +16,4 @@ if (!_env.success) {
   throw new Error('Invalid public environment variables.')
 }
 
-export const env = _env.data
+export const env = _env.data;

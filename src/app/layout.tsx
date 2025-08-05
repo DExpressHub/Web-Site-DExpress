@@ -4,7 +4,7 @@ import { Metadata, Viewport } from 'next'
 
 import { fontPrimary, fontSecondary } from '@/config'
 import { Providers } from '@/presentation/providers'
-import { cn } from '@/utils'
+import { cn } from '@/presentation/utils'
 
 export const metadata: Metadata = {
   title: 'D-Express - Conexão Profissional',

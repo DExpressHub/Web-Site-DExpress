@@ -1,45 +1,21 @@
 import { env } from '@/config/env'
-import { ServiceResponse, Specialty } from '@/core/types'
+import { GetSpecialtiesResponse, IGetSpecialties } from '@/core/interfaces/specialty'
+import { Specialty } from '@/core/types/specialty'
 
-interface GetSpecialtiesOptions {
-  revalidate?: number
-}
-
-export async function getSpecialtiesService(
-  options: GetSpecialtiesOptions = {},
-): Promise<ServiceResponse<Specialty[]>> {
-  try {
-    const fetchOptions: RequestInit = {
+export class NextFetchGetSpecialtiesService implements IGetSpecialties {
+  constructor(private readonly next?: NextFetchRequestConfig) {}
+  async execute(): Promise<GetSpecialtiesResponse> {
+    const init: RequestInit = {
       headers: {
         'Content-Type': 'application/json',
       },
+      next: this.next,
     }
 
-    if (options.revalidate !== undefined) {
-      fetchOptions.next = { revalidate: options.revalidate }
-    }
-
-    const response = await fetch(`${env.NEXT_PUBLIC_API_URL}/specialties`, fetchOptions)
-
-    if (!response.ok) {
-      const message = await response.text()
-
-      return {
-        error: `Erro ${response.status}: ${message}`,
-        success: false,
-      }
-    }
+    const response = await fetch(`${env.NEXT_PUBLIC_API_URL}/specialties`, init)
 
     const data = (await response.json()) as Specialty[]
 
-    return {
-      data,
-      success: true,
-    }
-  } catch (error) {
-    return {
-      error: `Erro inesperado: ${error instanceof Error ? error.message : String(error)}`,
-      success: false,
-    }
+    return data
   }
 }

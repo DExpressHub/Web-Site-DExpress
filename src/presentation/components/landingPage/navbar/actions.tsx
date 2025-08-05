@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { ThemeToggle } from '@/presentation/components/toggleTheme'
 import { buttonVariants } from '@/presentation/components/ui/button'
-import { cn } from '@/utils'
+import { cn } from '@/presentation/utils'
 
 export function DesktopActions({ className }: { className?: string }) {
   return (

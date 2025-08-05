@@ -3,6 +3,7 @@
 import * as React from 'react'
 
 import { ThemeProvider } from './themeProvider'
+import { ReactQueryProvider } from './reactQueryProvider'
 
 export interface ProvidersProps {
   children: React.ReactNode
@@ -11,7 +12,7 @@ export interface ProvidersProps {
 export function Providers({ children }: ProvidersProps) {
   return (
     <ThemeProvider disableTransitionOnChange enableSystem attribute="class" defaultTheme="dark">
-      {children}
+      <ReactQueryProvider>{children}</ReactQueryProvider>
     </ThemeProvider>
   )
 }

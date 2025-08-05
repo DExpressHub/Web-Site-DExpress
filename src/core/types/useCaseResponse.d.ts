@@ -1,4 +1,4 @@
-export type ServiceResponse<T> =
+type UseCaseResponse<T> =
   | {
       data: T
       success: true

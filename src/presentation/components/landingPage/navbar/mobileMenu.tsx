@@ -16,7 +16,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/presentation/components/ui/sheet'
-import { cn } from '@/utils'
+import { cn } from '@/presentation/utils'
 
 export function MobileMenu({ className }: { className?: string }) {
   const [isOpen, setIsOpen] = React.useState(false)

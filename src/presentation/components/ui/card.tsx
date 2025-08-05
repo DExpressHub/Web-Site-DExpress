@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/heading-has-content */
 import * as React from 'react'
 
-import { cn } from '@/utils/cn'
+import { cn } from '@/presentation/utils/cn'
 
 const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (

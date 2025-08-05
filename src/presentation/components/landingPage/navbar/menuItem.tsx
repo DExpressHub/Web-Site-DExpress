@@ -1,7 +1,7 @@
 'use client'
 import { useNavItem } from './useNavItem'
 
-import { cn } from '@/utils'
+import { cn } from '@/presentation/utils'
 import { useScrollTo } from '@/presentation/hooks'
 
 export function MenuItem({ className }: { className?: string }) {

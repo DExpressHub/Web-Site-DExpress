@@ -13,8 +13,11 @@ import {
 } from '@/presentation/components/ui/select'
 import { Label } from '@/presentation/components/ui/label'
 import { Card, CardContent, CardHeader, CardTitle } from '@/presentation/components/ui/card'
-
-export function SearchSection() {
+import { Specialty } from '@/core/types/specialty'
+type SearchSectionProps = {
+  specialties: Specialty[]
+}
+export function SearchSection({ specialties }: SearchSectionProps) {
   const [location, setLocation] = useState('')
   const [specialty, setSpecialty] = useState('')
   const [availability, setAvailability] = useState('')
@@ -57,11 +60,6 @@ export function SearchSection() {
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
                 />
-                {location && !location.includes(',') && (
-                  <p className="text-xs text-muted-foreground">
-                    Por favor, insira uma localização válida.
-                  </p>
-                )}
               </div>
 
               <div className="space-y-2">
@@ -69,17 +67,17 @@ export function SearchSection() {
                   <Filter className="w-4 h-4 text-primary" />
                   Especialidade
                 </Label>
-                <Select value={specialty} onValueChange={setSpecialty}>
+                <Select defaultValue="all" value={specialty} onValueChange={setSpecialty}>
                   <SelectTrigger className="h-12">
                     <SelectValue placeholder="Todas as especialidades" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="limpeza">Limpeza</SelectItem>
-                    <SelectItem value="culinaria">Culinária</SelectItem>
-                    <SelectItem value="cuidados-especiais">Cuidados Especiais</SelectItem>
-                    <SelectItem value="baba">Babá</SelectItem>
-                    <SelectItem value="passadoria">Passadoria</SelectItem>
-                    <SelectItem value="jardinagem">Jardinagem</SelectItem>
+                    <SelectItem value="all">Todas</SelectItem>
+                    {specialties.map((specialty) => (
+                      <SelectItem key={specialty.id} value={specialty.id}>
+                        {specialty.name}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </div>
