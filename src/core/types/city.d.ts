@@ -1,4 +1,4 @@
-export type City = {
+type City = {
   id: string
   name: string
 }

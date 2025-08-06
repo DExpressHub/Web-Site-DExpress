@@ -1,8 +1,8 @@
 import { api } from './api'
 
-import { GetSpecialtiesResponse, IGetSpecialties } from '@/core/interfaces/specialty'
+import { GetSpecialtiesResponse, IGetSpecialtiesService } from '@/core/interfaces/specialty'
 
-export class KyGetSpecialtiesService implements IGetSpecialties {
+export class KyGetSpecialtiesService implements IGetSpecialtiesService {
   constructor() {}
   async execute(): Promise<GetSpecialtiesResponse> {
     const response = await api(`specialties`)

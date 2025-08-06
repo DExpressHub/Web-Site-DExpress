@@ -1,8 +1,7 @@
-import { IGetCitiesService } from '@/core/interfaces/city'
-import { GetSpecialtiesResponse } from '@/core/interfaces/specialty'
+import { GetSpecialtiesResponse, IGetSpecialtiesService } from '@/core/interfaces/specialty'
 
 export class GetSpecialtiesUseCase {
-  constructor(private readonly getSpeciaLtiesService: IGetCitiesService) {}
+  constructor(private readonly getSpeciaLtiesService: IGetSpecialtiesService) {}
   async execute(): Promise<UseCaseResponse<GetSpecialtiesResponse>> {
     try {
       const specialties = await this.getSpeciaLtiesService.execute()

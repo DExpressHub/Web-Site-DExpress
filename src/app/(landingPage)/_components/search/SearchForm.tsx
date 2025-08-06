@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Search } from 'lucide-react'
 
-import { LocationInputField } from './LocationInputField'
+import { LocationSelectField } from './LocationSelectField'
 import { SpecialtySelectField } from './SpecialtySelectField'
 import { SearchFormData, searchFormSchema } from './searchFormSchema'
 import { AvailabilitySelectField } from './AvailabilitySelectField'
@@ -16,8 +16,8 @@ export function SearchForm() {
     resolver: zodResolver(searchFormSchema),
     defaultValues: {
       location: '',
-      specialty: 'all',
-      availability: 'all',
+      specialty: '',
+      availability: '',
     },
   })
 
@@ -29,7 +29,7 @@ export function SearchForm() {
     <Form {...form}>
       <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
         <div className="grid md:grid-cols-3 gap-6">
-          <LocationInputField control={form.control} />
+          <LocationSelectField control={form.control} />
           <SpecialtySelectField control={form.control} />
           <AvailabilitySelectField control={form.control} />
         </div>

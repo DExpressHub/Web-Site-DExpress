@@ -3,6 +3,7 @@ import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { ReactQueryProvider } from '@/presentation/providers/reactQueryProvider'
 import { getSpecialtiesUseCaseFactory } from '@/presentation/factories/getSpecialties'
 import { queriesKey } from '@/presentation/queriesKey'
+import { getCitiesUseCaseFactory } from '@/presentation/factories/getCities'
 
 export async function LoadPageData({ children }: { children: React.ReactNode }) {
   const queryClient = new QueryClient({
@@ -15,17 +16,26 @@ export async function LoadPageData({ children }: { children: React.ReactNode }) 
     },
   })
 
-  await queryClient.prefetchQuery({
+  const fetchSpecialties = queryClient.prefetchQuery({
     queryKey: [queriesKey.specialties],
     queryFn: async () => {
       const result = await getSpecialtiesUseCaseFactory().execute()
 
-      if (!result.success) return []
-
-      return result.data
+      return result.success ? result.data : []
     },
   })
 
+  const fetchCities = queryClient.prefetchQuery({
+    queryKey: [queriesKey.cities],
+    queryFn: async () => {
+      const result = await getCitiesUseCaseFactory().execute()
+
+      return result.success ? result.data : []
+    },
+  })
+  const fetchers = [fetchSpecialties, fetchCities]
+
+  await Promise.allSettled(fetchers)
   const dehydratedState = dehydrate(queryClient)
 
   return <ReactQueryProvider dehydratedState={dehydratedState}>{children}</ReactQueryProvider>

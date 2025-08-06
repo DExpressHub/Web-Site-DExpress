@@ -1,5 +1,4 @@
-// import { City } from '../types'
-
-// export interface IGetCitiesService {
-//   execute(): Promise<City[]>
-// }
+export interface IGetCitiesService {
+  execute(): Promise<GetCitiesResponse>
+}
+export type GetCitiesResponse = City[]
