@@ -4,9 +4,9 @@ import { GetSpecialtiesResponse } from '@/core/interfaces/specialty'
 export class GetSpecialtiesUseCase {
   constructor(private readonly getSpeciaLtiesService: IGetCitiesService) {}
   async execute(): Promise<UseCaseResponse<GetSpecialtiesResponse>> {
-    const specialties = await this.getSpeciaLtiesService.execute()
-
     try {
+      const specialties = await this.getSpeciaLtiesService.execute()
+
       return {
         data: specialties,
         success: true,

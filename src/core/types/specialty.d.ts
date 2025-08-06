@@ -1,4 +1,4 @@
-export interface Specialty {
+type Specialty = {
   id: string
   name: string
 }

@@ -13,14 +13,13 @@ import {
 } from '@/presentation/components/ui/select'
 import { Label } from '@/presentation/components/ui/label'
 import { Card, CardContent, CardHeader, CardTitle } from '@/presentation/components/ui/card'
-import { Specialty } from '@/core/types/specialty'
-type SearchSectionProps = {
-  specialties: Specialty[]
-}
-export function SearchSection({ specialties }: SearchSectionProps) {
+import { useSpecialtiesQuery } from '@/presentation/hooks/useSpecialtiesQuery'
+
+export function SearchSection() {
   const [location, setLocation] = useState('')
   const [specialty, setSpecialty] = useState('')
   const [availability, setAvailability] = useState('')
+  const { specialties } = useSpecialtiesQuery()
 
   const handleSearch = () => {
     console.log('Searching with:', { location, specialty, availability })

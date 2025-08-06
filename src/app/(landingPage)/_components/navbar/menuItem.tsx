@@ -2,7 +2,7 @@
 import { useNavItem } from './useNavItem'
 
 import { cn } from '@/presentation/utils'
-import { useScrollTo } from '@/presentation/hooks'
+import { useScrollTo } from '@/presentation/hooks/useScrollTo'
 
 export function MenuItem({ className }: { className?: string }) {
   const navItems = useNavItem()
