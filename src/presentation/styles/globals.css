@@ -110,6 +110,7 @@
 }
 
 @theme inline {
+  --breakpoint-ss: 23.4375rem;
   --font-primary: var(--font-primary);
   --font-secondary: var(--font-secondary);
   --color-background: var(--background);

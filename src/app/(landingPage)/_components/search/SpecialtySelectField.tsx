@@ -38,10 +38,10 @@ export function SpecialtySelectField({ control }: Props) {
             <Filter className="w-4 h-4 text-primary" />
             Especialidade
           </FormLabel>
-          <Select defaultValue="all" value={field.value} onValueChange={field.onChange}>
+          <Select disabled value={field.value} onValueChange={field.onChange}>
             <FormControl>
               <SelectTrigger className="h-12">
-                <SelectValue placeholder="Todas as especialidades" />
+                <SelectValue placeholder="Selecione uma especialidade" />
               </SelectTrigger>
             </FormControl>
             <SelectContent>

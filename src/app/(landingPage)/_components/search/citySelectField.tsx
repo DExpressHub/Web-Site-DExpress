@@ -23,13 +23,13 @@ type Props = {
   control: Control<SearchFormData>
 }
 
-export function LocationSelectField({ control }: Props) {
+export function CitySelectField({ control }: Props) {
   const { cities } = useCitiesQuery()
 
   return (
     <FormField
       control={control}
-      name="location"
+      name="city"
       render={({ field }) => (
         <FormItem>
           <FormLabel>Cidade</FormLabel>

@@ -2,7 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/presentation/components/u
 
 export function SocialProof() {
   return (
-    <div className="flex items-center space-x-6 pt-8">
+    <div className="flex items-center flex-col ss:flex-row   gap-6 pt-8">
       <div className="flex -space-x-3">
         <Avatar className="border-2 border-background w-16 h-16">
           <AvatarImage alt="" className="object-cover" src="/user-1.webp" />

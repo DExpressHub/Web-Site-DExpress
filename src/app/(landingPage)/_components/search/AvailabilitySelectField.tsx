@@ -56,7 +56,7 @@ export function AvailabilitySelectField({ control }: Props) {
           <Select value={field.value} onValueChange={field.onChange}>
             <FormControl>
               <SelectTrigger className="h-12">
-                <SelectValue placeholder="Qualquer disponibilidade" />
+                <SelectValue placeholder="Selecione a Disponibilidade" />
               </SelectTrigger>
             </FormControl>
             <SelectContent>

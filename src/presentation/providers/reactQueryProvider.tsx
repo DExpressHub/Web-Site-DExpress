@@ -1,28 +1,18 @@
 'use client'
-import {
-  QueryClientProvider,
-  HydrationBoundary,
-  QueryClient,
-  DehydratedState,
-} from '@tanstack/react-query'
+import { QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { useState } from 'react'
 
-export function ReactQueryProvider({
-  children,
-  dehydratedState,
-}: {
-  children: React.ReactNode
-  dehydratedState?: DehydratedState
-}) {
-  const [queryClient] = useState(() => new QueryClient())
+import { getQueryClient } from '../utils/queryClient'
+
+export function ReactQueryProvider({ children }: { children: React.ReactNode }) {
+  // NOTA: Suspense boundaries são requeridas para streaming.
+  // Isso é apenas necessário se você estiver fazendo streaming do seu HTML ou usando React.lazy
+  const queryClient = getQueryClient()
 
   return (
     <QueryClientProvider client={queryClient}>
-      <HydrationBoundary state={dehydratedState}>
-        {children}
-        <ReactQueryDevtools initialIsOpen={false} />
-      </HydrationBoundary>
+      {children}
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   )
 }
