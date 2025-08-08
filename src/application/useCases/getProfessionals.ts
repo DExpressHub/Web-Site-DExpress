@@ -10,17 +10,15 @@ export class GetProfessionalsUseCase {
   async execute(
     params?: GetProfessionalsParams,
   ): Promise<UseCaseResponse<GetProfessionalsResponse>> {
-    console.log('params', params)
     try {
       const result = await this.service.execute(params)
-
-      console.log(params)
 
       return {
         data: result,
         success: true,
       }
     } catch (error) {
+      // chamar sentry no futuro
       console.log(error)
 
       return {

@@ -1,7 +1,7 @@
 'use client'
-import { Control } from 'react-hook-form'
+import { FieldValues } from 'react-hook-form'
 
-import { SearchFormData } from './searchFormSchema'
+import { SelectFieldProps } from './type'
 
 import {
   FormField,
@@ -17,33 +17,31 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/presentation/components/ui/select'
-import { useCitiesQuery } from '@/presentation/hooks/useCitiesQuery'
 
-type Props = {
-  control: Control<SearchFormData>
-}
-
-export function CitySelectField({ control }: Props) {
-  const { cities } = useCitiesQuery()
+export function SelectField<T extends FieldValues>(props: SelectFieldProps<T>) {
+  const { control, name, placeholder, label, items } = props
 
   return (
     <FormField
       control={control}
-      name="city"
+      name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel>Cidade</FormLabel>
+          <FormLabel>{label}</FormLabel>
           <Select value={field.value} onValueChange={field.onChange}>
             <FormControl>
-              <SelectTrigger className="h-12">
-                <SelectValue placeholder="Selecione a cidade" />
+              <SelectTrigger className="h-12 cursor-pointer">
+                <SelectValue placeholder={placeholder} />
               </SelectTrigger>
             </FormControl>
             <SelectContent>
-              <SelectItem value="all">Todas</SelectItem>
-              {cities.map((city) => (
-                <SelectItem key={city.id} value={city.id}>
-                  {city.name}
+              {items.map((item, index) => (
+                <SelectItem
+                  key={`${item.value}-{${index}-${name}}`}
+                  className="cursor-pointer"
+                  value={item.value}
+                >
+                  {item.label}
                 </SelectItem>
               ))}
             </SelectContent>
