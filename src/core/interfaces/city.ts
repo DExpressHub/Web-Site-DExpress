@@ -1,4 +1,9 @@
-export interface IGetCitiesService {
-  execute(): Promise<GetCitiesResponse>
+import { CitiesListResponse, PaginatedCitiesParams, PaginatedCitiesResponse } from '../types/city'
+
+export interface ListAllCitiesService {
+  list(): Promise<CitiesListResponse>
 }
-export type GetCitiesResponse = City[]
+
+export interface ListPaginatedCitiesService {
+  list(params?: PaginatedCitiesParams): Promise<PaginatedCitiesResponse>
+}

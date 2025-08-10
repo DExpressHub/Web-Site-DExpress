@@ -2,7 +2,7 @@ import { Search } from 'lucide-react'
 
 import { SearchProvider } from './searchProvider'
 import { SearchForm } from './searchForm'
-import { Result } from './result'
+import { ProfessionalsList } from './professionalsList'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/presentation/components/ui/card'
 
@@ -29,7 +29,7 @@ export function SearchSection() {
             <CardContent className="p-8">
               <SearchForm />
             </CardContent>
-            <Result />
+            <ProfessionalsList />
           </Card>
         </div>
       </section>

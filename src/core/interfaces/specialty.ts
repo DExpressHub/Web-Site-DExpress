@@ -1,4 +1,13 @@
-export interface IGetSpecialtiesService {
-  execute(): Promise<GetSpecialtiesResponse>
+import {
+  PaginatedSpecialtiesParams,
+  PaginatedSpecialtiesResponse,
+  SpecialtiesListResponse,
+} from '../types/specialty'
+
+export interface ListAllSpecialtiesService {
+  list(): Promise<SpecialtiesListResponse>
 }
-export type GetSpecialtiesResponse = Specialty[]
+
+export interface ListPaginatedSpecialtiesService {
+  list(params?: PaginatedSpecialtiesParams): Promise<PaginatedSpecialtiesResponse>
+}

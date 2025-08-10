@@ -4,6 +4,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 
+import { ApplyFormProvider } from './applyFormProvider'
+import { PersonalInfo } from './personalInfo'
+
 import { Button } from '@/presentation/components/ui/button'
 import { Input } from '@/presentation/components/ui/input'
 import { Textarea } from '@/presentation/components/ui/textarea'
@@ -24,7 +27,6 @@ import {
   FormLabel,
   FormMessage,
 } from '@/presentation/components/ui/form'
-import { ApplyFormProvider } from './applyFormProvider'
 
 const formSchema = z.object({
   name: z.string().min(2, 'Nome deve ter pelo menos 2 caracteres'),
@@ -104,63 +106,7 @@ export function ApplySection() {
             <CardContent className="p-8">
               <Form {...form}>
                 <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Nome Completo *</FormLabel>
-                          <FormControl>
-                            <Input {...field} className="h-12" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email *</FormLabel>
-                          <FormControl>
-                            <Input {...field} className="h-12" type="email" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="phone"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Telefone *</FormLabel>
-                          <FormControl>
-                            <Input {...field} className="h-12" type="tel" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="birthDate"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Data de Nascimento *</FormLabel>
-                          <FormControl>
-                            <Input {...field} className="h-12" type="date" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
+                  <PersonalInfo />
 
                   <FormField
                     control={form.control}
