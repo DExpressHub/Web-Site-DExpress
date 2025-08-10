@@ -1,12 +1,12 @@
-import { ListAllSpecialtiesService } from '@/core/interfaces/specialty'
+import { ListAllDesiredPositionService } from '@/core/interfaces/desiredPosition'
 import { UseCaseResponse } from '@/core/types/useCaseResponse'
 import { handleApiError } from '@/application/utils/handleApiError'
-import { SpecialtiesListResponse } from '@/core/types/specialty'
-export class ListAllSpecialtiesUseCase {
-  constructor(private readonly listAllSpecialtiesService: ListAllSpecialtiesService) {}
-  async execute(): Promise<UseCaseResponse<SpecialtiesListResponse>> {
+import { DesiredPositionListResponse } from '@/core/types/desiredPosition'
+export class ListAllDesiredPositionUseCase {
+  constructor(private readonly listAllDesiredPositionService: ListAllDesiredPositionService) {}
+  async execute(): Promise<UseCaseResponse<DesiredPositionListResponse>> {
     try {
-      const specialties = await this.listAllSpecialtiesService.list()
+      const specialties = await this.listAllDesiredPositionService.list()
 
       return {
         data: specialties,

@@ -13,12 +13,12 @@ import { SelectFormField } from '@/presentation/components/SelectFormField'
 import { Button } from '@/presentation/components/ui/button'
 
 export function SearchForm() {
-  const { citiesOptions, specialtiesOptions, generalAvailabilitiesOptions } = useSearchOptions()
+  const { citiesOptions, desiredPositions, generalAvailabilitiesOptions } = useSearchOptions()
   const form = useForm<SearchFormData>({
     resolver: zodResolver(searchFormSchema),
     defaultValues: {
       city: undefined,
-      specialty: undefined,
+      desiredPosition: undefined,
       availability: undefined,
     },
   })
@@ -38,10 +38,10 @@ export function SearchForm() {
             />
             <SelectFormField<SearchFormData>
               control={form.control}
-              items={specialtiesOptions}
-              label="Especialidade"
-              name="specialty"
-              placeholder="Selecione a especialidade"
+              items={desiredPositions}
+              label="Função a contratar"
+              name="desiredPosition"
+              placeholder="Selecione a Função"
             />
             <SelectFormField<SearchFormData>
               control={form.control}

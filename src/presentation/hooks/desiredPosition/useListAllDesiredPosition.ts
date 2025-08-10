@@ -1,14 +1,14 @@
 'use client'
 import { useQuery } from '@tanstack/react-query'
 
-import { specialtyUseCase } from '@/presentation/factories/useCase/specialty'
+import { desiredPositionUseCase } from '@/presentation/factories/useCase/desiredPosition'
 import { queriesKey } from '@/presentation/queriesKey'
 
-export function useListAllSpecialties() {
+export function useListAllDesiredPosition() {
   const { data, error, isError } = useQuery({
-    queryKey: [queriesKey.specialties],
+    queryKey: [queriesKey.desiredPosition],
     queryFn: async () => {
-      const result = await specialtyUseCase.listAll.execute()
+      const result = await desiredPositionUseCase.listAll.execute()
 
       if (!result.success) {
         throw result.error
@@ -21,7 +21,7 @@ export function useListAllSpecialties() {
   })
 
   return {
-    specialties: data ?? [],
+    desiredPosition: data ?? [],
     error,
     isError,
   }

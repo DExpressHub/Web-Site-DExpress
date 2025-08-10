@@ -1,5 +1,5 @@
 export const queriesKey = {
-  specialties: 'specialties',
+  desiredPosition: 'desiredPosition',
   cities: 'cities',
   professionals: 'professionals',
   generalAvailabilities: 'generalAvailabilities',

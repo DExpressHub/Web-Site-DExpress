@@ -53,6 +53,7 @@ export type FiltersProfessional = {
   search?: string
   page?: number
   limit?: number
+  desiredPositionId?: string
 }
 
 export type PaginatedProfissionalResponse = {

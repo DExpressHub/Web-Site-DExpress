@@ -28,9 +28,10 @@ export function SearchProvider({ children }: { children: React.ReactNode }) {
   const { error, isError, result, isFetching } = useListPaginatedProfessional(filters, hasSearched)
   const onSubmit = useCallback((data: SearchFormData) => {
     setFilters({
+      limit: 3,
       availabilityTypeId: data.availability === 'all' ? undefined : data.availability,
       cityId: data.city === 'all' ? undefined : data.city,
-      specialtyId: data.specialty === 'all' ? undefined : data.specialty,
+      desiredPositionId: data.desiredPosition === 'all' ? undefined : data.desiredPosition,
     })
     setHasSearched(true)
   }, [])

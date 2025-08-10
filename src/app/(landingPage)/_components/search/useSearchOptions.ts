@@ -2,11 +2,11 @@ import React from 'react'
 
 import { useListAllCities } from '@/presentation/hooks/city/useListAllCities'
 import { useListAllGeneralAvailabilities } from '@/presentation/hooks/generalAvailability/useListAllGeneralAvailabilities'
-import { useListAllSpecialties } from '@/presentation/hooks/specialty/useAllSpecialties'
+import { useListAllDesiredPosition } from '@/presentation/hooks/desiredPosition/useListAllDesiredPosition'
 
 export function useSearchOptions() {
   const { cities } = useListAllCities()
-  const { specialties } = useListAllSpecialties()
+  const { desiredPosition } = useListAllDesiredPosition()
   const { generalAvailabilities } = useListAllGeneralAvailabilities()
 
   const withAllOption = React.useCallback(
@@ -24,9 +24,9 @@ export function useSearchOptions() {
     () => withAllOption(cities, (c) => c.name),
     [cities, withAllOption],
   )
-  const specialtiesOptions = React.useMemo(
-    () => withAllOption(specialties, (s) => s.name),
-    [specialties, withAllOption],
+  const desiredPositions = React.useMemo(
+    () => withAllOption(desiredPosition, (s) => s.label),
+    [desiredPosition, withAllOption],
   )
   const generalAvailabilitiesOptions = React.useMemo(
     () => withAllOption(generalAvailabilities, (g) => g.label),
@@ -35,7 +35,7 @@ export function useSearchOptions() {
 
   return {
     citiesOptions,
-    specialtiesOptions,
+    desiredPositions,
     generalAvailabilitiesOptions,
   }
 }
