@@ -24,7 +24,7 @@ export const ApplyContext = React.createContext<null | ContextValue>(null)
 
 export function ApplyFormProvider({ children }: { children: React.ReactNode }) {
   const [currentStep, setCurrentStep] = React.useState(0)
-  const { isPending: isLoading, mutate: createJobApp } = useCreateJobApplication()
+  const { isPending: isLoading, createJobApplicationAsync } = useCreateJobApplication()
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -33,8 +33,8 @@ export function ApplyFormProvider({ children }: { children: React.ReactNode }) {
   })
 
   const onSubmit = React.useCallback(
-    (data: FormData) => {
-      createJobApp({
+    async (data: FormData) => {
+      const result = await createJobApplicationAsync({
         fullName: data.fullName,
         identityNumber: data.identityNumber,
         birthDate: data.birthDate,
@@ -60,8 +60,13 @@ export function ApplyFormProvider({ children }: { children: React.ReactNode }) {
         experienceLevelId: data.experienceLevelId,
         generalAvailabilityId: data.generalAvailabilityId,
       })
+
+      if (result?.success) {
+        setCurrentStep(0)
+        form.reset(defaultValues)
+      }
     },
-    [createJobApp],
+    [createJobApplicationAsync, form],
   )
 
   const handleNextOrSubmit = React.useCallback(async () => {
