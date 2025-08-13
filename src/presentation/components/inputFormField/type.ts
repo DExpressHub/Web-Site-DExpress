@@ -6,4 +6,5 @@ export type InputFormFieldProps<T extends FieldValues> = {
   placeholder?: string
   label?: string
   type?: string
+  disabled?: boolean
 }

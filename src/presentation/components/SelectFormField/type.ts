@@ -6,4 +6,5 @@ export type SelectFormFieldProps<T extends FieldValues> = {
   placeholder?: string
   label?: string
   items: { value: string; label: string }[]
+  disabled?: boolean
 }

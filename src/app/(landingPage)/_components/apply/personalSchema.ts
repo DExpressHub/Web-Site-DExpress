@@ -1,7 +1,5 @@
 import { z } from 'zod'
 
-const phoneRegex = /^(?:\+244|244)?\s?9\d{8}$/
-
 const birthDateSchema = z
   .string()
   .min(1, 'Data de nascimento é obrigatória')
@@ -35,6 +33,7 @@ const birthDateSchema = z
 export const biSchema = z
   .string()
   .trim()
+  .min(1, { message: 'O BI é obrigatório' })
   .length(13, { message: 'O BI deve ter exatamente 13 caracteres.' })
   .refine((val) => /^\d{8}/.test(val), {
     message: 'O BI deve começar com 8 dígitos.',
@@ -60,24 +59,29 @@ const fullNameSchema = z
     message: 'Depois da inicial maiúscula, use apenas letras minúsculas.',
   })
 
-export const personalInfoSchema = z.object({
+export const personalSchema = z.object({
   fullName: fullNameSchema,
   identityNumber: biSchema,
-  email: z.string({ required_error: 'Email é obrigatório' }).email('Email inválido'),
   birthDate: birthDateSchema,
-  phoneNumber: z
-    .string()
-    .regex(phoneRegex, 'Número de telefone angolano inválido')
-
-    .or(z.literal('')),
-  optionalPhoneNumber: z
-    .string()
-    .regex(phoneRegex, 'Número de telefone angolano inválido')
-    .optional()
-    .or(z.literal('')),
-  maritalStatus: z.string().min(1, 'Selecione uma opção'),
-  gender: z.string().min(1, 'Selecione uma opção'),
-  nationality: z.string().min(1, 'Selecione uma opção'),
-  hasChildren: z.string({ required_error: 'Selecione uma opção' }),
-  knownDiseases: z.string().or(z.literal('')),
+  knownDiseases: z.string().min(1, 'O Campo Doenças conhecidas é obrigatório'),
+  maritalStatusId: z.string().min(1, 'Selecione uma opção'),
+  genderId: z.string().min(1, 'Selecione uma opção'),
+  hasChildren: z
+    .enum(['YES', 'NO'], {
+      invalid_type_error: 'Selecione uma opção',
+      required_error: 'Selecione uma opção',
+      message: 'Selecione uma opção',
+    })
+    .or(z.string().min(1, 'Selecione uma opção')),
 })
+export const defaultValuesPersonal = {
+  fullName: '',
+  identityNumber: '',
+  phoneNumber: '',
+  optionalPhoneNumber: '',
+  maritalStatusId: '',
+  hasChildren: '',
+  genderId: '',
+  birthDate: '',
+  knownDiseases: '',
+} as const

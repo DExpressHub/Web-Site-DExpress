@@ -6,10 +6,10 @@ export class ListAllDesiredPositionUseCase {
   constructor(private readonly listAllDesiredPositionService: ListAllDesiredPositionService) {}
   async execute(): Promise<UseCaseResponse<DesiredPositionListResponse>> {
     try {
-      const specialties = await this.listAllDesiredPositionService.list()
+      const desiredPosition = await this.listAllDesiredPositionService.list()
 
       return {
-        data: specialties,
+        data: desiredPosition,
         success: true,
       }
     } catch (err) {

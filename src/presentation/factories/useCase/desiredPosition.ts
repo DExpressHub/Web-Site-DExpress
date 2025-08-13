@@ -1,4 +1,4 @@
-import { ListAllDesiredPositionUseCase } from '@/application/useCases/specialty/listAllSpecialtiesUseCase'
+import { ListAllDesiredPositionUseCase } from '@/application/useCases/desiredPosition/listAllDesiredPositionUseCase'
 import { KyListAllDesiredPositionService } from '@/infra/services/ky/desiredPosition/kyListAllDesiredPositionService'
 
 function listAllDesiredPositionCaseFactory() {

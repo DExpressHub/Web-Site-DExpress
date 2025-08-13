@@ -1,62 +1,95 @@
 'use client'
+
 import React from 'react'
 import { useForm, UseFormReturn } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
 
-import { personalInfoSchema } from './personalInfoSchema'
+import { formSchema, defaultValues, FormData } from './schema'
+import { steps } from './steps'
 
-const formSchema = z
-  .object({
-    address: z.string().min(5, 'Endereço deve ter pelo menos 5 caracteres'),
-    experience: z.string().min(1, 'Selecione uma opção de experiência'),
-    specialties: z.array(z.string()).min(1, 'Selecione pelo menos uma especialidade'),
-    availability: z.string().min(1, 'Selecione uma opção de disponibilidade'),
-    description: z.string().optional(),
-  })
-  .merge(personalInfoSchema)
+import { useCreateJobApplication } from '@/presentation/hooks/jobApplication/useCreateJobApplication'
 
-type FormData = z.infer<typeof formSchema>
 type ContextValue = {
-  citiesOptions: {
-    key: string
-    label: string
-  }[]
-  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
+  onSubmit: (data: FormData) => void
   form: UseFormReturn<FormData>
+  isLoading: boolean
+  currentStep: number
+  setCurrentStep: React.Dispatch<React.SetStateAction<number>>
+  handleNextOrSubmit: () => Promise<void>
+  handleBack: () => void
+  steps: typeof steps
 }
 
 export const ApplyContext = React.createContext<null | ContextValue>(null)
 
-type ApplyFormProviderType = { children: React.ReactNode }
+export function ApplyFormProvider({ children }: { children: React.ReactNode }) {
+  const [currentStep, setCurrentStep] = React.useState(0)
+  const { isPending: isLoading, mutate: createJobApp } = useCreateJobApplication()
 
-export function ApplyFormProvider({ children }: ApplyFormProviderType) {
-  const citiesOptions = React.useMemo(
-    () => [].map(({ id, name }) => ({ key: id, label: name })),
-    [],
-  )
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      fullName: '',
-      identityNumber: '',
-      phoneNumber: '',
-      optionalPhoneNumber: '',
-      maritalStatus: '',
-      hasChildren: '',
-      knownDiseases: '',
-      email: '',
-      phone: '',
-      birthDate: '',
-      address: '',
-    },
+    defaultValues,
+    mode: 'onChange',
   })
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
 
-    const formData = new FormData(event.currentTarget)
+  const onSubmit = React.useCallback(
+    (data: FormData) => {
+      createJobApp({
+        fullName: data.fullName,
+        identityNumber: data.identityNumber,
+        birthDate: data.birthDate,
+        genderId: data.genderId,
+        maritalStatusId: data.maritalStatusId,
+        email: data.email,
+        phoneNumber: data.phoneNumber,
+        optionalPhoneNumber: data.optionalPhoneNumber,
+        desiredPositionId: data.desiredPositionId,
+        availabilityDate: data.availabilityDate,
+        ProfessionalExperience: data.ProfessionalExperience,
+        highestDegreeId: data.highestDegreeId,
+        courses: data.courses,
+        languages: data.languages,
+        skills: data.skills,
+        hasChildren: data.hasChildren === 'YES',
+        location: {
+          cityId: data.cityId,
+          districtId: data.districtId,
+          street: data.street,
+        },
+        knownDiseases: data.knownDiseases,
+        experienceLevelId: data.experienceLevelId,
+        generalAvailabilityId: data.generalAvailabilityId,
+      })
+    },
+    [createJobApp],
+  )
+
+  const handleNextOrSubmit = React.useCallback(async () => {
+    const isLastStep = currentStep === steps.length - 1
+    const valid = await form.trigger(steps[currentStep].fields, { shouldFocus: true })
+
+    if (!valid) return
+    if (isLastStep) {
+      form.handleSubmit(onSubmit)()
+    } else {
+      setCurrentStep((prev) => prev + 1)
+    }
+  }, [currentStep, form, onSubmit])
+
+  const handleBack = React.useCallback(() => {
+    setCurrentStep((prev) => prev - 1)
+  }, [])
+
+  const value: ContextValue = {
+    onSubmit,
+    form,
+    isLoading,
+    currentStep,
+    setCurrentStep,
+    handleNextOrSubmit,
+    handleBack,
+    steps,
   }
-  const value: ContextValue = { citiesOptions, onSubmit, form }
 
   return <ApplyContext.Provider value={value}>{children}</ApplyContext.Provider>
 }

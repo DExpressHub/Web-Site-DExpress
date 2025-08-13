@@ -26,14 +26,8 @@ export function useListPaginatedProfessional(filters: FiltersProfessional, shoul
     },
 
     enabled: shouldFetch,
-    retry: false,
-    staleTime: 5 * 60 * 1000, // 5 minutos
-    gcTime: 10 * 60 * 1000, // 10 minutos (novo nome para cacheTime)
-    refetchOnMount: false,
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
-    refetchInterval: false,
-    refetchIntervalInBackground: false,
+    retry: 2,
+    staleTime: 5 * 60 * 1000,
   })
 
   return {

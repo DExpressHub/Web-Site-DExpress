@@ -1,4 +1,3 @@
-'use client'
 import { UserPlus, Sparkles } from 'lucide-react'
 
 import { ApplyFormProvider } from './applyFormProvider'
@@ -7,15 +6,6 @@ import { ApplyForm } from './applyForm'
 import { Card, CardContent, CardHeader, CardTitle } from '@/presentation/components/ui/card'
 
 export function ApplySection() {
-  const specialtyOptions = [
-    { id: 'limpeza', label: 'Limpeza' },
-    { id: 'culinaria', label: 'Culinária' },
-    { id: 'cuidados-especiais', label: 'Cuidados Especiais' },
-    { id: 'baba', label: 'Babá' },
-    { id: 'passadoria', label: 'Passadoria' },
-    { id: 'jardinagem', label: 'Jardinagem' },
-  ]
-
   return (
     <section
       className="py-20 relative bg-cover bg-center bg-no-repeat"

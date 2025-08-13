@@ -18,7 +18,7 @@ import {
 } from '@/presentation/components/ui/select'
 
 export function SelectFormField<T extends FieldValues>(props: SelectFormFieldProps<T>) {
-  const { control, name, placeholder, label, items } = props
+  const { control, name, placeholder, label, items, disabled } = props
 
   return (
     <FormField
@@ -27,7 +27,7 @@ export function SelectFormField<T extends FieldValues>(props: SelectFormFieldPro
       render={({ field }) => (
         <FormItem>
           <FormLabel>{label}</FormLabel>
-          <Select value={field.value} onValueChange={field.onChange}>
+          <Select disabled={disabled} value={field.value} onValueChange={field.onChange}>
             <FormControl>
               <SelectTrigger className="h-12 cursor-pointer">
                 <SelectValue placeholder={placeholder} />

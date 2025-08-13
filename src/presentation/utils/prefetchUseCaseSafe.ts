@@ -10,9 +10,10 @@ type PrefetchSafeParams<T> = {
   defaultValue: T
   staleTime?: number
   queryClient: QueryClient
+  retry?: number
 }
 export async function prefetchUseCaseSafe<T>(params: PrefetchSafeParams<T>) {
-  const { defaultValue, fetchFn, queryClient, queryKey, staleTime } = params
+  const { defaultValue, fetchFn, queryClient, queryKey, staleTime, retry } = params
 
   return queryClient.prefetchQuery({
     queryKey,
@@ -24,6 +25,6 @@ export async function prefetchUseCaseSafe<T>(params: PrefetchSafeParams<T>) {
       } catch {}
     },
     staleTime: staleTime ?? ONE_DAY_MS,
-    retry: false,
+    retry: retry ?? false,
   })
 }

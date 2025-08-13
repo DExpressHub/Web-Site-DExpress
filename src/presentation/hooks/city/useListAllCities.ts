@@ -17,7 +17,7 @@ export function useListAllCities() {
       return result.data
     },
     staleTime: 1000 * 60 * 60 * 24,
-    retry: false,
+    retry: 2,
   })
 
   return {

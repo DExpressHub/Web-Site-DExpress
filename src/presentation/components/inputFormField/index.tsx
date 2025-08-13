@@ -13,7 +13,7 @@ import {
 } from '@/presentation/components/ui/form'
 
 export function InputFormField<T extends FieldValues>(props: InputFormFieldProps<T>) {
-  const { control, name, placeholder, label, type } = props
+  const { control, name, placeholder, label, type, disabled } = props
 
   return (
     <FormField
@@ -23,7 +23,13 @@ export function InputFormField<T extends FieldValues>(props: InputFormFieldProps
         <FormItem>
           <FormLabel>{label}</FormLabel>
           <FormControl>
-            <Input {...field} className="h-12" placeholder={placeholder} type={type} />
+            <Input
+              {...field}
+              className="h-12"
+              disabled={disabled}
+              placeholder={placeholder}
+              type={type}
+            />
           </FormControl>
           <FormMessage />
         </FormItem>

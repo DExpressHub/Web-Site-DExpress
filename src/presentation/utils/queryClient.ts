@@ -7,6 +7,9 @@ export function makeQueryClient() {
         // Com SSR, geralmente queremos definir um staleTime padrão
         // maior que zero para evitar re-fetch imediato no cliente
         staleTime: 60 * 1000, // 1 minuto
+        refetchOnWindowFocus: false,
+        refetchOnMount: false,
+        retry: false,
       },
     },
   })

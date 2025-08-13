@@ -1,20 +1,12 @@
+'use client'
 import { User } from 'lucide-react'
 
 import { useApplyForm } from './applyFormProvider'
+import { useApplyOptions } from './useApplyOptions'
 
 import { InputFormField } from '@/presentation/components/inputFormField'
 import { SelectFormField } from '@/presentation/components/SelectFormField'
 
-// Regex para telefone angolano: 9 dígitos, iniciando com 9
-
-const maritalStatusOptions: { value: string; label: string }[] = [
-  { value: 'SINGLE', label: 'Solteiro(a)' },
-  { value: 'MARRIED', label: 'Casado(a)' },
-  { value: 'DIVORCED', label: 'Divorciado(a)' },
-  { value: 'WIDOWED', label: 'Viúvo(a)' },
-  { value: 'SEPARATED', label: 'Separado(a)' },
-  { value: 'STABLE_UNION', label: 'União Estável' },
-]
 const childrenOptions = [
   {
     value: 'NO',
@@ -26,8 +18,9 @@ const childrenOptions = [
   },
 ]
 
-export function PersonalInfo() {
+export function Personal() {
   const { form } = useApplyForm()
+  const { genderOptions, martialStatusOptions } = useApplyOptions()
 
   return (
     <section className="flex-col flex gap-6 w-full">
@@ -57,35 +50,21 @@ export function PersonalInfo() {
           placeholder="Data de Nascimento"
           type="date"
         />
-        <InputFormField
+        <SelectFormField
           control={form.control}
-          label="Email"
-          name="email"
-          placeholder="Digite seu email"
-          type="email"
-        />
-
-        <InputFormField
-          control={form.control}
-          label="Telefone"
-          name="phoneNumber"
-          placeholder="(244) 999 999 999"
-          type="tel"
-        />
-        <InputFormField
-          control={form.control}
-          label="Telefone Optional"
-          name="optionalPhoneNumber"
-          placeholder="(244) 999 999 999"
-          type="tel"
+          items={genderOptions}
+          label="Género"
+          name="genderId"
+          placeholder="Género"
         />
         <SelectFormField
           control={form.control}
-          items={maritalStatusOptions}
+          items={martialStatusOptions}
           label="Estado Civil"
-          name="maritalStatus"
+          name="maritalStatusId"
           placeholder="Estado Civil"
         />
+
         <SelectFormField
           control={form.control}
           items={childrenOptions}
@@ -94,15 +73,13 @@ export function PersonalInfo() {
           placeholder="Tem filhos?"
         />
       </div>
-      <div className="space-y-2">
-        <InputFormField
-          control={form.control}
-          label="Doenças ou condições médicas conhecidas"
-          name="knownDiseases"
-          placeholder="Ex: Diabetes, Asma, Nenhuma"
-          type="text"
-        />
-      </div>
+      <InputFormField
+        control={form.control}
+        label="Doenças ou condições médicas conhecidas"
+        name="knownDiseases"
+        placeholder="Ex: Diabetes, Asma, Nenhuma"
+        type="text"
+      />
     </section>
   )
 }
