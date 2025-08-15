@@ -1,10 +1,10 @@
-import '@/styles/globals.css'
+import '@/presentation/styles/globals.css'
 
 import { Metadata, Viewport } from 'next'
-import { cn } from '@heroui/theme'
 
 import { fontPrimary, fontSecondary } from '@/config'
-import { Providers } from '@/providers'
+import { Providers } from '@/presentation/providers'
+import { cn } from '@/presentation/utils'
 
 export const metadata: Metadata = {
   title: 'D-Express - Conexão Profissional',
@@ -26,13 +26,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html suppressHydrationWarning className="scroll-smooth" lang="pt">
       <head />
       <body
-        className={cn(
-          'min-h-dvh font-primary bg-background text-foreground font-light antialiased',
-          fontPrimary.variable,
-          fontSecondary.variable,
-        )}
+        className={cn('font-primary antialiased', fontPrimary.variable, fontSecondary.variable)}
       >
-        <Providers themeProps={{ attribute: 'class', enableSystem: true }}>{children}</Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )
