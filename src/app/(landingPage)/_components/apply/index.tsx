@@ -31,7 +31,7 @@ export function ApplySection() {
           <CardHeader className="bg-linear-to-r from-primary/5 to-accent/5">
             <CardTitle className="flex items-center gap-2 text-xl">
               <UserPlus className="w-5 h-5 text-primary" />
-              Cadastro de Profissional
+              Cadastro de Candidatura
             </CardTitle>
           </CardHeader>
           <ApplyFormProvider>

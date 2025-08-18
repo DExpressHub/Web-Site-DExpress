@@ -1,5 +1,13 @@
 import { City } from './city'
+import { Course } from './course'
+import { DesiredPosition } from './desiredPosition'
 import { District } from './district'
+import { ExperienceLevel } from './experienceLevel'
+import { Gender } from './gender'
+import { HighestDegree } from './highestDegree'
+import { Language } from './language'
+import { MaritalStatuses } from './maritalStatuses'
+import { Skill } from './skill'
 
 export type Profissional = {
   id: string
@@ -8,9 +16,6 @@ export type Profissional = {
   phoneNumber: string
   identityNumber: string
   isAvailable: boolean
-  availabilityType: 'FULL_TIME' | 'PART_TIME'
-  experienceLevel: 'LESS_THAN_1' | 'BETWEEN_1_AND_3' | 'MORE_THAN_3'
-  jobApplicationId: string
   description: string
   expectedAvailability: string
   hasCriminalRecord: boolean
@@ -18,31 +23,96 @@ export type Profissional = {
   hasTrainingCertificate: boolean
   locationId: string
   profileImage: string | null
-  gender: 'MALE' | 'FEMALE'
+  genderId: string
   birthDate: string
-  maritalStatus: string
   hasChildren: boolean
   knownDiseases: string
-  desiredPosition: string
   expectedSalary: number
-  highestDegree: string
-  courses: string[]
-  languages: string[]
-  skillsAndQualities: string[]
   createdAt: string
   updatedAt: string
-  specialties: string[]
-  availability: string[]
-  location: {
-    id: string
-    cityId: string
-    districtId: string
-    street: string
-    createdAt: string
-    updatedAt: string
-    city: City
-    district: District
-  }
+  jobApplicationId: string
+  desiredPositionId: string
+  availabilityTypeId: string
+  experienceLevelId: string
+  maritalStatusId: string
+  highestDegreeId: string
+  location: Location
+  desiredPosition: DesiredPosition
+  gender: Gender
+  jobApplication: JobApplication
+  experienceLevel: ExperienceLevel
+  maritalStatus: MaritalStatuses
+  highestDegree: HighestDegree
+  availability: any[]
+  Document: any[]
+  ProfessionalExperience: ProfessionalExperience[]
+  professionalCourses: ProfessionalCourse[]
+  professionalLanguages: ProfessionalLanguage[]
+  professionalSkills: ProfessionalSkill[]
+}
+
+export type Location = {
+  id: string
+  cityId: string
+  districtId: string
+  street: string
+  lat: any
+  lng: any
+  createdAt: string
+  updatedAt: string
+  city: City
+  district: District
+}
+
+export type JobApplication = {
+  id: string
+  locationId: string
+  fullName: string
+  identityNumber: string
+  phoneNumber: string
+  optionalPhoneNumber: string
+  desiredPositionId: string
+  email: string
+  birthDate: string
+  genderId: string
+  highestDegreeId: string
+  maritalStatusId: string
+  experienceLevelId: string
+  generalAvailabilityId: string
+  hasChildren: boolean
+  knownDiseases: string
+  availabilityDate: string
+  status: string
+  createdAt: string
+  updatedAt: string
+}
+
+type ProfessionalExperience = {
+  id: string
+  localTrabalho: string
+  cargo: string
+  tempo: string
+  createdAt: string
+  updatedAt: string
+}
+type ProfessionalCourse = {
+  professionalId: string
+  courseId: string
+  createdAt: string
+  updatedAt: string
+  course: Course
+}
+type ProfessionalLanguage = {
+  professionalId: string
+  languageId: string
+  level: any
+  language: Language
+}
+
+type ProfessionalSkill = {
+  professionalId: string
+  skillId: string
+  skill: Skill
 }
 
 export type FiltersProfessional = {

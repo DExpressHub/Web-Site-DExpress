@@ -25,11 +25,7 @@ export type JobApplicationRequest = {
   languages: string[]
   skills: string[]
   courses: string[]
-  location: {
-    cityId: string
-    districtId: string
-    street: string
-  }
+  location: Location
 }
 
 export type JobApplicationResponse = {
