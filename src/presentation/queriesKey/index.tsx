@@ -11,4 +11,6 @@ export const queriesKey = {
   skills: 'skills',
   districts: 'districts',
   experienceLevels: 'experienceLevels',
+  plans: 'plans',
+  sectores: 'sectores',
 } as const

@@ -1,4 +1,5 @@
 // src/core/types/jobApplication.ts
+import { Location } from './location'
 export type ProfessionalExperience = {
   localTrabalho: string
   cargo: string

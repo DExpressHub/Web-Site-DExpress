@@ -19,6 +19,9 @@ export function useListPaginatedProfessional(filters: FiltersProfessional, shoul
         getQueryClient().invalidateQueries({
           queryKey: [queriesKey.professionals, filters],
         })
+        getQueryClient().invalidateQueries({
+          queryKey: [queriesKey.professionals],
+        })
         throw result.error
       }
 
@@ -26,7 +29,7 @@ export function useListPaginatedProfessional(filters: FiltersProfessional, shoul
     },
 
     enabled: shouldFetch,
-    retry: 2,
+    retry: false,
     staleTime: 5 * 60 * 1000,
   })
 

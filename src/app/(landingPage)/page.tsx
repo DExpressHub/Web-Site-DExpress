@@ -6,7 +6,8 @@ import { ApplySection } from './_components/apply'
 import { LoadPageData } from './_components/load'
 import { PlanSection } from './_components/plan'
 import { TestimonialsSection } from './_components/testimonials'
-import { BecomeClientSection } from './_components/ddd'
+import { BecomeClientSection } from './_components/becomeClients'
+import { BecomeClientProvider } from './_components/becomeClients/becomeClientContext'
 
 export default async function LandingPage() {
   return (
@@ -16,9 +17,11 @@ export default async function LandingPage() {
       <HowItWorks />
       <SearchSection />
       <ApplySection />
-      <PlanSection />
-      <TestimonialsSection />
-      <BecomeClientSection />
+      <BecomeClientProvider>
+        <PlanSection />
+        <TestimonialsSection />
+        <BecomeClientSection />
+      </BecomeClientProvider>
     </LoadPageData>
   )
 }

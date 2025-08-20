@@ -3,13 +3,14 @@ import { useState } from 'react'
 import { Building2, Phone, MapPin, Send, FileText } from 'lucide-react'
 import { toast } from 'sonner'
 
+import { useBecomeClient } from './becomeClientContext'
+import { BecomeClientForm } from './becomeClientForm'
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/presentation/components/ui/card'
-import { Input } from '@/presentation/components/ui/input'
-import { Label } from '@/presentation/components/ui/label'
-import { Textarea } from '@/presentation/components/ui/textarea'
-import { Button } from '@/presentation/components/ui/button'
 
 export function BecomeClientSection() {
+  const { plans, planId } = useBecomeClient()
+  const optionsPlans = plans.map((plan) => ({}))
   const [formData, setFormData] = useState({
     companyName: '',
     cnpjOrNif: '',
@@ -119,88 +120,7 @@ export function BecomeClientSection() {
               </CardTitle>
             </CardHeader>
             <CardContent className="p-8">
-              <form className="space-y-6" onSubmit={handleSubmit}>
-                <div className="space-y-2">
-                  <Label htmlFor="company-name">Nome da Empresa *</Label>
-                  <Input
-                    required
-                    className="h-12"
-                    id="company-name"
-                    value={formData.companyName}
-                    onChange={(e) =>
-                      setFormData((prev) => ({ ...prev, companyName: e.target.value }))
-                    }
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="cnpj-nif">NIF *</Label>
-                  <Input
-                    required
-                    className="h-12"
-                    id="if"
-                    value={formData.cnpjOrNif}
-                    onChange={(e) =>
-                      setFormData((prev) => ({ ...prev, cnpjOrNif: e.target.value }))
-                    }
-                  />
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email *</Label>
-                    <Input
-                      required
-                      className="h-12"
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Telefone *</Label>
-                    <Input
-                      required
-                      className="h-12"
-                      id="phone"
-                      value={formData.phone}
-                      onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))}
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="address">Endereço *</Label>
-                  <Input
-                    required
-                    className="h-12"
-                    id="address"
-                    value={formData.address}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, address: e.target.value }))}
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="business-description">Descrição do Negócio *</Label>
-                  <Textarea
-                    required
-                    className="min-h-[120px]"
-                    id="business-description"
-                    placeholder="Fale brevemente sobre o seu negócio..."
-                    value={formData.businessDescription}
-                    onChange={(e) =>
-                      setFormData((prev) => ({ ...prev, businessDescription: e.target.value }))
-                    }
-                  />
-                </div>
-
-                <Button className="w-full text-lg py-6" size="lg" type="submit">
-                  <Send className="w-5 h-5 mr-2" />
-                  Enviar Solicitação
-                </Button>
-              </form>
+              <BecomeClientForm />
             </CardContent>
           </Card>
         </div>
