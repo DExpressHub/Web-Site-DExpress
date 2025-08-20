@@ -1,4 +1,5 @@
 // src/core/types/jobApplication.ts
+import { Location } from './location'
 export type ProfessionalExperience = {
   localTrabalho: string
   cargo: string
@@ -25,11 +26,7 @@ export type JobApplicationRequest = {
   languages: string[]
   skills: string[]
   courses: string[]
-  location: {
-    cityId: string
-    districtId: string
-    street: string
-  }
+  location: Location
 }
 
 export type JobApplicationResponse = {

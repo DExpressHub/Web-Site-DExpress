@@ -14,7 +14,8 @@ export const formSchema = personalSchema
   .merge(contactSchema)
   .merge(professionalSchema)
   .merge(educationSchema)
-  .merge(languagesAndSkillsSchema).merge(locationSchema)
+  .merge(languagesAndSkillsSchema)
+  .merge(locationSchema)
 
 export type FormData = z.infer<typeof formSchema>
 

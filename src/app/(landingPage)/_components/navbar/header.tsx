@@ -1,6 +1,8 @@
 'use client'
 import React from 'react'
 
+import { cn } from '@/presentation/utils'
+
 export function Header({ children }: { children: React.ReactNode }) {
   const [isScrolled, setIsScrolled] = React.useState(false)
 
@@ -9,6 +11,8 @@ export function Header({ children }: { children: React.ReactNode }) {
       setIsScrolled(window.scrollY > 10)
     }
 
+    handleScroll()
+
     window.addEventListener('scroll', handleScroll)
 
     return () => window.removeEventListener('scroll', handleScroll)
@@ -16,9 +20,10 @@ export function Header({ children }: { children: React.ReactNode }) {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background/95 backdrop-blur-xs border-b shadow-xs' : 'bg-transparent'
-      }`}
+      className={cn(
+        'fixed top-0 w-full z-50 transition-colors duration-300',
+        isScrolled ? 'bg-background/95 backdrop-blur-xs border-b shadow-xs' : 'bg-transparent',
+      )}
     >
       {children}
     </header>
