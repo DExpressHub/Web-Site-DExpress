@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 'use client'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -37,6 +38,7 @@ export default function Login() {
         },
       })
     } catch (error) {
+      console.log(error)
       toast.error('Email ou senha incorretos')
     }
   }

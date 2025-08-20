@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 import { UserPlus } from 'lucide-react'
 import Link from 'next/link'
+import { toast } from 'sonner'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/presentation/components/ui/card'
 import { Form } from '@/presentation/components/ui/form'
@@ -40,6 +41,8 @@ export default function Register() {
         },
       })
     } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error)
       toast.error('Email ou senha incorretos')
     }
   }
