@@ -4,6 +4,7 @@ import { env } from '@/config/env'
 import { ApiError } from '@/core/types/apiError'
 
 export const api = ky.create({
+  credentials: 'include',
   prefixUrl: env.NEXT_PUBLIC_API_URL,
   throwHttpErrors: true,
   retry: 0,
