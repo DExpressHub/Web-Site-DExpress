@@ -2,12 +2,8 @@
 const nextConfig = {
   images: {
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'dwhgufcvlmovqrtqmjdd.supabase.co',
-      },
+      new URL('https://dwhgufcvlmovqrtqmjdd.supabase.co/storage/v1/object/public/files/**'),
     ],
-    formats: ['image/avif', 'image/webp'],
   },
 }
 

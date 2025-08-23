@@ -1,12 +1,14 @@
 'use client'
 
 import React from 'react'
+import Link from 'next/link'
 
 import { useSearch } from './searchProvider'
 
+import { buttonVariants } from '@/presentation/components/ui/button'
 import { ProfessionalCard } from '@/presentation/components/professionalCard'
-import { Button } from '@/presentation/components/ui/button'
 import { mapperProfessional } from '@/presentation/utils/mappers'
+import { cn } from '@/presentation/utils'
 
 export function ProfessionalsList() {
   const { result, isFetching } = useSearch()
@@ -28,9 +30,12 @@ export function ProfessionalsList() {
             ))}
           </div>
           <div className="flex justify-center">
-            <Button className="cursor-pointer" size="lg" variant="outline">
+            <Link
+              className={cn('cursor-pointer', buttonVariants({ variant: 'outline', size: 'lg' }))}
+              href="/profissionais"
+            >
               Ver mais profissionais
-            </Button>
+            </Link>
           </div>
         </div>
       ) : (

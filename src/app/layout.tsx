@@ -26,6 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html suppressHydrationWarning className="scroll-smooth" lang="pt">
       <head />
       <body
+        suppressHydrationWarning
         className={cn('font-primary antialiased', fontPrimary.variable, fontSecondary.variable)}
       >
         <Providers>{children}</Providers>
