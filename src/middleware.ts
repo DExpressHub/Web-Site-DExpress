@@ -3,17 +3,22 @@ import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
 export function middleware(req: NextRequest) {
-  const token = req.cookies.get('sessionToken')?.value
+  const refreshToken = req.cookies.get('NEXT_refresh_token')?.value
+  const accessToken = req.cookies.get('NEXT_access_token')?.value
   const { pathname } = req.nextUrl
 
   const publicRoutes = ['/', '/login', '/register', '/profissionais']
   const isPublicRoute = publicRoutes.some((route) => pathname.startsWith(route))
 
-  if (token && (pathname.startsWith('/auth/login') || pathname.startsWith('/auth/register'))) {
+  if (
+    refreshToken &&
+    accessToken &&
+    (pathname.startsWith('/login') || pathname.startsWith('/register') || pathname === '/')
+  ) {
     return NextResponse.redirect(new URL('/profissionais', req.url))
   }
 
-  if (!token && !isPublicRoute) {
+  if (!refreshToken && !accessToken && !isPublicRoute) {
     return NextResponse.redirect(new URL('/', req.url))
   }
 
