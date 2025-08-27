@@ -9,6 +9,7 @@ export function mapperProfessional(professional: Profissional) {
   }
 
   if (professional.profileImage) {
+    console.log(professional.profileImage)
     photo = professional.profileImage
   }
 

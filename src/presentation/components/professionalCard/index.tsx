@@ -59,7 +59,7 @@ export function ProfessionalCard(props: ProfessionalCardProps) {
           </div>
         </div>
         <div className="flex gap-2">
-          <Button className="flex-1 text-xs cursor-pointer" size="sm">
+          <Button className="text-xs cursor-pointer" size="sm">
             Ver Perfil
           </Button>
         </div>
