@@ -9,7 +9,6 @@ export function useNavItem() {
       { label: 'Buscar', href: 'search' },
       { label: 'Trabalhe Connosco', href: 'apply' },
       { label: 'Depoimentos', href: 'testimonials' },
-      { label: 'Contato', href: 'contact' },
     ],
     [],
   )

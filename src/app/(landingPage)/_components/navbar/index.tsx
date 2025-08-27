@@ -1,6 +1,7 @@
+import { Logo } from '../logo'
+
 import { MenuItem } from './menuItem'
 import { DesktopActions } from './actions'
-import { Logo } from './logo'
 import { MobileMenu } from './mobileMenu'
 import { Header } from './header'
 

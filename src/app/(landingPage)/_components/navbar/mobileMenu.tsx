@@ -4,7 +4,7 @@ import React from 'react'
 
 import { MenuItemMobile } from './menuItem'
 import { MobileActions } from './actions'
-import { Logo } from './logo'
+import { Logo } from '../logo'
 
 import { ThemeToggle } from '@/presentation/components/toggleTheme'
 import { Button } from '@/presentation/components/ui/button'

@@ -62,18 +62,21 @@ export function BecomeClientForm() {
       companyNif: '',
       companyAddress: '',
       companyDistrictId: '',
-      companySectorId: '',
       companyCityId: '',
+      companySectorId: '',
       description: '',
+      requesterPhoneNumber: '',
+      requesterEmail: '',
+      serviceFrequency: '',
     },
   })
 
   const selectedCityId = form.watch('companyCityId')
-  const { isPending, createServiceRequest } = useServiceRequestsUseCase()
+  const { isPending, createServiceRequestAsync } = useServiceRequestsUseCase()
   const { districts, isFetching } = useListAllDistrictsByIdCity(selectedCityId, !!selectedCityId)
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
-    createServiceRequest({
+  async function onSubmit(data: z.infer<typeof formSchema>) {
+    const result = await createServiceRequestAsync({
       requesterType: 'CORPORATE',
       requesterEmail: data.requesterEmail,
       requesterPhoneNumber: data.requesterPhoneNumber,
@@ -86,6 +89,10 @@ export function BecomeClientForm() {
       serviceFrequency: data.serviceFrequency,
       planId: data.planId,
     })
+
+    if (result?.success) {
+      form.reset({})
+    }
   }
   React.useEffect(() => {
     if (planId) {

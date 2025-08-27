@@ -13,7 +13,7 @@ export function MenuItem({ className }: { className?: string }) {
       {navItems.map((item) => (
         <button
           key={item.label}
-          className="text-foreground/80 hover:text-foreground cursor-pointer transition-colors font-medium"
+          className="text-muted-foreground hover:text-primary cursor-pointer transition-colors font-medium"
           onClick={() => scrollToSection(item.href)}
         >
           {item.label}

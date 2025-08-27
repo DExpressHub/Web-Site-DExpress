@@ -63,7 +63,7 @@ export function ApplyFormProvider({ children }: { children: React.ReactNode }) {
 
       if (result?.success) {
         setCurrentStep(0)
-        form.reset(defaultValues)
+        form.reset()
       }
     },
     [createJobApplicationAsync, form],

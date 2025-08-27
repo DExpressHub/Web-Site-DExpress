@@ -16,8 +16,8 @@ export function LoginForm() {
     <CardContent>
       <Form {...form}>
         <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
-          <InputFormField control={form.control} label="Email" name="email" />
-          <InputFormField control={form.control} label="Senha" name="password" />
+          <InputFormField control={form.control} label="Email" name="email" type="email" />
+          <InputFormField control={form.control} label="Senha" name="password" type="password" />
 
           <Button className="w-full cursor-pointer" disabled={isPending} type="submit">
             {isPending ? (

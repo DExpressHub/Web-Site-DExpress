@@ -8,6 +8,7 @@ import { PlanSection } from './_components/plan'
 import { TestimonialsSection } from './_components/testimonials'
 import { BecomeClientSection } from './_components/becomeClients'
 import { BecomeClientProvider } from './_components/becomeClients/becomeClientContext'
+import { Footer } from './_components/footer'
 
 export default async function LandingPage() {
   return (
@@ -22,6 +23,7 @@ export default async function LandingPage() {
         <TestimonialsSection />
         <BecomeClientSection />
       </BecomeClientProvider>
+      <Footer />
     </LoadPageData>
   )
 }
