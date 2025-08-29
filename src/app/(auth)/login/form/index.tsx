@@ -4,10 +4,10 @@ import { LucideLoader2 } from 'lucide-react'
 
 import { useLoginForm } from './useLoginForm'
 
-import { InputFormField } from '@/presentation/components/inputFormField'
-import { Button } from '@/presentation/components/ui/button'
-import { CardContent } from '@/presentation/components/ui/card'
-import { Form } from '@/presentation/components/ui/form'
+import { InputFormField } from '@/components/inputFormField'
+import { Button } from '@/components/ui/button'
+import { CardContent } from '@/components/ui/card'
+import { Form } from '@/components/ui/form'
 
 export function LoginForm() {
   const { form, onSubmit, isPending } = useLoginForm()

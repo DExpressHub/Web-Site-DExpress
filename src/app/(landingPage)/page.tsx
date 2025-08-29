@@ -1,19 +1,23 @@
-import { Navbar } from './_components/navbar'
-import { HeroSection } from './_components/hero'
-import { HowItWorks } from './_components/howItWorks'
-import { SearchSection } from './_components/search'
-import { ApplySection } from './_components/apply'
-import { LoadPageData } from './_components/load'
-import { PlanSection } from './_components/plan'
-import { TestimonialsSection } from './_components/testimonials'
-import { BecomeClientSection } from './_components/becomeClients'
-import { BecomeClientProvider } from './_components/becomeClients/becomeClientContext'
-import { Footer } from './_components/footer'
+import { Navbar } from './components/navbar'
+import { HeroSection } from './components/hero'
+import { HowItWorks } from './components/howItWorks'
+import { SearchSection } from './components/search'
+import { ApplySection } from './components/apply'
+import { LoadPageData } from './components/load'
+import { PlanSection } from './components/plan'
+import { TestimonialsSection } from './components/testimonials'
+import { BecomeClientSection } from './components/becomeClients'
+import { BecomeClientProvider } from './components/becomeClients/becomeClientContext'
+import { Footer } from './components/footer'
+
+import { checkAuth } from '@/actions/checkAuth'
 
 export default async function LandingPage() {
+  const { isAuthenticated } = await checkAuth()
+
   return (
     <LoadPageData>
-      <Navbar />
+      <Navbar isAuthenticated={isAuthenticated} />
       <HeroSection />
       <HowItWorks />
       <SearchSection />

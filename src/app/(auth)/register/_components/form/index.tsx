@@ -4,10 +4,10 @@ import { LucideLoader2 } from 'lucide-react'
 
 import { useRegisterForm } from './useRegisterForm'
 
-import { InputFormField } from '@/presentation/components/inputFormField'
-import { Button } from '@/presentation/components/ui/button'
-import { CardContent } from '@/presentation/components/ui/card'
-import { Form } from '@/presentation/components/ui/form'
+import { InputFormField } from '@/components/inputFormField'
+import { Button } from '@/components/ui/button'
+import { CardContent } from '@/components/ui/card'
+import { Form } from '@/components/ui/form'
 
 export function RegisterForm() {
   const { form, onSubmit, isPending } = useRegisterForm()

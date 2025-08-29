@@ -1,10 +1,10 @@
-import '@/presentation/styles/globals.css'
+import '@/styles/globals.css'
 
 import { Metadata, Viewport } from 'next'
 
 import { fontPrimary, fontSecondary } from '@/config'
-import { Providers } from '@/presentation/providers'
-import { cn } from '@/presentation/utils'
+import { Providers } from '@/providers'
+import { cn } from '@/utils/cn'
 
 export const metadata: Metadata = {
   title: 'D-Express - Conexão Profissional',
@@ -23,7 +23,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html suppressHydrationWarning className="scroll-smooth" lang="pt">
+    <html suppressHydrationWarning lang="pt">
       <head />
       <body
         suppressHydrationWarning

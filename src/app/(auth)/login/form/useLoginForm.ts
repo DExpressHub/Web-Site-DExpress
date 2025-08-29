@@ -3,7 +3,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-import { useLogin } from '@/presentation/hooks/auth/useLogin'
+import { useLogin } from '@/hooks/auth/useLogin'
+
 const registerSchema = z.object({
   password: z.string().min(1, 'Password é obrigatório').max(50, 'Password é muito longo'),
   email: z.string().email('Email inválido').max(100, 'Email é muito longo'),

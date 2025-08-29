@@ -3,7 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-import { useCreateUser } from '@/presentation/hooks/users/useCreateRegister'
+import { useCreateUser } from '@/hooks/users/useCreateRegister'
 const registerSchema = z.object({
   lastName: z
     .string()
