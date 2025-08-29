@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { LoginForm } from './form'
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/presentation/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export default function Login() {
   return (

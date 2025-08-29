@@ -4,10 +4,10 @@ import { LucideLoader2 } from 'lucide-react'
 
 import { useLoginForm } from './useLoginForm'
 
-import { InputFormField } from '@/presentation/components/inputFormField'
-import { Button } from '@/presentation/components/ui/button'
-import { CardContent } from '@/presentation/components/ui/card'
-import { Form } from '@/presentation/components/ui/form'
+import { InputFormField } from '@/components/inputFormField'
+import { Button } from '@/components/ui/button'
+import { CardContent } from '@/components/ui/card'
+import { Form } from '@/components/ui/form'
 
 export function LoginForm() {
   const { form, onSubmit, isPending } = useLoginForm()
@@ -16,8 +16,8 @@ export function LoginForm() {
     <CardContent>
       <Form {...form}>
         <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
-          <InputFormField control={form.control} label="Email" name="email" />
-          <InputFormField control={form.control} label="Senha" name="password" />
+          <InputFormField control={form.control} label="Email" name="email" type="email" />
+          <InputFormField control={form.control} label="Senha" name="password" type="password" />
 
           <Button className="w-full cursor-pointer" disabled={isPending} type="submit">
             {isPending ? (

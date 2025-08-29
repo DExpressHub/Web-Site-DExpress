@@ -2,9 +2,11 @@ import type { NextRequest } from 'next/server'
 
 import { NextResponse } from 'next/server'
 
+import { D_EXPRESS } from './constants'
+
 export function middleware(req: NextRequest) {
-  const refreshToken = req.cookies.get('NEXT_refresh_token')?.value
-  const accessToken = req.cookies.get('NEXT_access_token')?.value
+  const refreshToken = req.cookies.get(D_EXPRESS.refreshToken)?.value
+  const accessToken = req.cookies.get(D_EXPRESS.accessToken)?.value
   const { pathname } = req.nextUrl
 
   const publicRoutes = ['/', '/login', '/register', '/profissionais']
@@ -13,9 +15,9 @@ export function middleware(req: NextRequest) {
   if (
     refreshToken &&
     accessToken &&
-    (pathname.startsWith('/login') || pathname.startsWith('/register') || pathname === '/')
+    (pathname.startsWith('/login') || pathname.startsWith('/register'))
   ) {
-    return NextResponse.redirect(new URL('/profissionais', req.url))
+    return NextResponse.redirect(new URL('/', req.url))
   }
 
   if (!refreshToken && !accessToken && !isPublicRoute) {

@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { RegisterForm } from './_components/form'
 
-import { Card, CardHeader, CardTitle } from '@/presentation/components/ui/card'
+import { Card, CardHeader, CardTitle } from '@/components/ui/card'
 
 export default function Register() {
   return (
