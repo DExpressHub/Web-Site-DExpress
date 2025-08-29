@@ -1,12 +1,12 @@
 import { QueryClient } from '@tanstack/react-query'
 
-import { UseCaseResponse } from '@/core/types/useCaseResponse'
+import { ServiceResponse } from '@/types/serviceResponse'
 
 const ONE_DAY_MS = 1000 * 60 * 60 * 24
 
 type PrefetchSafeParams<T> = {
   queryKey: unknown[]
-  fetchFn: () => Promise<UseCaseResponse<T>>
+  fetchFn: () => Promise<ServiceResponse<T>>
   defaultValue: T
   staleTime?: number
   queryClient: QueryClient

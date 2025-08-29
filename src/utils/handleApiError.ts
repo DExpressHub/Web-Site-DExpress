@@ -1,4 +1,4 @@
-import { ApiError } from '@/core/types/apiError'
+import { ApiError } from '@/types/apiError'
 
 export function handleApiError(err: unknown): ApiError {
   if (err && typeof err === 'object' && 'message' in err) {
