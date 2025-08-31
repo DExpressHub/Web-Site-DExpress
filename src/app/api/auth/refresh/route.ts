@@ -20,11 +20,14 @@ export async function POST() {
 
       return NextResponse.json({ error: 'Refresh token inválido' }, { status: 401 })
     }
+    const data = (await res.json()) as { accessToken: string }
 
-    return NextResponse.json(await res.json())
+    cookieStore.set(D_EXPRESS.accessToken, data.accessToken)
+
+    return NextResponse.json(data)
   } catch {
-    cookieStore.delete('accessToken')
-    cookieStore.delete('refreshToken')
+    cookieStore.delete(D_EXPRESS.accessToken)
+    cookieStore.delete(D_EXPRESS.refreshToken)
 
     return NextResponse.json({ error: 'Erro ao tentar refresh' }, { status: 401 })
   }

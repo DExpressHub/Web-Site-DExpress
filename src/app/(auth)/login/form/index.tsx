@@ -8,6 +8,7 @@ import { InputFormField } from '@/components/inputFormField'
 import { Button } from '@/components/ui/button'
 import { CardContent } from '@/components/ui/card'
 import { Form } from '@/components/ui/form'
+import { links } from '@/config/links'
 
 export function LoginForm() {
   const { form, onSubmit, isPending } = useLoginForm()
@@ -32,7 +33,10 @@ export function LoginForm() {
           <div className="text-center">
             <p className="text-sm text-muted-foreground">
               Não tem uma conta?{' '}
-              <Link className="text-primary hover:underline font-medium" href="/register">
+              <Link
+                className="text-primary hover:underline font-medium"
+                href={`/${links.cadastrar}`}
+              >
                 Cadastre-se
               </Link>
             </p>

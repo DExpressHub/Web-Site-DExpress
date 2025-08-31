@@ -15,9 +15,8 @@ export default function Login() {
           </Link>
           <CardTitle className="flex items-center justify-center gap-2 text-2xl">
             <LogIn className="w-6 h-6 text-primary" />
-            Entrar
+            Acesse sua conta
           </CardTitle>
-          <p className="text-muted-foreground">Acesse sua conta</p>
         </CardHeader>
         <CardContent>
           <LoginForm />

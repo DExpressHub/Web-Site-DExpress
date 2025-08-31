@@ -36,8 +36,8 @@ export function ProfessionalHeader({ professional }: ProfessionalHeaderProps) {
             src={professional.profileImage || '/public/default-man.jpeg'}
             width={96}
           />
-          <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-            <Shield className="text-primary-foreground" size={16} />
+          <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+            <Shield className="text-white" size={16} />
           </div>
         </div>
 
@@ -72,13 +72,6 @@ export function ProfessionalHeader({ professional }: ProfessionalHeaderProps) {
             <div className="flex items-center gap-2 text-muted-foreground">
               <Clock size={14} />
               <span>Nível {professional.experienceLevel.label}</span>
-            </div>
-
-            <div className="font-semibold text-primary">
-              {Intl.NumberFormat('pt-AO', { style: 'currency', currency: 'AOA' }).format(
-                professional.expectedSalary,
-              )}
-              /mês
             </div>
           </div>
         </div>

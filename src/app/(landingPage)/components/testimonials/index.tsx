@@ -2,6 +2,7 @@ import { Star, Quote } from 'lucide-react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Card, CardContent } from '@/components/ui/card'
+import { links } from '@/config/links'
 
 export function TestimonialsSection() {
   const testimonials = [
@@ -32,8 +33,8 @@ export function TestimonialsSection() {
   ]
 
   return (
-    <section className="py-20 bg-muted/30" id="testimonials">
-      <div className="container mx-auto px-4">
+    <section className="py-20 bg-muted/30" id={links.depoimentos}>
+      <div className="max-w-[120rem] w-full mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Depoimentos</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">

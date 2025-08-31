@@ -1,6 +1,6 @@
 type BaseRequest = {
   description: string
-  planId: string
+
   requesterEmail: string
   requesterPhoneNumber: string
   serviceFrequency: string
@@ -13,6 +13,7 @@ type IndividualRequest = BaseRequest & {
   individualIdentityNumber: string
   individualAddress: string
   individualUserId: string
+  professionalId: string
 }
 
 // Campos quando o solicitante é empresa
@@ -23,6 +24,7 @@ type CorporateRequest = BaseRequest & {
   companyAddress: string
   companyDistrictId: string
   companySectorId: string
+  planId: string
 }
 
 export type CreateServiceRequestParams = IndividualRequest | CorporateRequest

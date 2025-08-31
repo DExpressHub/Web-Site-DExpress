@@ -18,6 +18,7 @@ import { useListAllDistrictsByIdCity } from '@/hooks/district/useListAllDistrict
 import { District } from '@/types/district'
 import { Plan } from '@/types/plan'
 import { useServiceRequestsUseCase } from '@/hooks/servicesRequests/useCreateServicesRequest'
+import { serviceFrequency } from '@/constants'
 const districtOption = (districts: District[]) =>
   districts.map((district) => ({ value: district.id, label: district.name }))
 const phoneRegex = /^(?:\+244|244)?\s?9\d{8}$/
@@ -41,15 +42,6 @@ const formSchema = z.object({
   requesterEmail: z.string().email({ message: 'Email inválido' }),
   serviceFrequency: z.string().min(1, { message: 'Frequência de serviço é obrigatória' }),
 })
-
-const serviceFrequency = [
-  { value: 'MONTHLY', label: 'Mensal' },
-  { value: 'BIMONTHLY', label: 'Bimestral' },
-  { value: 'QUARTERLY', label: 'Trimestral' },
-  { value: 'SEMIANNUALLY', label: 'Semestral' },
-  { value: 'ANNUALLY', label: 'Anual' },
-  { value: 'BIENNIALLY', label: 'Bienal ' },
-]
 
 export function BecomeClientForm() {
   const { plans, planId } = useBecomeClient()

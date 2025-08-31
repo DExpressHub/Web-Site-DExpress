@@ -9,7 +9,7 @@ export function HeroSection() {
       id="home"
     >
       <BackgroundDecoration />
-      <div className="container mx-auto px-4 py-20">
+      <div className="max-w-[120rem] w-full mx-auto px-4 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <Info />
           <Banner />

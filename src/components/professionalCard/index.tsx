@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { buttonVariants } from '../ui/button'
 import { Card, CardContent, CardHeader } from '../ui/card'
 
+import { links } from '@/config/links'
+
 interface ProfessionalCardProps {
   professional: {
     id: string
@@ -46,10 +48,6 @@ export function ProfessionalCard(props: ProfessionalCardProps) {
       </CardHeader>
       <CardContent className="pt-0">
         <div className="space-y-3 mb-4">
-          {/* <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Clock size={14} />
-            <span>{professional.id} anos de experiência</span>
-          </div> */}
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <User size={14} />
             <span>{professional.age} anos</span>
@@ -62,7 +60,7 @@ export function ProfessionalCard(props: ProfessionalCardProps) {
         <div className="flex gap-2">
           <Link
             className={buttonVariants({ className: 'text-xs cursor-pointer', size: 'sm' })}
-            href={`/profissionais/${professional.id}`}
+            href={`/${links.profissional}/${professional.id}`}
           >
             Ver Perfil
           </Link>

@@ -28,7 +28,8 @@ export const api = ky.create({
       async (request, options, response) => {
         if (response.status === 401) {
           // tenta o refresh pelo nosso route handler interno
-          const refreshRes = await ky.post(`${env.NEXT_PUBLIC_API_URL}/api/auth/refresh`)
+          console.log('fui chamado')
+          const refreshRes = await ky.post(`http://localhost:5173/api/auth/refresh`)
 
           if (refreshRes.ok) {
             return ky(request, options)

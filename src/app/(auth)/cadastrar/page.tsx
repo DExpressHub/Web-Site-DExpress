@@ -15,9 +15,8 @@ export default function Register() {
           </Link>
           <CardTitle className="flex items-center justify-center gap-2 text-2xl">
             <UserPlus className="w-6 h-6 text-primary" />
-            Cadastrar
+            Crie sua conta
           </CardTitle>
-          <p className="text-muted-foreground">Crie sua conta</p>
         </CardHeader>
         <RegisterForm />
       </Card>

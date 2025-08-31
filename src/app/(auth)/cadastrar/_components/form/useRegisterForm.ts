@@ -7,13 +7,13 @@ import { useCreateUser } from '@/hooks/users/useCreateRegister'
 const registerSchema = z.object({
   lastName: z
     .string()
-    .min(1, 'Nome é obrigatório')
-    .max(50, 'Nome deve ter no máximo 50 caracteres'),
+    .min(1, 'SSobrenome é obrigatório')
+    .max(50, 'Sobrenome deve ter no máximo 50 caracteres'),
   email: z.string().email('Email inválido'),
   firstName: z
     .string()
-    .min(1, 'O sobrenome é obrigatório')
-    .max(50, 'O sobrenome deve ter no máximo 50 caracteres'),
+    .min(1, 'O Nome é obrigatório')
+    .max(50, 'O Nome deve ter no máximo 50 caracteres'),
 })
 
 type RegisterData = z.infer<typeof registerSchema>

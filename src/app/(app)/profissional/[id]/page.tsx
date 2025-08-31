@@ -1,8 +1,9 @@
 import { Suspense } from 'react'
 
-import { BackButton } from './components/backButton'
 import { ProfessionalDetails } from './components/details'
 import { ProfessionalDetailsSkeleton } from './components/details/skeleton'
+
+import { BackButton } from '@/components/backButton'
 
 type Props = {
   params: Promise<{ id: string }>

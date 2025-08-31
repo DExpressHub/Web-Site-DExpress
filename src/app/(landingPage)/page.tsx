@@ -31,14 +31,3 @@ export default async function LandingPage() {
     </LoadPageData>
   )
 }
-
-{
-  /*
-
-      <SearchSection />
-      <ApplySection />
-      <PlansSection />
-      <TestimonialsSection />
-      <ContactSection />
-      <Footer /> */
-}

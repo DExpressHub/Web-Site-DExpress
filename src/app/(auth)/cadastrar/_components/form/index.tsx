@@ -8,6 +8,7 @@ import { InputFormField } from '@/components/inputFormField'
 import { Button } from '@/components/ui/button'
 import { CardContent } from '@/components/ui/card'
 import { Form } from '@/components/ui/form'
+import { links } from '@/config/links'
 
 export function RegisterForm() {
   const { form, onSubmit, isPending } = useRegisterForm()
@@ -33,7 +34,7 @@ export function RegisterForm() {
           <div className="text-center">
             <p className="text-sm text-muted-foreground">
               Já tem uma conta?{' '}
-              <Link className="text-primary hover:underline font-medium" href="/login">
+              <Link className="text-primary hover:underline font-medium" href={`/${links.login}`}>
                 Faça login
               </Link>
             </p>

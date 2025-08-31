@@ -7,7 +7,6 @@ import { Logo } from '../logo'
 import { MenuItemMobile } from './menuItem'
 import { MobileActions } from './actions'
 
-import { ThemeToggle } from '@/components/toggleTheme'
 import { Button } from '@/components/ui/button'
 import {
   Sheet,
@@ -30,7 +29,6 @@ export function MobileMenu({
 
   return (
     <div className={cn('xl:hidden flex items-center space-x-2', className)}>
-      {!isAuthenticated && <ThemeToggle />}
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger asChild aria-label="Abrir menu mobile" className="cursor-pointer">
           <Button size="icon" variant="ghost">
