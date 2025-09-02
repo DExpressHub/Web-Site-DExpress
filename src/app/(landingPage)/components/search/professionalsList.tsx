@@ -9,6 +9,7 @@ import { buttonVariants } from '@/components/ui/button'
 import { ProfessionalCard } from '@/components/professionalCard'
 import { mapperProfessional } from '@/utils/mappers'
 import { cn } from '@/utils/cn'
+import { links } from '@/config/links'
 
 export function ProfessionalsList() {
   const { result, isFetching } = useSearch()
@@ -32,7 +33,7 @@ export function ProfessionalsList() {
           <div className="flex justify-center">
             <Link
               className={cn('cursor-pointer', buttonVariants({ variant: 'outline', size: 'lg' }))}
-              href="/profissionais"
+              href={`/${links.profissional}`}
             >
               Ver mais profissionais
             </Link>

@@ -9,7 +9,7 @@ export function MenuItem({ className }: { className?: string }) {
   const scrollToSection = useScrollTo()
 
   return (
-    <nav className={cn('hidden xl:flex items-center space-x-8', className)}>
+    <nav className={cn('hidden xl:flex items-center', className)}>
       {navItems.map((item) => (
         <button
           key={item.label}

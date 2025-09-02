@@ -11,7 +11,9 @@ export async function listPaginatedProfessionalService(
 ): Promise<ServiceResponse<PaginatedProfissionalResponse>> {
   try {
     const queryString = buildQueryParams(filters)
-    const url = queryString ? `professionals?${queryString}` : 'professionals'
+    const url = queryString
+      ? `professionals/public-professionals?${queryString}`
+      : 'professionals/public-professionals'
 
     const response = await api(url)
     const result = await response.json<PaginatedProfissionalResponse>()

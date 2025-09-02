@@ -1,4 +1,5 @@
 'use client'
+
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -27,7 +28,8 @@ export function SearchForm() {
   return (
     <Form {...form}>
       <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="flex  flex-col md:flex-row md:justify-between items-baseline-last gap-6">
+        <div>
+          {/* Campos */}
           <div className="grid flex-1 md:grid-cols-3 gap-6">
             <SelectFormField<SearchFormData>
               control={form.control}
@@ -52,22 +54,29 @@ export function SearchForm() {
             />
           </div>
 
-          <Button
-            aria-label="Buscar"
-            className="cursor-pointer w-full md:w-auto"
-            disabled={isFetching}
-            type="submit"
-          >
-            {isFetching ? (
-              <>
-                <LoaderCircle className="w-5 h-5 animate-spin" />
-              </>
-            ) : (
-              <>
-                <Search className="w-5 h-5" />
-              </>
-            )}
-          </Button>
+          {/* Botão */}
+          <div className="justify-center flex">
+            <Button
+              aria-label="Buscar candidatos"
+              className="cursor-pointer w-full md:w-1/3 mt-6 flex items-center gap-2
+                         transition-all duration-200 ease-in-out
+                         hover:scale-[1.03] hover:shadow-md active:scale-95"
+              disabled={isFetching}
+              type="submit"
+            >
+              {isFetching ? (
+                <>
+                  <LoaderCircle className="w-5 h-5 animate-spin" />
+                  <span>Buscando...</span>
+                </>
+              ) : (
+                <>
+                  <Search className="w-5 h-5" />
+                  <span>Buscar</span>
+                </>
+              )}
+            </Button>
+          </div>
         </div>
       </form>
     </Form>

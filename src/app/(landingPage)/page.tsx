@@ -10,14 +10,22 @@ import { BecomeClientSection } from './components/becomeClients'
 import { BecomeClientProvider } from './components/becomeClients/becomeClientContext'
 import { Footer } from './components/footer'
 
-import { checkAuth } from '@/actions/checkAuth'
+import { verifyUser } from '@/lib/verifyUser'
+import { GetCurrentUserResponse } from '@/types/users'
 
 export default async function LandingPage() {
-  const { isAuthenticated } = await checkAuth()
+  let user: GetCurrentUserResponse | undefined = undefined
+  let isAuthenticated = false
+  const result = await verifyUser()
+
+  if (result.success) {
+    isAuthenticated = true
+    user = result.data
+  }
 
   return (
     <LoadPageData>
-      <Navbar isAuthenticated={isAuthenticated} />
+      <Navbar isAuthenticated={isAuthenticated} user={user} />
       <HeroSection />
       <HowItWorks />
       <SearchSection />
@@ -30,15 +38,4 @@ export default async function LandingPage() {
       <Footer />
     </LoadPageData>
   )
-}
-
-{
-  /*
-
-      <SearchSection />
-      <ApplySection />
-      <PlansSection />
-      <TestimonialsSection />
-      <ContactSection />
-      <Footer /> */
 }

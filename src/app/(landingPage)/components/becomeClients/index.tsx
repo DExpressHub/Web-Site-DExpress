@@ -1,39 +1,11 @@
-'use client'
-import { useState } from 'react'
 import { Building2, Phone, MapPin, Send, FileText } from 'lucide-react'
-import { toast } from 'sonner'
 
-import { useBecomeClient } from './becomeClientContext'
 import { BecomeClientForm } from './becomeClientForm'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { links } from '@/config/links'
 
 export function BecomeClientSection() {
-  const { plans, planId } = useBecomeClient()
-  const optionsPlans = plans.map((plan) => ({}))
-  const [formData, setFormData] = useState({
-    companyName: '',
-    cnpjOrNif: '',
-    email: '',
-    phone: '',
-    address: '',
-    businessDescription: '',
-  })
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log('Nova solicitação de cliente:', formData)
-    toast.success('mmmmm')
-    setFormData({
-      companyName: '',
-      cnpjOrNif: '',
-      email: '',
-      phone: '',
-      address: '',
-      businessDescription: '',
-    })
-  }
-
   const infoBlocks = [
     {
       icon: Building2,
@@ -56,13 +28,15 @@ export function BecomeClientSection() {
   ]
 
   return (
-    <section className="py-20 bg-background" id="become-client">
-      <div className="container mx-auto px-4">
+    <section className="py-20 bg-background" id={links.paraEmpresas}>
+      <div className="max-w-[120rem] w-full mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Torne-se Cliente</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Cadastre a Sua Empresa
+          </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Se você representa uma empresa ou está abrindo uma, envie seus dados básicos para
-            solicitar ser cliente da nossa plataforma.
+            Conecte sua empresa às oportunidades da nossa plataforma. Preencha seus dados básicos e
+            dê o primeiro passo para se tornar nosso cliente.
           </p>
         </div>
 

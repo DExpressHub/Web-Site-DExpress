@@ -1,6 +1,5 @@
 'use client'
 
-import { useTheme } from 'next-themes'
 import { useRouter } from 'next/navigation'
 
 import {
@@ -15,40 +14,38 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { useLogout } from '@/hooks/auth/useLogout'
 
 interface UserDropdownProps {
-  name?: string
+  firstName?: string
+  lastName?: string
   email?: string
   avatarUrl?: string
 }
 
-export function UserDropdown({ name, email, avatarUrl }: UserDropdownProps) {
+export function UserDropdown({ firstName, lastName, email, avatarUrl }: UserDropdownProps) {
   const router = useRouter()
-  const { theme, setTheme } = useTheme()
+
   const { logout, isPending } = useLogout()
 
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light')
-  }
-
-  const initials = name
-    ? name
-        .split(' ')
-        .map((n) => n[0])
-        .join('')
-    : email
-      ? email[0].toUpperCase()
+  const initials =
+    firstName && lastName
+      ? firstName.charAt(0).toUpperCase() + lastName.charAt(0).toUpperCase()
       : 'U'
+  const name = firstName && lastName ? `${firstName} ${lastName}` : 'Usuário'
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Avatar className="cursor-pointer">
-          {avatarUrl && <AvatarImage alt={name ?? 'Usuário'} src={avatarUrl} />}
+          {avatarUrl && <AvatarImage alt={firstName ?? 'Usuário'} src={avatarUrl} />}
           <AvatarFallback>{initials}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end" className="w-56">
-        <DropdownMenuLabel>{name ?? email ?? 'Minha Conta'}</DropdownMenuLabel>
+        <DropdownMenuLabel className="flex flex-col gap-2 justify-center items-center">
+          <span>{name}</span>
+          <span>{email ?? 'Minha Conta'}</span>
+        </DropdownMenuLabel>
+
         <DropdownMenuSeparator />
         <DropdownMenuItem className="cursor-pointer" onClick={() => router.push('/profile')}>
           Perfil
@@ -56,9 +53,7 @@ export function UserDropdown({ name, email, avatarUrl }: UserDropdownProps) {
         <DropdownMenuItem className="cursor-pointer" onClick={() => router.push('/settings')}>
           Configurações
         </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer" onClick={toggleTheme}>
-          Mudar para {theme === 'light' ? 'escuro' : 'claro'}
-        </DropdownMenuItem>
+
         <DropdownMenuSeparator />
         <DropdownMenuItem className="cursor-pointer text-red-600" onClick={() => logout()}>
           {isPending ? 'Saindo...' : 'Sair'}
