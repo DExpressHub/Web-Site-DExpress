@@ -7,8 +7,15 @@ import { cn } from '@/utils/cn'
 import { buttonVariants } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/toggleTheme'
 import { UserDropdown } from '@/components/userDropdown'
+import { GetCurrentUserResponse } from '@/types/users'
 
-export function Navbar({ isAuthenticated }: { isAuthenticated: boolean }) {
+export function Navbar({
+  isAuthenticated,
+  user,
+}: {
+  isAuthenticated: boolean
+  user?: GetCurrentUserResponse
+}) {
   return (
     <header
       className={cn(
@@ -27,7 +34,12 @@ export function Navbar({ isAuthenticated }: { isAuthenticated: boolean }) {
           </Link>
           <>
             {isAuthenticated ? (
-              <UserDropdown />
+              <UserDropdown
+                avatarUrl={user?.avatar}
+                email={user?.email}
+                firstName={user?.firstName}
+                lastName={user?.lastName}
+              />
             ) : (
               <div className="flex items-center gap-2 ">
                 <ThemeToggle />

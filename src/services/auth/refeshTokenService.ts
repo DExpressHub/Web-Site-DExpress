@@ -10,8 +10,6 @@ export async function refreshTokenService(): Promise<ServiceResponse<ValidateAut
     const response = await api.post('auth/refresh')
     const result = await response.json<ValidateAuthResponse>()
 
-    console.log(result, 'refresh token')
-
     return {
       success: true,
       data: result,

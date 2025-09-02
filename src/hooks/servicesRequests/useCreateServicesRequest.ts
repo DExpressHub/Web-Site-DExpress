@@ -10,7 +10,7 @@ export function useServiceRequestsUseCase() {
       const result = await serviceRequestAction(data)
 
       if (!result.success) {
-        toast.error('Erro ao enviar Solicitação!')
+        toast.error(result.error.message || 'Erro ao enviar Solicitação!')
 
         return null
       }

@@ -1,16 +1,21 @@
 import 'server-only'
 import ky from 'ky'
 import { cookies } from 'next/headers'
-import { redirect } from 'next/navigation'
 
 import { env } from '@/config/env'
 import { ApiError } from '@/types/apiError'
-
-async function attachCookies(request: Request) {
-  const cookieStore = await cookies()
-  const cookiesString = cookieStore.toString()
-
-  if (cookiesString) request.headers.set('cookie', cookiesString)
+import { D_EXPRESS } from '@/constants'
+export class RefreshTokenExpiredError extends Error {
+  constructor() {
+    super('Refresh token expired')
+  }
+}
+const secureConfig = {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === 'production',
+  sameSite: 'strict' as const,
+  path: '/',
+  maxAge: 60 * 60 * 24 * 7,
 }
 
 export const api = ky.create({
@@ -18,23 +23,39 @@ export const api = ky.create({
   prefixUrl: env.NEXT_PUBLIC_API_URL,
   throwHttpErrors: true,
   retry: 0,
+
   hooks: {
     beforeRequest: [
       async (request) => {
-        await attachCookies(request)
+        const cookieStore = await cookies()
+
+        request.headers.set('cookie', cookieStore.toString())
       },
     ],
     afterResponse: [
       async (request, options, response) => {
-        if (response.status === 401) {
-          // tenta o refresh pelo nosso route handler interno
-          console.log('fui chamado')
-          const refreshRes = await ky.post(`http://localhost:5173/api/auth/refresh`)
+        if (response.status === 401 && !request.url.includes('auth/refresh')) {
+          const cookieStore = await cookies()
 
-          if (refreshRes.ok) {
-            return ky(request, options)
+          const refresh = cookieStore.get(D_EXPRESS.refreshToken)?.value
+
+          if (!refresh) {
+            throw new RefreshTokenExpiredError()
           }
-          redirect('/login')
+
+          const res = await fetch(`${env.NEXT_PUBLIC_API_URL}/auth/refresh`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: { cookie: cookieStore.toString(), authorization: `Bearer ${refresh}` },
+          })
+
+          if (!res.ok) {
+            throw new RefreshTokenExpiredError()
+          }
+          console.log('Token refreshed successfully', await res.json())
+          const { accessToken } = await res.json()
+
+          cookieStore.set(D_EXPRESS.accessToken, accessToken, secureConfig)
         }
 
         if (!response.ok) {

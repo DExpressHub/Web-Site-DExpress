@@ -7,7 +7,15 @@ import { Header } from './header'
 
 import { UserDropdown } from '@/components/userDropdown'
 import { ThemeToggle } from '@/components/toggleTheme'
-export function Navbar({ isAuthenticated }: { isAuthenticated: boolean }) {
+import { GetCurrentUserResponse } from '@/types/users'
+
+export function Navbar({
+  isAuthenticated,
+  user,
+}: {
+  isAuthenticated: boolean
+  user?: GetCurrentUserResponse
+}) {
   return (
     <Header>
       <div className="max-w-[120rem] w-full mx-auto px-4">
@@ -19,7 +27,12 @@ export function Navbar({ isAuthenticated }: { isAuthenticated: boolean }) {
             <div className="flex items-center gap-2">
               <ThemeToggle />
               {isAuthenticated ? (
-                <UserDropdown />
+                <UserDropdown
+                  avatarUrl={user?.avatar}
+                  email={user?.email}
+                  firstName={!!user ? user?.firstName : undefined}
+                  lastName={!!user ? user?.lastName : undefined}
+                />
               ) : (
                 <DesktopActions className="hidden xl:flex items-center gap-x-2" />
               )}
