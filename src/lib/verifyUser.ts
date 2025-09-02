@@ -4,9 +4,10 @@ import { cookies } from 'next/headers'
 
 import { D_EXPRESS } from '@/constants'
 import { getCurrentUserService } from '@/services/users/getCurrentUserService'
+import { GetCurrentUserResponse } from '@/types/users'
 
 type VerifyUserResult =
-  | { success: true; data: Awaited<ReturnType<typeof getCurrentUserService>>['data'] }
+  | { success: true; data: GetCurrentUserResponse }
   | { success: false; message: string }
 
 export const verifyUser = cache(async (): Promise<VerifyUserResult> => {

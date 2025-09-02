@@ -1,9 +1,14 @@
+'use client'
 import { Building, User } from 'lucide-react'
 
-export function RequestType({ requesterType }: { requesterType: 'INDIVIDUAL' | 'CORPORATE' }) {
+import { useHireFormClient } from '../form/provider'
+
+export function RequestType() {
+  const { user } = useHireFormClient()
+
   return (
     <div>
-      {requesterType === 'INDIVIDUAL' ? (
+      {user.type === 'INDIVIDUAL' ? (
         <div className="flex items-center space-x-2">
           <span className="flex items-center gap-2 cursor-pointer">
             <User size={16} />

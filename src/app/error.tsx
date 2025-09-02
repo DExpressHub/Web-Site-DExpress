@@ -20,7 +20,7 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 
   if (isRedirecting) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-primary text-white">
+      <div className="min-h-screen flex items-center justify-center">
         <LucideLoader2 className="animate-spin h-10 w-10" />
       </div>
     )

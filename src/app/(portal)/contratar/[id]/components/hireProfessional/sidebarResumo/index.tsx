@@ -11,8 +11,8 @@ import { Badge } from '@/components/ui/badge'
 import { ProfessionalDetails } from '@/types/professional'
 
 export function SidebarResumo({ professional }: { professional: ProfessionalDetails }) {
-  const { form } = useHireFormClient()
-  const requesterType = 'INDIVIDUAL'
+  const { form, user } = useHireFormClient()
+
   const serviceFrequency = useWatch({
     control: form.control,
     name: 'serviceFrequency',
@@ -21,6 +21,18 @@ export function SidebarResumo({ professional }: { professional: ProfessionalDeta
   const description = useWatch({
     control: form.control,
     name: 'description',
+  })
+  const address = useWatch({
+    control: form.control,
+    name: 'individualAddress',
+  })
+  const identityNumber = useWatch({
+    control: form.control,
+    name: 'individualIdentityNumber',
+  })
+  const phoneNumber = useWatch({
+    control: form.control,
+    name: 'requesterPhoneNumber',
   })
 
   return (
@@ -51,15 +63,32 @@ export function SidebarResumo({ professional }: { professional: ProfessionalDeta
             </div>
           </div>
 
-          {requesterType && (
+          {user.type && (
             <div className="border-t border-border pt-4">
               <div className="text-sm text-muted-foreground mb-2">Tipo de solicitante:</div>
-              <Badge variant={requesterType === 'INDIVIDUAL' ? 'default' : 'secondary'}>
-                {requesterType === 'INDIVIDUAL' ? 'Pessoa Individual' : 'Empresa'}
+              <Badge variant={user.type === 'INDIVIDUAL' ? 'default' : 'secondary'}>
+                {user.type === 'INDIVIDUAL' ? 'Pessoa Individual' : 'Empresa'}
               </Badge>
             </div>
           )}
-
+          {identityNumber && (
+            <div>
+              <div className="text-sm text-muted-foreground mb-2">BI:</div>
+              <div className="text-sm font-medium text-foreground">{identityNumber}</div>
+            </div>
+          )}
+          {phoneNumber && (
+            <div>
+              <div className="text-sm text-muted-foreground mb-2">Telefone:</div>
+              <div className="text-sm font-medium text-foreground">{phoneNumber}</div>
+            </div>
+          )}
+          {address && (
+            <div>
+              <div className="text-sm text-muted-foreground mb-2">Endereço:</div>
+              <div className="text-sm font-medium text-foreground">{address}</div>
+            </div>
+          )}
           {serviceFrequency && (
             <div>
               <div className="text-sm text-muted-foreground mb-2">Frequência:</div>

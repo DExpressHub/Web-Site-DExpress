@@ -13,30 +13,35 @@ import { TextareaFormField } from '@/components/textareaFormField'
 import { serviceFrequency } from '@/constants'
 import { useServiceRequestsUseCase } from '@/hooks/servicesRequests/useCreateServicesRequest'
 import { ProfessionalDetails } from '@/types/professional'
+import { InputFormField } from '@/components/inputFormField'
+const reset = {
+  description: '',
+  serviceFrequency: '',
+  individualAddress: '',
+  individualIdentityNumber: '',
+  requesterPhoneNumber: '',
+}
 
 export const HireForm = ({ professional }: { professional: ProfessionalDetails }) => {
   const { isPending, createServiceRequestAsync } = useServiceRequestsUseCase()
-  const { form } = useHireFormClient()
+  const { form, user } = useHireFormClient()
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
     const result = await createServiceRequestAsync({
-      requesterType: 'INDIVIDUAL',
+      requesterType: user.type,
       description: data.description,
       serviceFrequency: data.serviceFrequency,
-      requesterEmail: 'canhanga96@gmail.com',
-      requesterPhoneNumber: '912345678',
-      individualRequesterName: 'Domingos Canhanga',
-      individualIdentityNumber: '123456789AZ0',
-      individualAddress: 'Luanda, Cabombo',
-      individualUserId: '959132ab-9385-446c-8589-1ce8a59cf5d6',
+      requesterEmail: user.email,
+      requesterPhoneNumber: data.requesterPhoneNumber,
+      individualRequesterName: `${user.firstName} ${user.lastName}`,
+      individualIdentityNumber: data.individualIdentityNumber,
+      individualAddress: data.individualAddress,
+      individualUserId: user.id,
       professionalId: professional.id,
     })
 
     if (result?.success) {
-      form.reset({
-        description: '',
-        serviceFrequency: '',
-      })
+      form.reset(reset)
     }
   }
 
@@ -47,14 +52,38 @@ export const HireForm = ({ professional }: { professional: ProfessionalDetails }
           <div className="space-y-6">
             <div className="pt-6">
               <h3 className="font-semibold text-foreground mb-4">Detalhes do Serviço</h3>
+
               <div className="space-y-4">
-                <SelectFormField
-                  control={form.control}
-                  items={serviceFrequency}
-                  label="Frequência de serviço"
-                  name="serviceFrequency"
-                  placeholder="Selecione a Frequência"
-                />
+                <div className="grid lg:grid-cols-2 gap-4">
+                  <InputFormField
+                    control={form.control}
+                    label="Endereço"
+                    name="individualAddress"
+                    placeholder="Digite o Endereço"
+                  />
+                  <InputFormField
+                    control={form.control}
+                    label="BI"
+                    name="individualIdentityNumber"
+                    placeholder="Digite o Número do Bilhete Identidade"
+                  />
+                </div>
+                <div className="grid lg:grid-cols-2 gap-4">
+                  <InputFormField
+                    control={form.control}
+                    label="Telefone"
+                    name="requesterPhoneNumber"
+                    placeholder="Digite o Telefone"
+                  />
+                  <SelectFormField
+                    control={form.control}
+                    items={serviceFrequency}
+                    label="Frequência de serviço"
+                    name="serviceFrequency"
+                    placeholder="Selecione a Frequência"
+                  />
+                </div>
+
                 <TextareaFormField
                   control={form.control}
                   label="Descrição"
@@ -82,7 +111,7 @@ export const HireForm = ({ professional }: { professional: ProfessionalDetails }
                 className="cursor-pointer"
                 type="button"
                 variant="outline"
-                onClick={() => form.reset({ description: '', serviceFrequency: '' })}
+                onClick={() => form.reset({ ...reset })}
               >
                 Cancelar
               </Button>

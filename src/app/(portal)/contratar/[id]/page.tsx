@@ -5,6 +5,7 @@ import { HireProfessionalSkeleton } from './components/hireProfessional/skelleto
 import { LoadHireData } from './components/load'
 
 import { BackButton } from '@/components/backButton'
+import { verifyUser } from '@/lib/verifyUser'
 
 type ContratarPageProps = {
   params: Promise<{
@@ -15,6 +16,12 @@ type ContratarPageProps = {
 export default async function ContratarPage({ params }: ContratarPageProps) {
   const { id } = await params
 
+  const result = await verifyUser()
+
+  if (!result.success) {
+    throw new Error('You must be logged in to access this page')
+  }
+
   return (
     <LoadHireData>
       <main className="py-8">
@@ -24,7 +31,7 @@ export default async function ContratarPage({ params }: ContratarPageProps) {
         </div>
         {
           <Suspense fallback={<HireProfessionalSkeleton />}>
-            <HireProfessional id={id} />
+            <HireProfessional id={id} user={result.data} />
           </Suspense>
         }
       </main>

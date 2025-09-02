@@ -4,8 +4,9 @@ import { HireFormClientProvider } from './form/provider'
 
 import { listProfessionalByIdService } from '@/services/professionals/listProfessionalByIdService'
 import { ProfessionalDetails } from '@/types/professional'
+import { GetCurrentUserResponse } from '@/types/users'
 
-export async function HireProfessional({ id }: { id: string }) {
+export async function HireProfessional({ id, user }: { id: string; user: GetCurrentUserResponse }) {
   let professional: ProfessionalDetails | null = null
 
   const result = await listProfessionalByIdService(id)
@@ -24,7 +25,7 @@ export async function HireProfessional({ id }: { id: string }) {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <HireFormClientProvider>
+      <HireFormClientProvider user={user}>
         <HireForm professional={professional} />
         <SidebarResumo professional={professional} />
       </HireFormClientProvider>
