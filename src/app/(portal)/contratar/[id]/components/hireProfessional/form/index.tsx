@@ -28,7 +28,7 @@ export const HireForm = ({ professional }: { professional: ProfessionalDetails }
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
     const result = await createServiceRequestAsync({
-      requesterType: user.type,
+      requesterType: user.type as 'INDIVIDUAL',
       description: data.description,
       serviceFrequency: data.serviceFrequency,
       requesterEmail: user.email,

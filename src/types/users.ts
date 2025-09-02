@@ -2,7 +2,7 @@ export type CreateUserRequest = {
   firstName: string
   lastName: string
   email: string
-  type: 'INDIVIDUAL' | 'COOPERATE'
+  type: 'INDIVIDUAL' | 'CORPORATE'
 }
 
 export type CreateUserResponse = {
