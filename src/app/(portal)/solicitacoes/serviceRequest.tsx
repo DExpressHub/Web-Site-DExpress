@@ -6,14 +6,14 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { type ServiceFrequency } from '@/constants'
 import { listServiceRequestsByUserIdService } from '@/services/servicesRequest/listServiceRequestByUser'
-import { RefreshTokenExpiredError } from '@/lib/api'
+import { UnauthorizedError } from '@/errors'
 
 export async function ServiceRequest() {
   const cookiesStories = await cookies()
   const userId = cookiesStories.get('user_id')?.value
 
   if (!userId) {
-    throw new RefreshTokenExpiredError()
+    throw new UnauthorizedError()
   }
 
   const response = await listServiceRequestsByUserIdService(userId)
@@ -79,7 +79,10 @@ export async function ServiceRequest() {
               </div>
 
               <div className="flex items-center justify-between pt-2">
-                <Badge className="bg-orange-100 text-orange-800" variant="secondary">
+                <Badge
+                  className="bg-orange-100 text-orange-800 hover:bg-orange-100 hover:text-orange-800"
+                  variant="secondary"
+                >
                   <Clock className="w-3 h-3 mr-1" />
                   {request.status}
                 </Badge>
@@ -117,12 +120,12 @@ const getFrequencyLabel = (frequency: ServiceFrequency): string => {
 
 const getFrequencyColor = (frequency: ServiceFrequency): string => {
   const colors: Record<ServiceFrequency, string> = {
-    MONTHLY: 'bg-green-100 text-green-800',
-    BIMONTHLY: 'bg-blue-100 text-blue-800',
-    QUARTERLY: 'bg-yellow-100 text-yellow-800',
-    ANNUALLY: 'bg-purple-100 text-purple-800',
-    BIENNIALLY: 'bg-pink-100 text-pink-800',
-    SEMIANNUALLY: 'bg-orange-100 text-orange-800',
+    MONTHLY: 'bg-green-100 text-green-800 hover:bg-green-100 hover:text-green-800',
+    BIMONTHLY: 'bg-blue-100 text-blue-800 hover:bg-blue-100 hover:text-blue-800',
+    QUARTERLY: 'bg-yellow-100 text-yellow-800 hover:bg-yellow-100 hover:text-yellow-800',
+    ANNUALLY: 'bg-purple-100 text-purple-800 hover:bg-purple-100 hover:text-purple-800',
+    BIENNIALLY: 'bg-pink-100 text-pink-800 hover:bg-pink-100 hover:text-pink-800',
+    SEMIANNUALLY: 'bg-orange-100 text-orange-800 hover:bg-orange-100 hover:text-orange-800',
   }
 
   return colors[frequency] || 'bg-gray-100 text-gray-800'

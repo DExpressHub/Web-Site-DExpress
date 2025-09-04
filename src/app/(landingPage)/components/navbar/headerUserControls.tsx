@@ -14,7 +14,6 @@ export async function HeaderUserControls() {
     isAuthenticated = true
     user = result.data
   }
-  console.log(user)
 
   return (
     <div className="flex items-center gap-2">

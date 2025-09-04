@@ -5,12 +5,13 @@ import { LucideLoader2 } from 'lucide-react'
 
 import { deleteAuthCookies } from '@/actions/deleteAuthCookies'
 import { links } from '@/config/links'
+import { UnauthorizedError } from '@/errors'
 
 export default function Error({ error, reset }: { error: Error; reset: () => void }) {
   const [isRedirecting, setIsRedirecting] = useState(false)
 
   useEffect(() => {
-    if (error.message === 'Refresh token expired') {
+    if (error instanceof UnauthorizedError) {
       setIsRedirecting(true)
 
       deleteAuthCookies().finally(() => {

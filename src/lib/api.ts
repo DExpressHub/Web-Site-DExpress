@@ -5,11 +5,8 @@ import { cookies } from 'next/headers'
 import { env } from '@/config/env'
 import { ApiError } from '@/types/apiError'
 import { D_EXPRESS } from '@/constants'
-export class RefreshTokenExpiredError extends Error {
-  constructor() {
-    super('Refresh token expired')
-  }
-}
+import { UnauthorizedError } from '@/errors'
+
 const secureConfig = {
   httpOnly: true,
   secure: process.env.NODE_ENV === 'production',
@@ -40,7 +37,7 @@ export const api = ky.create({
           const refresh = cookieStore.get(D_EXPRESS.refreshToken)?.value
 
           if (!refresh) {
-            throw new RefreshTokenExpiredError()
+            throw new UnauthorizedError()
           }
 
           const res = await fetch(`${env.NEXT_PUBLIC_API_URL}/auth/refresh`, {
@@ -50,9 +47,9 @@ export const api = ky.create({
           })
 
           if (!res.ok) {
-            throw new RefreshTokenExpiredError()
+            throw new UnauthorizedError()
           }
-          console.log('Token refreshed successfully', await res.json())
+
           const { accessToken } = await res.json()
 
           cookieStore.set(D_EXPRESS.accessToken, accessToken, secureConfig)
