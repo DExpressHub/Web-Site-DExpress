@@ -27,6 +27,7 @@ export function useLogin() {
       await setAuthCookies({
         refreshToken: result.data.refreshToken,
         accessToken: result.data.accessToken,
+        userId: result.data.user.id,
       })
       toast.success('Login efetuado com sucesso!')
       router.push('/')

@@ -9,4 +9,5 @@ export async function deleteAuthCookies() {
 
   cookieStore.delete(D_EXPRESS.refreshToken)
   cookieStore.delete(D_EXPRESS.accessToken)
+  cookieStore.delete('user_id')
 }

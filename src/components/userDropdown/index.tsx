@@ -1,6 +1,6 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 import {
   DropdownMenu,
@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { useLogout } from '@/hooks/auth/useLogout'
+import { links } from '@/config/links'
 
 interface UserDropdownProps {
   firstName?: string
@@ -20,9 +21,7 @@ interface UserDropdownProps {
   avatarUrl?: string
 }
 
-export function UserDropdown({ firstName, lastName, email, avatarUrl }: UserDropdownProps) {
-  const router = useRouter()
-
+export function UserDropdown({ firstName, lastName, avatarUrl }: UserDropdownProps) {
   const { logout, isPending } = useLogout()
 
   const initials =
@@ -43,17 +42,15 @@ export function UserDropdown({ firstName, lastName, email, avatarUrl }: UserDrop
       <DropdownMenuContent align="end" className="w-56">
         <DropdownMenuLabel className="flex flex-col gap-2 justify-center items-center">
           <span>{name}</span>
-          <span>{email ?? 'Minha Conta'}</span>
         </DropdownMenuLabel>
 
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer" onClick={() => router.push('/profile')}>
-          Perfil
+        {/* <DropdownMenuItem className="cursor-pointer" onClick={() => router.push('/profile')} /> */}
+        <DropdownMenuItem className="cursor-pointer">
+          <Link className="w-full h-full" href={links.solicitacoes}>
+            Solicitações
+          </Link>
         </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer" onClick={() => router.push('/settings')}>
-          Configurações
-        </DropdownMenuItem>
-
         <DropdownMenuSeparator />
         <DropdownMenuItem className="cursor-pointer text-red-600" onClick={() => logout()}>
           {isPending ? 'Saindo...' : 'Sair'}

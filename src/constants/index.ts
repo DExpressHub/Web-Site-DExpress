@@ -9,4 +9,5 @@ export const serviceFrequency = [
   { value: 'SEMIANNUALLY', label: 'Semestral' },
   { value: 'ANNUALLY', label: 'Anual' },
   { value: 'BIENNIALLY', label: 'Bienal ' },
-]
+] as const
+export type ServiceFrequency = (typeof serviceFrequency)[number]['value']

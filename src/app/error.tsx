@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { LucideLoader2 } from 'lucide-react'
 
 import { deleteAuthCookies } from '@/actions/deleteAuthCookies'
+import { links } from '@/config/links'
 
 export default function Error({ error, reset }: { error: Error; reset: () => void }) {
   const [isRedirecting, setIsRedirecting] = useState(false)
@@ -13,7 +14,7 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
       setIsRedirecting(true)
 
       deleteAuthCookies().finally(() => {
-        window.location.href = '/'
+        window.location.href = `/${links.login}`
       })
     }
   }, [error])
@@ -27,13 +28,9 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-primary text-white">
+    <div className="min-h-screen flex flex-col items-center justify-center text-white">
       <h2 className="text-lg font-semibold mb-4">Something went wrong!</h2>
-      <button
-        className="px-4 py-2 rounded bg-white text-primary font-medium shadow"
-        type="button"
-        onClick={() => reset()}
-      >
+      <button type="button" onClick={() => reset()}>
         Try again
       </button>
     </div>

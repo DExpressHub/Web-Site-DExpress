@@ -7,9 +7,10 @@ import { D_EXPRESS } from '@/constants'
 interface SetAuthCookiesParams {
   refreshToken: string
   accessToken: string
+  userId: string
 }
 
-export async function setAuthCookies({ refreshToken, accessToken }: SetAuthCookiesParams) {
+export async function setAuthCookies({ refreshToken, accessToken, userId }: SetAuthCookiesParams) {
   const cookieStore = await cookies()
 
   const secureConfig = {
@@ -22,6 +23,7 @@ export async function setAuthCookies({ refreshToken, accessToken }: SetAuthCooki
 
   cookieStore.set(D_EXPRESS.refreshToken, refreshToken, secureConfig)
   cookieStore.set(D_EXPRESS.accessToken, accessToken, secureConfig)
+  cookieStore.set('user_id', userId, secureConfig)
 
   return { success: true }
 }

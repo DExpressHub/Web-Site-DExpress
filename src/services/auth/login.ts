@@ -1,3 +1,5 @@
+import 'server-only'
+
 import { LoginRequest, LoginResponse } from '@/types/auth'
 import { ServiceResponse } from '@/types/serviceResponse'
 import { api } from '@/lib/api'
