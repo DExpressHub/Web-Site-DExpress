@@ -1,3 +1,5 @@
+import { ServiceFrequency } from '@/constants'
+
 type BaseRequest = {
   description: string
 
@@ -28,3 +30,42 @@ type CorporateRequest = BaseRequest & {
 }
 
 export type CreateServiceRequestParams = IndividualRequest | CorporateRequest
+
+export type ServiceRequestCorporate = {
+  id: string
+  requesterType: 'CORPORATE'
+  requesterEmail: string
+  requesterPhoneNumber: string
+  individualRequesterName: string
+  individualIdentityNumber: string
+  individualAddress: string
+  individualUserId: string
+  companyRequesterName: null
+  companyNif: string
+  companyAddress: string
+  companyDistrictId: string
+  companySectorId: string
+  description: string
+  serviceFrequency: ServiceFrequency
+  createdAt: string
+  status: string
+  planId: string
+  professionalId: string
+}[]
+
+export type ServiceRequestIndividual = {
+  id: string
+  requesterType: 'INDIVIDUAL'
+  requesterEmail: string
+  requesterPhoneNumber: string
+  individualRequesterName: string
+  individualIdentityNumber: string
+  individualAddress: string
+  individualUserId: string
+  companyRequesterName: null
+  description: string
+  serviceFrequency: ServiceFrequency
+  createdAt: string
+  status: string
+  professionalId: string
+}

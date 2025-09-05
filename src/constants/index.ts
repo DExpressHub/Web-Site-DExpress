@@ -10,3 +10,4 @@ export const serviceFrequency = [
   { value: 'ANNUALLY', label: 'Anual' },
   { value: 'BIENNIALLY', label: 'Bienal ' },
 ]
+export type ServiceFrequency = (typeof serviceFrequency)[number]['value']

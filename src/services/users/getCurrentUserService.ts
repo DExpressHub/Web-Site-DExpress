@@ -1,10 +1,11 @@
 // app/services/getCurrentUserService.ts
 import 'server-only'
 
-import { api, RefreshTokenExpiredError } from '@/lib/api'
+import { api } from '@/lib/api'
 import { handleApiError } from '@/utils/handleApiError'
 import { ServiceResponse } from '@/types/serviceResponse'
 import { GetCurrentUserResponse } from '@/types/users'
+import { UnauthorizedError } from '@/errors'
 
 export async function getCurrentUserService(): Promise<ServiceResponse<GetCurrentUserResponse>> {
   try {
@@ -16,7 +17,7 @@ export async function getCurrentUserService(): Promise<ServiceResponse<GetCurren
       data,
     }
   } catch (error) {
-    if (error instanceof RefreshTokenExpiredError) {
+    if (error instanceof UnauthorizedError) {
       throw error
     }
 

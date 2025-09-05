@@ -1,21 +1,14 @@
 import Link from 'next/link'
-import { LogIn, UserPlus } from 'lucide-react'
+import { Suspense } from 'react'
 
 import { Logo } from './logo'
+import { AuthActions } from './authActions'
 
 import { cn } from '@/utils/cn'
-import { buttonVariants } from '@/components/ui/button'
+import { Skeleton } from '@/components/ui/skeleton'
 import { ThemeToggle } from '@/components/toggleTheme'
-import { UserDropdown } from '@/components/userDropdown'
-import { GetCurrentUserResponse } from '@/types/users'
 
-export function Navbar({
-  isAuthenticated,
-  user,
-}: {
-  isAuthenticated: boolean
-  user?: GetCurrentUserResponse
-}) {
+export async function Navbar() {
   return (
     <header
       className={cn(
@@ -32,31 +25,12 @@ export function Navbar({
             <Logo />
             <span className="sr-only">D-Express</span>
           </Link>
-          <>
-            {isAuthenticated ? (
-              <UserDropdown
-                avatarUrl={user?.avatar}
-                email={user?.email}
-                firstName={user?.firstName}
-                lastName={user?.lastName}
-              />
-            ) : (
-              <div className="flex items-center gap-2 ">
-                <ThemeToggle />
-                <Link
-                  className={cn('justify-start gap-2', buttonVariants({ variant: 'ghost' }))}
-                  href="/login"
-                >
-                  <LogIn className="w-4 h-4" />
-                  <span className="sr-only sm:not-sr-only">Login</span>
-                </Link>
-                <Link className={cn('justify-start gap-2', buttonVariants())} href="/register">
-                  <UserPlus className="w-4 h-4" />
-                  <span className="sr-only sm:not-sr-only"> Cadastrar</span>
-                </Link>
-              </div>
-            )}
-          </>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <Suspense fallback={<Skeleton className="w-10 h-10" />}>
+              <AuthActions />
+            </Suspense>
+          </div>
         </div>
       </div>
     </header>

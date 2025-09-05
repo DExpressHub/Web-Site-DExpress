@@ -9,4 +9,6 @@ export const links = {
   trabalheConosco: 'trabalhe-conosco',
   paraEmpresas: 'para-empresas',
   planos: 'planos',
+  contratos: 'contratos',
+  solicitacoes: 'solicitacoes',
 } as const

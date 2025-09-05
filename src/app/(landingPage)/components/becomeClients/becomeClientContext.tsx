@@ -5,6 +5,7 @@ import { Crown, LucideProps, Star } from 'lucide-react'
 
 import { useScrollTo } from '@/hooks/useScrollTo'
 import { useListAllPlans } from '@/hooks/plan/useListAllPlans'
+import { links } from '@/config/links'
 type BecomeClientContextValue = {
   plans: {
     details: string[]
@@ -28,7 +29,7 @@ export function BecomeClientProvider({ children }: { children: React.ReactNode }
   const scrollToSection = useScrollTo()
   const handleSetPlan = (planId: string) => {
     setPlanId(planId)
-    scrollToSection('become-client')
+    scrollToSection(links.paraEmpresas)
   }
   const { plans } = useListAllPlans()
   const newPlans = React.useMemo(() => {
