@@ -1,8 +1,6 @@
 import { Clock, MapPin, Shield, Star } from 'lucide-react'
 import Image from 'next/image'
 
-import { Badge } from '@/components/ui/badge'
-
 type ProfessionalHeaderProps = {
   professional: {
     fullName: string
@@ -53,14 +51,6 @@ export function ProfessionalHeader({ professional }: ProfessionalHeaderProps) {
               </div>
             </div>
           )}
-
-          <div className="flex flex-wrap gap-2 mb-4">
-            {specialties.map((specialty) => (
-              <Badge key={specialty} variant="secondary">
-                {specialty}
-              </Badge>
-            ))}
-          </div>
 
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div className="flex items-center gap-2 text-muted-foreground">

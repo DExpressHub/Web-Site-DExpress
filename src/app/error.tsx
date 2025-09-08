@@ -5,18 +5,19 @@ import { LucideLoader2 } from 'lucide-react'
 
 import { deleteAuthCookies } from '@/actions/deleteAuthCookies'
 import { links } from '@/config/links'
-import { UnauthorizedError } from '@/errors'
+import { deleteRedirectedUrl } from '@/lib/redirectUrl'
 
 export default function Error({ error, reset }: { error: Error; reset: () => void }) {
   const [isRedirecting, setIsRedirecting] = useState(false)
 
   useEffect(() => {
-    if (error instanceof UnauthorizedError) {
+    if (error.message === 'UnauthorizedError') {
       setIsRedirecting(true)
 
       deleteAuthCookies().finally(() => {
         window.location.href = `/${links.login}`
       })
+      deleteRedirectedUrl()
     }
   }, [error])
 

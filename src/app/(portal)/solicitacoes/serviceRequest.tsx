@@ -1,12 +1,12 @@
 import React from 'react'
-import { Calendar, Mail, Phone, MapPin, User, Clock, FileText } from 'lucide-react'
 import { cookies } from 'next/headers'
+import { Calendar, Clock, FileText, Mail, MapPin, User } from 'lucide-react'
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
 import { type ServiceFrequency } from '@/constants'
 import { listServiceRequestsByUserIdService } from '@/services/servicesRequest/listServiceRequestByUser'
 import { UnauthorizedError } from '@/errors'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
 
 export async function ServiceRequest() {
   const cookiesStories = await cookies()
@@ -26,7 +26,7 @@ export async function ServiceRequest() {
     )
   }
 
-  const data = response.data
+  const { data } = response.data
 
   return (
     <div className="py-6 space-y-6">
@@ -41,7 +41,7 @@ export async function ServiceRequest() {
                 <div className="flex-1">
                   <CardTitle className="text-lg font-semibold flex items-center gap-2">
                     <User className="w-5 h-5 text-blue-600" />
-                    {request.individualRequesterName}
+                    {request.professional.fullName}
                   </CardTitle>
                 </div>
                 <Badge className={`ml-2 ${getFrequencyColor(request.serviceFrequency)}`}>
@@ -54,17 +54,14 @@ export async function ServiceRequest() {
               <div className="space-y-3">
                 <div className="flex items-center gap-2 text-sm ">
                   <Mail className="w-4 h-4 text-gray-400" />
-                  <span className="truncate">{request.requesterEmail}</span>
-                </div>
-
-                <div className="flex items-center gap-2 text-sm ">
-                  <Phone className="w-4 h-4 text-gray-400" />
-                  <span>{request.requesterPhoneNumber}</span>
+                  <span className="truncate">{request.professional.email}</span>
                 </div>
 
                 <div className="flex items-start gap-2 text-sm ">
                   <MapPin className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
-                  <span className="line-clamp-2">{request.individualAddress}</span>
+                  <span className="line-clamp-2">
+                    {`${request.professional.location.city.name}, ${request.professional.location.district.name}, ${request.professional.location.street}`}
+                  </span>
                 </div>
 
                 <div className="flex items-start gap-2 text-sm ">

@@ -17,6 +17,8 @@ export async function createJobApplicationService(
       data,
     }
   } catch (error) {
+    console.log(error)
+
     return {
       success: false,
       error: handleApiError(error),

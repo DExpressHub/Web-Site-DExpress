@@ -15,7 +15,7 @@ export function useListPaginatedProfessional(filters: FiltersProfessional, shoul
       const result = await listPaginatedProfessionalAction(filters)
 
       if (!result.success) {
-        toast.error('Erro ao buscar processionais tenta mais tarde')
+        toast.error(result.error.message || 'Erro ao buscar processionais tenta mais tarde')
         getQueryClient().invalidateQueries({
           queryKey: [queriesKey.professionals, filters],
         })
