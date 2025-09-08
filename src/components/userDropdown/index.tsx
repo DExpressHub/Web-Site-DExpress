@@ -47,7 +47,7 @@ export function UserDropdown({ firstName, lastName, avatarUrl }: UserDropdownPro
         <DropdownMenuSeparator />
         {/* <DropdownMenuItem className="cursor-pointer" onClick={() => router.push('/profile')} /> */}
         <DropdownMenuItem className="cursor-pointer">
-          <Link className="w-full h-full" href={links.solicitacoes}>
+          <Link className="w-full h-full" href={`/${links.solicitacoes}`}>
             Solicitações
           </Link>
         </DropdownMenuItem>

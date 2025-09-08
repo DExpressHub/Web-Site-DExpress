@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { LogIn, UserPlus } from 'lucide-react'
 
-import { ThemeToggle } from '@/components/toggleTheme'
 import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/utils/cn'
 import { UserDropdown } from '@/components/userDropdown'
@@ -31,8 +30,6 @@ export async function AuthActions() {
 
   return (
     <div className="flex items-center gap-2">
-      <ThemeToggle />
-
       <Link
         className={cn('justify-start gap-2', buttonVariants({ variant: 'ghost' }))}
         href="/login"

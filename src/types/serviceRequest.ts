@@ -69,3 +69,107 @@ export type ServiceRequestIndividual = {
   status: string
   professionalId: string
 }
+
+export type GetUserServiceRequest = {
+  data: {
+    id: string
+    status: string
+    serviceFrequency: string
+    description: string
+    createdAt: string
+    professional: Professional
+  }[]
+  total: number
+  page: number
+  limit: number
+  totalPages: number
+}
+
+export interface Root {
+  data: Daum[]
+  total: number
+  page: number
+  limit: number
+  totalPages: number
+}
+
+export interface Daum {
+  id: string
+  status: string
+  serviceFrequency: string
+  description: string
+  createdAt: string
+  professional: Professional
+}
+
+export interface Professional {
+  id: string
+  fullName: string
+  email: string
+  phoneNumber: string
+  identityNumber: string
+  isAvailable: boolean
+  description: string
+  expectedAvailability: string
+  hasCriminalRecord: boolean
+  hasMedicalCertificate: boolean
+  hasTrainingCertificate: boolean
+  location: Location
+  profileImage: string
+  gender: Gender
+  birthDate: string
+  hasChildren: boolean
+  knownDiseases: string
+  createdAt: string
+  experienceLevel: ExperienceLevel
+  maritalStatus: MaritalStatus
+  highestDegree: HighestDegree
+}
+
+export interface Location {
+  id: string
+  street: string
+  city: City
+  district: District
+}
+
+export interface City {
+  name: string
+}
+
+export interface District {
+  name: string
+}
+
+export interface Gender {
+  id: string
+  name: string
+  label: string
+  createdAt: string
+  updatedAt: string
+}
+
+export interface ExperienceLevel {
+  id: string
+  name: string
+  label: string
+  createdAt: string
+  updatedAt: string
+}
+
+export interface MaritalStatus {
+  id: string
+  name: string
+  label: string
+  createdAt: string
+  updatedAt: string
+}
+
+export interface HighestDegree {
+  id: string
+  name: string
+  label: string
+  level: number
+  createdAt: string
+  updatedAt: string
+}

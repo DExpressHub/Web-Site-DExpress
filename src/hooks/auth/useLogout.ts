@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 
 import { deleteAuthCookies } from '@/actions/deleteAuthCookies'
 import { logoutAction } from '@/actions/auth'
+import { deleteRedirectedUrl } from '@/lib/redirectUrl'
 
 export function useLogout() {
   const router = useRouter()
@@ -24,6 +25,7 @@ export function useLogout() {
       }
 
       await deleteAuthCookies()
+      deleteRedirectedUrl()
       toast.success('Logout efetuado com sucesso!')
       router.refresh()
     },

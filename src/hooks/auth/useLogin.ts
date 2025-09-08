@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { LoginRequest } from '@/types/auth'
 import { setAuthCookies } from '@/actions/setAuthCookies'
 import { loginAction } from '@/actions/auth'
+import { getRedirectedUrl } from '@/lib/redirectUrl'
 
 export function useLogin() {
   const router = useRouter()
@@ -29,6 +30,15 @@ export function useLogin() {
         accessToken: result.data.accessToken,
         userId: result.data.user.id,
       })
+
+      const redirectedUrl = getRedirectedUrl()
+
+      if (redirectedUrl) {
+        toast.success('Login efetuado com sucesso!')
+        router.push(redirectedUrl)
+
+        return
+      }
       toast.success('Login efetuado com sucesso!')
       router.push('/')
     },

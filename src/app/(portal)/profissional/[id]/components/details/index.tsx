@@ -1,5 +1,3 @@
-import { Suspense } from 'react'
-
 import { ProfessionalHeader } from '../header'
 import { ProfessionalStats } from '../stats'
 import { ProfessionalLanguages } from '../languages'
@@ -13,8 +11,9 @@ import { ProfessionalDetails as ProfessionalDetailsType } from '@/types/professi
 
 interface ProfessionalDetailsProps {
   id: string
+  isAuthenticated: boolean
 }
-export async function ProfessionalDetails({ id }: ProfessionalDetailsProps) {
+export async function ProfessionalDetails({ id, isAuthenticated }: ProfessionalDetailsProps) {
   let professional: ProfessionalDetailsType | null = null
 
   const result = await listProfessionalByIdService(id)
@@ -42,14 +41,20 @@ export async function ProfessionalDetails({ id }: ProfessionalDetailsProps) {
       </div>
 
       <div className="space-y-6">
-        <Suspense>
-          <ApplyCard className="hidden lg:block" professional={professional} />
-        </Suspense>
+        <ApplyCard
+          className="hidden lg:block"
+          isAuthenticated={isAuthenticated}
+          professional={professional}
+        />
+
         <ProfessionalCourses courses={professional.professionalCourses} />
         <ProfessionalLanguages languages={professional.professionalLanguages} />
-        <Suspense>
-          <ApplyCard className="lg:hidden" professional={professional} />
-        </Suspense>
+
+        <ApplyCard
+          className="lg:hidden"
+          isAuthenticated={isAuthenticated}
+          professional={professional}
+        />
       </div>
     </div>
   )

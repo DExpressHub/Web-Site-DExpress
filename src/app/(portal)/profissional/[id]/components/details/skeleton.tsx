@@ -14,13 +14,6 @@ function ProfessionalHeaderSkeleton() {
         {/* Name */}
         <Skeleton className="h-8 w-48" />
 
-        {/* Badges */}
-        <div className="flex flex-wrap gap-2">
-          <Skeleton className="h-6 w-20 rounded-full" />
-          <Skeleton className="h-6 w-24 rounded-full" />
-          <Skeleton className="h-6 w-18 rounded-full" />
-        </div>
-
         {/* Info Grid */}
         <div className="grid grid-cols-2 gap-4">
           <div className="flex items-center gap-2">

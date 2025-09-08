@@ -40,7 +40,7 @@ export const api = ky.create({
             throw new UnauthorizedError()
           }
 
-          const res = await fetch(`${env.NEXT_PUBLIC_API_URL}/auth/refresh`, {
+          const res = await fetch(`${env.NEXT_PUBLIC_API_URL}auth/refresh`, {
             method: 'POST',
             credentials: 'include',
             headers: { cookie: cookieStore.toString(), authorization: `Bearer ${refresh}` },
@@ -50,9 +50,11 @@ export const api = ky.create({
             throw new UnauthorizedError()
           }
 
-          const { accessToken } = await res.json()
+          // const { accessToken } = await res.json()
 
-          cookieStore.set(D_EXPRESS.accessToken, accessToken, secureConfig)
+          // await setAccessTokenCookie(accessToken)
+          // TODO: ATUALIZAR TODAS CHAMADAS PARA CLIENT, VER FORMA DE VALIDAR REFRESH TOKEN NO SERVER TODOS ROTAS PRIVADAS CHAMAR NO CLIENTE, DEIXAR ROTAS
+          throw new UnauthorizedError()
         }
 
         if (!response.ok) {

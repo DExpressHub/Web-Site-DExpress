@@ -14,6 +14,7 @@ import { listAllLanguagesService } from '@/services/language/listAllLanguagesSer
 import { listAllSkillsService } from '@/services/skill/listAllSkillsService'
 import { listAllExperienceLevelsService } from '@/services/experienceLevel/listAllExperienceLevelsService'
 import { listAllPlansService } from '@/services/plan/listAllPlansService'
+import { listAllCoursesAction } from '@/actions/course'
 
 export async function LoadPageData({ children }: { children: React.ReactNode }) {
   const queryClient = getQueryClient()
@@ -28,7 +29,7 @@ export async function LoadPageData({ children }: { children: React.ReactNode }) 
     { key: queriesKey.gender, fn: () => listAllGenderService() },
     { key: queriesKey.martialStatus, fn: () => listAllMaritalStatusesService() },
     { key: queriesKey.highestDegree, fn: () => listAllHighestDegreesService() },
-    { key: queriesKey.courses, fn: () => listAllCitiesService() },
+    { key: queriesKey.courses, fn: () => listAllCoursesAction() },
     { key: queriesKey.languages, fn: () => listAllLanguagesService() },
     { key: queriesKey.skills, fn: () => listAllSkillsService() },
     { key: queriesKey.experienceLevels, fn: () => listAllExperienceLevelsService() },
