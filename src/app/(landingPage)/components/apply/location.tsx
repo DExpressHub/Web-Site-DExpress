@@ -44,8 +44,8 @@ export function Location() {
           name="districtId"
           placeholder={isFetching ? 'Carregando...' : 'Distrito'}
         />
-        <InputFormField control={form.control} label="Rua" name="street" placeholder="Rua" />
       </div>
+      <InputFormField control={form.control} label="Rua" name="street" placeholder="Rua" />
     </section>
   )
 }

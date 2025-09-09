@@ -32,6 +32,7 @@ export function Newsletter() {
       return
     }
     toast.success(result.data.message)
+    form.reset({ email: '' })
   }
 
   return (

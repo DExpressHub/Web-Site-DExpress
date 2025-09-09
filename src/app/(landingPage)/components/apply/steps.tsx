@@ -32,7 +32,6 @@ export const steps = [
       'experienceLevelId',
       'availabilityDate',
       'ProfessionalExperience',
-      'generalAvailabilityId',
     ] as const,
   },
   {

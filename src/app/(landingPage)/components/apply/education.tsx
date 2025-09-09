@@ -22,7 +22,7 @@ export function Education() {
       </div>
 
       {/* Select de Grau de Escolaridade */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
         <SelectFormField
           control={form.control}
           items={highestDegreesOptions}
@@ -30,7 +30,7 @@ export function Education() {
           name="highestDegreeId"
           placeholder="Selecione Maior Grau de Escolaridade"
         />
-      </div>
+
 
       <FormField
         control={form.control}

@@ -28,6 +28,7 @@ export function Footer() {
             </p>
             <div className="flex space-x-2">
               <Button
+                disabled
                 aria-label="Facebook"
                 className="text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200"
                 size="icon"
@@ -36,6 +37,7 @@ export function Footer() {
                 <Facebook className="h-4 w-4" />
               </Button>
               <Button
+                disabled
                 aria-label="Instagram"
                 className="text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200"
                 size="icon"
@@ -44,6 +46,7 @@ export function Footer() {
                 <Instagram className="h-4 w-4" />
               </Button>
               <Button
+                disabled
                 aria-label="Twitter"
                 className="text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200"
                 size="icon"
@@ -52,6 +55,7 @@ export function Footer() {
                 <Twitter className="h-4 w-4" />
               </Button>
               <Button
+                disabled
                 aria-label="LinkedIn"
                 className="text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200"
                 size="icon"
@@ -82,16 +86,28 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="font-semibold text-foreground text-base">Suporte</h3>
             <div className="space-y-3">
-              <button className="block text-sm text-muted-foreground hover:text-primary transition-colors duration-200 text-left">
+              <button
+                disabled
+                className="block text-sm text-muted-foreground hover:text-primary transition-colors duration-200 text-left"
+              >
                 Central de Ajuda
               </button>
-              <button className="block text-sm text-muted-foreground hover:text-primary transition-colors duration-200 text-left">
+              <button
+                disabled
+                className="block text-sm text-muted-foreground hover:text-primary transition-colors duration-200 text-left"
+              >
                 Perguntas Frequentes
               </button>
-              <button className="block text-sm text-muted-foreground hover:text-primary transition-colors duration-200 text-left">
+              <button
+                disabled
+                className="block text-sm text-muted-foreground hover:text-primary transition-colors duration-200 text-left"
+              >
                 Termos de Uso
               </button>
-              <button className="block text-sm text-muted-foreground hover:text-primary transition-colors duration-200 text-left">
+              <button
+                disabled
+                className="block text-sm text-muted-foreground hover:text-primary transition-colors duration-200 text-left"
+              >
                 Política de Privacidade
               </button>
             </div>
@@ -105,9 +121,9 @@ export function Footer() {
                 <Mail className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
                 <a
                   className="text-muted-foreground text-sm hover:text-primary transition-colors duration-200 break-all"
-                  href="mailto:contato@d-express.com"
+                  href="mailto:dexpressgeral@gmail.com"
                 >
-                  contato@d-express.com
+                  dexpressgeral@gmail.com
                 </a>
               </div>
               <div className="flex items-start space-x-3">
