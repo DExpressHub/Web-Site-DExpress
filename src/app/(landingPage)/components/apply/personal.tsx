@@ -17,6 +17,16 @@ const childrenOptions = [
     label: 'Sim',
   },
 ]
+const knownDiseasesOptions = [
+  {
+    value: 'NO',
+    label: 'Não',
+  },
+  {
+    value: 'YES',
+    label: 'Sim',
+  },
+]
 
 export function Personal() {
   const { form } = useApplyForm()
@@ -28,14 +38,14 @@ export function Personal() {
         <User className="h-5 w-5 text-primary" />
         <h3 className="text-lg font-semibold">Informações Pessoais</h3>
       </div>
+      <InputFormField
+        control={form.control}
+        label="Nome Completo"
+        name="fullName"
+        placeholder="Digite seu nome completo"
+        type="text"
+      />
       <div className="grid md:grid-cols-2 gap-6">
-        <InputFormField
-          control={form.control}
-          label="Nome Completo"
-          name="fullName"
-          placeholder="Digite seu nome completo"
-          type="text"
-        />
         <InputFormField
           control={form.control}
           label="Bilhete de identidade"
@@ -72,14 +82,14 @@ export function Personal() {
           name="hasChildren"
           placeholder="Tem filhos?"
         />
+        <SelectFormField
+          control={form.control}
+          items={knownDiseasesOptions}
+          label="Doenças ou condições médicas conhecidas?"
+          name="knownDiseases"
+          placeholder="Doenças ou condições médicas conhecidas?"
+        />
       </div>
-      <InputFormField
-        control={form.control}
-        label="Doenças ou condições médicas conhecidas"
-        name="knownDiseases"
-        placeholder="Ex: Diabetes, Asma, Nenhuma"
-        type="text"
-      />
     </section>
   )
 }

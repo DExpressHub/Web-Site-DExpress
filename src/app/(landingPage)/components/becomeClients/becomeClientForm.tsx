@@ -44,6 +44,7 @@ const formSchema = z.object({
 })
 
 export function BecomeClientForm() {
+  const companyServiceFrequency = serviceFrequency.filter((item) => item.value !== 'DAILY')
   const { plans, planId } = useBecomeClient()
   const { citiesOptions, sectoresOptions } = useBecomeClientOptions()
   const form = useForm<z.infer<typeof formSchema>>({
@@ -152,7 +153,7 @@ export function BecomeClientForm() {
 
         <SelectFormField
           control={form.control}
-          items={serviceFrequency}
+          items={companyServiceFrequency}
           label="
 Frequência de serviço"
           name="serviceFrequency"

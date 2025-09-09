@@ -16,11 +16,10 @@ export type JobApplicationRequest = {
   genderId: string
   maritalStatusId: string
   experienceLevelId: string
-  generalAvailabilityId: string
   desiredPositionId: string
   highestDegreeId: string
   hasChildren: boolean
-  knownDiseases: string
+  knownDiseases: boolean
   availabilityDate: string
   ProfessionalExperience: ProfessionalExperience[]
   languages: string[]

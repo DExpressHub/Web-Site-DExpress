@@ -15,7 +15,7 @@ export function Professional() {
     control: form.control,
     name: 'ProfessionalExperience',
   })
-  const { desiredPositions, experienceLevelsOptions,generalAvailabilitiesOptions } = useApplyOptions()
+  const { desiredPositions, experienceLevelsOptions } = useApplyOptions()
 
   return (
     <section className="flex-col flex gap-6 w-full">
@@ -38,21 +38,14 @@ export function Professional() {
           name="desiredPositionId"
           placeholder="Selecione a Posição"
         />
-        <SelectFormField
-          control={form.control}
-          items={generalAvailabilitiesOptions}
-          label="Disponibilidade"
-          name="generalAvailabilityId"
-          placeholder="Selecione a Disponibilidade"
-        />
-        <InputFormField
-          control={form.control}
-          label="Data de Disponibilidade"
-          name="availabilityDate"
-          placeholder="Data de Disponibilidade"
-          type="date"
-        />
       </div>
+      <InputFormField
+        control={form.control}
+        label="Data de Disponibilidade"
+        name="availabilityDate"
+        placeholder="Data de Disponibilidade"
+        type="date"
+      />
       <div className="space-y-4">
         <p className="text-sm font-medium">Experiência Profissional</p>
         {fields.map((field, index) => (

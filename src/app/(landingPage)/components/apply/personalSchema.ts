@@ -63,7 +63,13 @@ export const personalSchema = z.object({
   fullName: fullNameSchema,
   identityNumber: biSchema,
   birthDate: birthDateSchema,
-  knownDiseases: z.string().min(1, 'O Campo Doenças conhecidas é obrigatório'),
+  knownDiseases: z
+    .enum(['YES', 'NO'], {
+      invalid_type_error: 'Selecione uma opção',
+      required_error: 'Selecione uma opção',
+      message: 'Selecione uma opção',
+    })
+    .or(z.string().min(1, 'Selecione uma opção')),
   maritalStatusId: z.string().min(1, 'Selecione uma opção'),
   genderId: z.string().min(1, 'Selecione uma opção'),
   hasChildren: z

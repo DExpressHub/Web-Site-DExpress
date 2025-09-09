@@ -14,15 +14,14 @@ export function Contact() {
         <ContactRound className="h-5 w-5 text-primary" />
         <h3 className="text-lg font-semibold">Contactos</h3>
       </div>
+      <InputFormField
+        control={form.control}
+        label="Email"
+        name="email"
+        placeholder="Digite seu email"
+        type="email"
+      />
       <div className="grid md:grid-cols-2 gap-6">
-        <InputFormField
-          control={form.control}
-          label="Email"
-          name="email"
-          placeholder="Digite seu email"
-          type="email"
-        />
-
         <InputFormField
           control={form.control}
           label="Telefone"
@@ -31,9 +30,8 @@ export function Contact() {
           type="tel"
         />
         <InputFormField
-          disabled
           control={form.control}
-          label="Telefone Optional"
+          label="Telefone Opcional"
           name="optionalPhoneNumber"
           placeholder="+244 999 999 999"
           type="tel"

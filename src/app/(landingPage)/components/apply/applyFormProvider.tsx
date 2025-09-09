@@ -56,9 +56,8 @@ export function ApplyFormProvider({ children }: { children: React.ReactNode }) {
           districtId: data.districtId,
           street: data.street,
         },
-        knownDiseases: data.knownDiseases,
+        knownDiseases: data.knownDiseases === 'YES',
         experienceLevelId: data.experienceLevelId,
-        generalAvailabilityId: data.generalAvailabilityId,
       })
 
       if (result?.success) {
