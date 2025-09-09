@@ -2,12 +2,14 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import { useRouter } from 'next/navigation'
 
 import { useCreateUser } from '@/hooks/users/useCreateRegister'
+import { links } from '@/config/links'
 const registerSchema = z.object({
   lastName: z
     .string()
-    .min(1, 'SSobrenome é obrigatório')
+    .min(1, 'Sobrenome é obrigatório')
     .max(50, 'Sobrenome deve ter no máximo 50 caracteres'),
   email: z.string().email('Email inválido'),
   firstName: z
@@ -18,6 +20,7 @@ const registerSchema = z.object({
 
 type RegisterData = z.infer<typeof registerSchema>
 export function useRegisterForm() {
+  const { push } = useRouter()
   const form = useForm<RegisterData>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -26,15 +29,19 @@ export function useRegisterForm() {
       email: '',
     },
   })
-  const { createUser, isPending } = useCreateUser()
+  const { isPending, createUserAsync } = useCreateUser()
 
-  const onSubmit = (data: RegisterData) => {
-    createUser({
+  const onSubmit = async (data: RegisterData) => {
+    const result = await createUserAsync({
       firstName: data.firstName,
       lastName: data.lastName,
       email: data.email,
       type: 'INDIVIDUAL',
     })
+
+    if (result?.success) {
+      push(links.login)
+    }
   }
 
   return { onSubmit, form, isPending }

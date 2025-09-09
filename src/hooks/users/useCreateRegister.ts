@@ -13,7 +13,7 @@ export function useCreateUser() {
         if (result.error.statusCode === 400) {
           toast.error(result.error.message)
 
-          return
+          return result
         }
         toast.error('Erro ao efetuar registro')
 
@@ -21,6 +21,8 @@ export function useCreateUser() {
       }
 
       toast.success(result.data.message)
+
+      return result
     },
   })
 
