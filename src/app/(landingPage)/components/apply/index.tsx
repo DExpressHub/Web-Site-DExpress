@@ -21,7 +21,7 @@ export function ApplySection() {
           <div className="flex items-center justify-center gap-2 mb-4">
             <Sparkles className="w-6 h-6 text-white" />
             <h2 className="text-3xl md:text-4xl font-bold text-white">
-              Seja uma profissional com visibilidade
+              Seja um profissional com visibilidade
             </h2>
           </div>
           <p className="text-xl text-white/90 max-w-2xl mx-auto">
