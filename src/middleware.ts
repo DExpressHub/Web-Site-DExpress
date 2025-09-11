@@ -6,11 +6,16 @@ import { D_EXPRESS } from './constants'
 import { links } from './config/links'
 
 const PUBLIC_REGEX = [
-  /^\/$/, // home
-  /^\/login$/,
-  /^\/cadastrar$/,
-  /^\/profissional(\/.*)?$/,
+  /^\/$/,                 // home
+  /^\/login$/,            // login
+  /^\/cadastrar$/,        // cadastro
+  /^\/profissional(\/.*)?$/, // profissional
+  /^\/faq$/,              // FAQ
+  /^\/help$/,             // Central de Ajuda
+  /^\/privacy$/,          // Privacidade
+  /^\/terms$/,            // Termos de uso
 ]
+
 
 function isPublicRoute(pathname: string): boolean {
   return PUBLIC_REGEX.some((regex) => regex.test(pathname))
