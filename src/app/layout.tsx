@@ -23,11 +23,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html suppressHydrationWarning lang="pt">
+    <html suppressHydrationWarning className="scroll-smooth" lang="pt">
       <head />
       <body
         suppressHydrationWarning
-        className={cn('font-primary antialiased', fontPrimary.variable, fontSecondary.variable)}
+        className={cn('font-primary antialiased s', fontPrimary.variable, fontSecondary.variable)}
       >
         <Providers>{children}</Providers>
       </body>
