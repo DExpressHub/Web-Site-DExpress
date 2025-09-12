@@ -1,8 +1,8 @@
 export default function PrivacyPage() {
   return (
     <main className="py-32 max-[120rem] mx-auto px-4 w-full">
-      <section className="py-16">
-        <div className="container mx-auto px-4 max-w-4xl">
+      <section>
+        <div className="mx-auto w-full  max-w-4xl">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               Política de Privacidade

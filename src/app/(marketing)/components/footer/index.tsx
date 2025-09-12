@@ -1,6 +1,7 @@
 'use client'
 import { Mail, Phone, MapPin, Facebook, Instagram, Twitter, Linkedin } from 'lucide-react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import { useNavItem } from '../navbar/useNavItem'
 import { Logo } from '../logo'
@@ -12,8 +13,8 @@ import { useScrollTo } from '@/hooks/useScrollTo'
 import { links } from '@/config/links'
 
 export function Footer() {
+  const pathname = usePathname()
   const navItems = useNavItem()
-  const scrollToSection = useScrollTo()
 
   const currentYear = new Date().getFullYear()
 
@@ -73,13 +74,13 @@ export function Footer() {
             <h3 className="font-semibold text-foreground text-base">Navegação</h3>
             <div className="space-y-3">
               {navItems.map((item) => (
-                <button
-                  key={item.label}
-                  className="block text-sm text-muted-foreground hover:text-primary cursor-pointer transition-colors duration-200 text-left"
-                  onClick={() => scrollToSection(item.href)}
-                >
-                  {item.label}
-                </button>
+                <>
+                  {pathname === '/' ? (
+                    <ButtonNavigation key={item.label} href={item.href} label={item.label} />
+                  ) : (
+                    <CustomLink key={item.label} href={item.href} label={item.label} />
+                  )}
+                </>
               ))}
             </div>
           </div>
@@ -162,5 +163,36 @@ export function Footer() {
         </div>
       </div>
     </footer>
+  )
+}
+
+type NavigationProps = {
+  label: string
+  href: string
+}
+function ButtonNavigation({ href, label }: NavigationProps) {
+  const scrollToSection = useScrollTo()
+
+  return (
+    <button
+      className="block text-sm text-muted-foreground hover:text-primary cursor-pointer transition-colors duration-200 text-left"
+      onClick={() => scrollToSection(href)}
+    >
+      {label}
+    </button>
+  )
+}
+
+function CustomLink({ href, label }: NavigationProps) {
+  const scrollToSection = useScrollTo()
+
+  return (
+    <Link
+      className="block text-sm text-muted-foreground hover:text-primary cursor-pointer transition-colors duration-200 text-left"
+      href={`/#${href}`}
+      onClick={() => scrollToSection(href)}
+    >
+      {label}
+    </Link>
   )
 }
