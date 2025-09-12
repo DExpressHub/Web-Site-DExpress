@@ -1,5 +1,6 @@
 'use client'
 import { Mail, Phone, MapPin, Facebook, Instagram, Twitter, Linkedin } from 'lucide-react'
+import Link from 'next/link'
 
 import { useNavItem } from '../navbar/useNavItem'
 import { Logo } from '../logo'
@@ -8,6 +9,7 @@ import { Newsletter } from './newsletter'
 
 import { Button } from '@/components/ui/button'
 import { useScrollTo } from '@/hooks/useScrollTo'
+import { links } from '@/config/links'
 
 export function Footer() {
   const navItems = useNavItem()
@@ -86,30 +88,30 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="font-semibold text-foreground text-base">Suporte</h3>
             <div className="space-y-3">
-              <button
-                disabled
+              {/* <Link
                 className="block text-sm text-muted-foreground hover:text-primary transition-colors duration-200 text-left"
+                href={links.buscar}
               >
                 Central de Ajuda
-              </button>
-              <button
-                disabled
+              </Link> */}
+              <Link
                 className="block text-sm text-muted-foreground hover:text-primary transition-colors duration-200 text-left"
+                href={links.faq}
               >
                 Perguntas Frequentes
-              </button>
-              <button
-                disabled
+              </Link>
+              <Link
                 className="block text-sm text-muted-foreground hover:text-primary transition-colors duration-200 text-left"
+                href={links.termosUso}
               >
                 Termos de Uso
-              </button>
-              <button
-                disabled
+              </Link>
+              <Link
                 className="block text-sm text-muted-foreground hover:text-primary transition-colors duration-200 text-left"
+                href={links.politicaPrivacidade}
               >
                 Política de Privacidade
-              </button>
+              </Link>
             </div>
           </div>
 

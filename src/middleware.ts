@@ -6,16 +6,14 @@ import { D_EXPRESS } from './constants'
 import { links } from './config/links'
 
 const PUBLIC_REGEX = [
-  /^\/$/,                 // home
-  /^\/login$/,            // login
-  /^\/cadastrar$/,        // cadastro
-  /^\/profissional(\/.*)?$/, // profissional
-  /^\/faq$/,              // FAQ
-  /^\/help$/,             // Central de Ajuda
-  /^\/privacy$/,          // Privacidade
-  /^\/terms$/,            // Termos de uso
+  /^\/$/,
+  /^\/login$/,
+  /^\/cadastrar$/,
+  /^\/profissional(\/.*)?$/,
+  /^\/pergunta-frequente$/,
+  /^\/politica-de-privacidade$/,
+  /^\/termos-de-uso$/,
 ]
-
 
 function isPublicRoute(pathname: string): boolean {
   return PUBLIC_REGEX.some((regex) => regex.test(pathname))
@@ -47,5 +45,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|.*\\..*|_next).*)',],
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|.*\\..*|_next).*)'],
 }

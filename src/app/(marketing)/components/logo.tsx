@@ -3,10 +3,26 @@
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
 import React from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import { Skeleton } from '@/components/ui/skeleton'
 
 export function Logo() {
+  const pathName = usePathname()
+
+  if (pathName === '/') {
+    return <ImageLogo isHandleClick />
+  }
+
+  return (
+    <Link href="/">
+      <ImageLogo />
+    </Link>
+  )
+}
+
+function ImageLogo({ isHandleClick = false }: { isHandleClick?: boolean }) {
   const { theme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
 
@@ -29,7 +45,7 @@ export function Logo() {
       height={50}
       src={theme === 'dark' ? '/white-logo.png' : '/logo.png'}
       width={146}
-      onClick={handleClick}
+      onClick={isHandleClick ? handleClick : undefined}
     />
   )
 }

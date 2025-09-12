@@ -11,4 +11,7 @@ export const links = {
   planos: 'planos',
   contratos: 'contratos',
   solicitacoes: 'solicitacoes',
+  faq: 'pergunta-frequente',
+  politicaPrivacidade: 'politica-de-privacidade',
+  termosUso: 'termos-de-uso',
 } as const
