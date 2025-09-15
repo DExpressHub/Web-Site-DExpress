@@ -5,7 +5,7 @@ import { queriesKey } from '@/utils/queriesKey'
 import { listAllCitiesAction } from '@/actions/city'
 
 export function useListAllCities() {
-  const { data, error, isError } = useQuery({
+  const { data, error, isError, isLoading } = useQuery({
     queryKey: [queriesKey.cities],
     queryFn: async () => {
       const result = await listAllCitiesAction()
@@ -24,5 +24,6 @@ export function useListAllCities() {
     cities: data ?? [],
     error,
     isError,
+    isLoading,
   }
 }

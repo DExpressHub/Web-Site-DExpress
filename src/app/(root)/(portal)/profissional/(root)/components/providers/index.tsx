@@ -11,6 +11,7 @@ import {
 
 import { FiltersProfessional, PaginatedProfissionalResponse } from '@/types/professional'
 import { useInfiniteProfessionals } from '@/hooks/professional/useInfiniteProfessionals'
+
 type FiltersContextValue = {
   filters: FiltersProfessional
 
@@ -25,17 +26,22 @@ type FiltersContextValue = {
   refetch: (
     options?: RefetchOptions | undefined,
   ) => Promise<QueryObserverResult<InfiniteData<PaginatedProfissionalResponse, unknown>, Error>>
-  handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void
+  handleChange: (e: { name: string; value: string }) => void
+  resetFilters: () => void
   isFetchingNextPage: boolean
   isLoading: boolean
   isError: boolean
 }
+
 const FiltersContext = React.createContext<null | FiltersContextValue>(null)
 
 export function FiltersProvider({ children }: { children: React.ReactNode }) {
-  const [filters, setFilters] = React.useState<Omit<FiltersProfessional, 'page'>>({
+  const initialFilters: Omit<FiltersProfessional, 'page'> = {
     limit: 10,
-  })
+  }
+
+  const [filters, setFilters] = React.useState(initialFilters)
+
   const {
     data,
     fetchNextPage,
@@ -46,18 +52,26 @@ export function FiltersProvider({ children }: { children: React.ReactNode }) {
     isLoading,
     isError,
   } = useInfiniteProfessionals(filters, true)
-  const handleChange = React.useCallback(
-    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-      const { name, value } = e.target
 
-      setFilters((prev) => ({ ...prev, [name]: value }))
-    },
-    [],
-  )
+  const handleChange = React.useCallback((e: { name: string; value: string }) => {
+    const { name, value } = e
+
+    setFilters((prev) => ({
+      ...prev,
+      [name]: value === 'all' ? undefined : value,
+    }))
+  }, [])
+
+  // 🔹 Função de reset
+  const resetFilters = React.useCallback(() => {
+    setFilters(initialFilters)
+  }, [])
+
   const value: FiltersContextValue = React.useMemo(
     () => ({
       filters,
       handleChange,
+      resetFilters,
       data,
       fetchNextPage,
       hasNextPage,
@@ -67,11 +81,23 @@ export function FiltersProvider({ children }: { children: React.ReactNode }) {
       isLoading,
       isError,
     }),
-    [filters, data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, isLoading, isError],
+    [
+      filters,
+      data,
+      fetchNextPage,
+      hasNextPage,
+      isFetching,
+      refetch,
+      isFetchingNextPage,
+      isLoading,
+      isError,
+      resetFilters,
+    ],
   )
 
   return <FiltersContext.Provider value={value}>{children}</FiltersContext.Provider>
 }
+
 export function useFilters() {
   const context = React.useContext(FiltersContext)
 
