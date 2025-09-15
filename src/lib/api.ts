@@ -31,7 +31,7 @@ export const api = ky.create({
     ],
     afterResponse: [
       async (request, options, response) => {
-        if (response.status === 401 && !request.url.includes('auth/refresh')) {
+        if (response.status === 401 && !request.url.includes('auth')) {
           const cookieStore = await cookies()
 
           const refresh = cookieStore.get(D_EXPRESS.refreshToken)?.value
