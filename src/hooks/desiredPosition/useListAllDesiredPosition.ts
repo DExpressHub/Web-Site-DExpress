@@ -5,7 +5,7 @@ import { queriesKey } from '@/utils/queriesKey'
 import { listAllDesiredPositionsAction } from '@/actions/desiredPosition'
 
 export function useListAllDesiredPosition() {
-  const { data, error, isError } = useQuery({
+  const { data, error, isError, isLoading } = useQuery({
     queryKey: [queriesKey.desiredPosition],
     queryFn: async () => {
       const result = await listAllDesiredPositionsAction()
@@ -24,5 +24,6 @@ export function useListAllDesiredPosition() {
     desiredPosition: data ?? [],
     error,
     isError,
+    isLoading,
   }
 }

@@ -1,7 +1,7 @@
-import { ProfessionalsFilters } from './components/filters'
-import { ProfessionalsList } from './components/professionalsList'
-import { FiltersProvider } from './components/providers'
-import { FiltersMobile } from './components/mobile'
+import { ProfessionalsFilters } from './(root)/components/filters'
+import { ProfessionalsList } from './(root)/components/professionalsList'
+import { FiltersProvider } from './(root)/components/providers'
+import { FiltersMobile } from './(root)/components/mobile'
 
 export default function Professionals() {
   return (

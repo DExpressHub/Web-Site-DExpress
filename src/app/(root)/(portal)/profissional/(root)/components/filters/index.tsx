@@ -3,6 +3,8 @@ import { SlidersHorizontal } from 'lucide-react'
 
 import { Location } from '../location'
 import { useFilters } from '../providers'
+import { DesiredPosition } from '../desiredPosition'
+import { ExperienceLevels } from '../experienceLevels'
 
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { cn } from '@/utils/cn'
@@ -33,6 +35,8 @@ export function ProfessionalsFilters({ className }: PropertySearchFiltersProps) 
       </CardHeader>
       <CardContent className="flex flex-col gap-4 overflow-y-auto pt-2 px-1">
         <Location />
+        <DesiredPosition />
+        <ExperienceLevels />
       </CardContent>
     </Card>
   )

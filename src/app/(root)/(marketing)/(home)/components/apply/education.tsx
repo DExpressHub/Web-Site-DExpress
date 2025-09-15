@@ -23,14 +23,13 @@ export function Education() {
 
       {/* Select de Grau de Escolaridade */}
 
-        <SelectFormField
-          control={form.control}
-          items={highestDegreesOptions}
-          label="Maior Grau de Escolaridade"
-          name="highestDegreeId"
-          placeholder="Selecione Maior Grau de Escolaridade"
-        />
-
+      <SelectFormField
+        control={form.control}
+        items={highestDegreesOptions}
+        label="Maior Grau de Escolaridade"
+        name="highestDegreeId"
+        placeholder="Selecione Maior Grau de Escolaridade"
+      />
 
       <FormField
         control={form.control}
