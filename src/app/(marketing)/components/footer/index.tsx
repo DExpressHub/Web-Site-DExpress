@@ -2,6 +2,7 @@
 import { Mail, Phone, MapPin, Facebook, Instagram, Twitter, Linkedin } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import React from 'react'
 
 import { useNavItem } from '../navbar/useNavItem'
 import { Logo } from '../logo'
@@ -74,13 +75,13 @@ export function Footer() {
             <h3 className="font-semibold text-foreground text-base">Navegação</h3>
             <div className="space-y-3">
               {navItems.map((item) => (
-                <>
+                <React.Fragment key={`MenuItem-${item.href}-${item.label}`}>
                   {pathname === '/' ? (
                     <ButtonNavigation key={item.label} href={item.href} label={item.label} />
                   ) : (
                     <CustomLink key={item.label} href={item.href} label={item.label} />
                   )}
-                </>
+                </React.Fragment>
               ))}
             </div>
           </div>

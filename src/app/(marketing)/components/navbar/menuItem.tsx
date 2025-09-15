@@ -1,6 +1,7 @@
 'use client'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import React from 'react'
 
 import { useNavItem } from './useNavItem'
 
@@ -14,7 +15,7 @@ export function MenuItem({ className }: { className?: string }) {
   return (
     <nav className={cn('hidden xl:flex items-center', className)}>
       {navItems.map((item) => (
-        <>
+        <React.Fragment key={`MenuItem-${item.href}-${item.label}`}>
           {pathname === '/' ? (
             <ButtonNavigation
               key={item.label}
@@ -30,7 +31,7 @@ export function MenuItem({ className }: { className?: string }) {
               label={item.label}
             />
           )}
-        </>
+        </React.Fragment>
       ))}
     </nav>
   )
@@ -43,10 +44,9 @@ export function MenuItemMobile({ onClose }: { onClose?: () => void }) {
   return (
     <nav className="flex flex-col space-y-4">
       {navItems.map((item) => (
-        <>
+        <React.Fragment key={`MenuItemMobile-${item.href}-${item.label}`}>
           {pathname === '/' ? (
             <ButtonNavigation
-              key={item.label}
               className="text-left text-foreground"
               href={item.href}
               label={item.label}
@@ -54,14 +54,13 @@ export function MenuItemMobile({ onClose }: { onClose?: () => void }) {
             />
           ) : (
             <CustomLink
-              key={item.label}
               className="text-left text-foreground"
               href={`/#${item.href}`}
               label={item.label}
               onClose={onClose}
             />
           )}
-        </>
+        </React.Fragment>
       ))}
     </nav>
   )
@@ -77,10 +76,7 @@ function ButtonNavigation({ href, label, onClose, className }: ButtonNavigationP
 
   return (
     <button
-      className={cn(
-        'cursor-pointer font-medium hover:text-primary cursor-pointer transition-colors font-medium',
-        className,
-      )}
+      className={cn('font-medium hover:text-primary cursor-pointer transition-colors', className)}
       onClick={() => scrollToSection(href)}
     >
       {label}
@@ -96,11 +92,7 @@ type CustomLinkProps = {
 function CustomLink({ href, label, className, onClose }: CustomLinkProps) {
   return (
     <Link
-      key={label}
-      className={cn(
-        'cursor-pointer font-medium hover:text-primary cursor-pointer transition-colors font-medium',
-        className,
-      )}
+      className={cn('cursor-pointer font-medium hover:text-primary  transition-colors', className)}
       href={href}
       onClick={onClose}
     >
