@@ -1,8 +1,5 @@
-import { Star, Quote } from 'lucide-react'
-
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Card, CardContent } from '@/components/ui/card'
 import { links } from '@/config/links'
+import { MarqueeDemoVertical } from '@/components/mvpblocks/testimonials-marquee'
 
 export function TestimonialsSection() {
   const testimonials = [
@@ -42,52 +39,9 @@ export function TestimonialsSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {testimonials.map((testimonial, index) => (
-            <Card
-              key={index}
-              className="relative group hover:shadow-lg transition-all duration-300 border-0 shadow-soft"
-            >
-              <CardContent className="p-8">
-                {/* Quote Icon */}
-                <div className="absolute -top-4 left-8">
-                  <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                    <Quote className="w-4 h-4 text-primary-foreground" />
-                  </div>
-                </div>
 
-                {/* Rating */}
-                <div className="flex items-center space-x-1 mb-4 mt-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-warning text-warning" />
-                  ))}
-                </div>
+          <MarqueeDemoVertical />
 
-                {/* Content */}
-                <p className="text-muted-foreground leading-relaxed mb-6 italic">
-                  &rdquo;{testimonial.content}&rdquo;
-                </p>
-
-                {/* Author */}
-                <div className="flex items-center space-x-4">
-                  <Avatar className="w-12 h-12">
-                    <AvatarImage src={testimonial.image} />
-                    <AvatarFallback>
-                      {testimonial.name
-                        .split(' ')
-                        .map((n) => n[0])
-                        .join('')}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <div className="font-semibold text-foreground">{testimonial.name}</div>
-                    <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
 
         {/* Trust Indicators */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t">
