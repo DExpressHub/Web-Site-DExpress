@@ -21,7 +21,7 @@ export type JobApplicationRequest = {
   hasChildren: boolean
   knownDiseases: boolean
   availabilityDate: string
-  ProfessionalExperience: ProfessionalExperience[]
+  ProfessionalExperience?: ProfessionalExperience[]
   languages: string[]
   skills: string[]
   courses: string[]
