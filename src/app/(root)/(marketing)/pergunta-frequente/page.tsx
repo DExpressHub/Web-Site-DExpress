@@ -1,5 +1,6 @@
 import { CardSupportContact } from '../components/cardSupportContact'
 
+import { contacts } from '@/config/contacts'
 import {
   Accordion,
   AccordionContent,
@@ -10,8 +11,7 @@ import {
 const faqData = [
   {
     question: 'Como posso contratar um(a) profissional doméstico(a)?',
-    answer:
-      'Você pode contratar diretamente pela plataforma. Basta navegar pelas categorias de serviços, selecionar o perfil desejado e preencher o formulário de contratação. Ou ligando diretamente para a nossa equipa de suporte +244 937 760 239 / +244 937 759 809.',
+    answer: `Você pode contratar diretamente pela plataforma. Basta navegar pelas categorias de serviços, selecionar o perfil desejado e preencher o formulário de contratação. Ou ligando diretamente para a nossa equipa de suporte ${contacts.geralPhoneNumber.label}.`,
   },
   {
     question: 'Como faço o meu cadastro como cliente?',
@@ -22,11 +22,6 @@ const faqData = [
     question: 'Como posso me cadastrar como profissional?',
     answer:
       'Vá até "Trabalhe Conosco", escolha sua área de atuação e preencha o formulário com seus dados pessoais, experiência e referências. A nossa equipa entrará em contacto.',
-  },
-  {
-    question: 'Como enviar minha candidatura para uma vaga?',
-    answer:
-      'Depois de se cadastrar como profissional, você poderá ver vagas disponíveis e clicar em "Candidatar-se". Mantenha seu perfil completo e atualizado para ter mais oportunidades.',
   },
   {
     question: 'Os profissionais são verificados?',
@@ -50,8 +45,7 @@ const faqData = [
   },
   {
     question: 'Como posso entrar em contacto com o suporte?',
-    answer:
-      'Através do nosso WhatsApp +244 937 759 809, chat da plataforma ou e-mail de atendimento: suporte@dexpress.com.ao',
+    answer: `Através do nosso WhatsApp ${contacts.geralPhoneNumber.label}, chat da plataforma ou e-mail de atendimento: ${contacts.geralEmail}`,
   },
 ]
 

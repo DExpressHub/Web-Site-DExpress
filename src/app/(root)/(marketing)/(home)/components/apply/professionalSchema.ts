@@ -32,7 +32,7 @@ const experienceSchema = z.object({
 export const professionalSchema = z.object({
   desiredPositionId: z.string().min(1, 'Selecione uma opção'),
   availabilityDate: availabilityDate,
-  ProfessionalExperience: z.array(experienceSchema).min(1, 'Adicione pelo menos uma experiência'),
+  ProfessionalExperience: z.array(experienceSchema.optional()).optional(),
   experienceLevelId: z.string().min(1, 'Selecione uma opção'),
 })
 
@@ -40,7 +40,7 @@ export const defaultValuesProfessional = {
   desiredPositionId: '',
   availabilityDate: '',
   experienceLevelId: '',
-  ProfessionalExperience: [{ cargo: '', localTrabalho: '', tempo: '' }] as {
+  ProfessionalExperience: [] as {
     localTrabalho: string
     cargo: string
     tempo: string

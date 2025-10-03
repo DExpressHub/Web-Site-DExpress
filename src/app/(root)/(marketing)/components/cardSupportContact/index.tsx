@@ -1,5 +1,7 @@
 import Link from 'next/link'
 
+import { contacts } from '@/config/contacts'
+
 export function CardSupportContact() {
   return (
     <div className="text-center mt-12">
@@ -12,17 +14,17 @@ export function CardSupportContact() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
-            href="https://wa.me/244937759809"
+            href={`https://wa.me/${contacts.geralPhoneNumber.number}`}
             rel="noopener noreferrer"
             target="_blank"
           >
-            WhatsApp: +244 937 759 809
+            WhatsApp: {contacts.geralPhoneNumber.label}
           </Link>
           <Link
             className="bg-secondary text-secondary-foreground px-6 py-3 rounded-lg font-medium hover:bg-secondary/90 transition-colors"
             href="mailto:dexpressgeral@gmail.com"
           >
-            dexpressgeral@gmail.com
+            {contacts.geralEmail}
           </Link>
         </div>
       </div>

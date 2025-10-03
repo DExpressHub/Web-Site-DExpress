@@ -2,13 +2,7 @@ import { FieldValues } from 'react-hook-form'
 
 import { SelectFormFieldProps } from './type'
 
-import {
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormMessage,
-} from '@/components/ui/form'
+import { FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form'
 import {
   Select,
   SelectContent,
@@ -29,7 +23,7 @@ export function SelectFormField<T extends FieldValues>(props: SelectFormFieldPro
           <FormLabel>{label}</FormLabel>
           <Select disabled={disabled} value={field.value} onValueChange={field.onChange}>
             <FormControl>
-              <SelectTrigger className="h-12 cursor-pointer">
+              <SelectTrigger className="cursor-pointer">
                 <SelectValue placeholder={placeholder} />
               </SelectTrigger>
             </FormControl>
