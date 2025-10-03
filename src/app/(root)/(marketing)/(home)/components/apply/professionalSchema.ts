@@ -32,7 +32,7 @@ const experienceSchema = z.object({
 export const professionalSchema = z.object({
   desiredPositionId: z.string().min(1, 'Selecione uma opção'),
   availabilityDate: availabilityDate,
-  ProfessionalExperience: z.array(experienceSchema.optional()).optional(),
+  ProfessionalExperience: z.array(experienceSchema).optional(),
   experienceLevelId: z.string().min(1, 'Selecione uma opção'),
 })
 
