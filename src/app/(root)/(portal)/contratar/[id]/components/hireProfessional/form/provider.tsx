@@ -30,13 +30,13 @@ export const biSchema = z
   .trim()
   .min(1, { message: 'O BI é obrigatório' })
   .length(14, { message: 'O BI deve ter exatamente 14 caracteres.' })
-  .refine((val) => /^\d{8}/.test(val), {
+  .refine((val) => /^\d{9}/.test(val), {
     message: 'O BI deve começar com 8 dígitos.',
   })
-  .refine((val) => /^\d{8}[A-Z]{2}/.test(val), {
-    message: 'Após os 8 dígitos, devem vir 2 letras maiúsculas.',
+  .refine((val) => /^\d{9}[A-Z]{2}/.test(val), {
+    message: 'Após os 9 dígitos, devem vir 2 letras maiúsculas.',
   })
-  .refine((val) => /^\d{8}[A-Z]{2}\d{3}$/.test(val), {
+  .refine((val) => /^\d{9}[A-Z]{2}\d{3}$/.test(val), {
     message: 'Os últimos 3 caracteres devem ser dígitos.',
   })
 export const formSchema = z.object({
