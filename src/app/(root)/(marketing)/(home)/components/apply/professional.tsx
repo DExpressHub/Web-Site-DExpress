@@ -21,9 +21,7 @@ export function Professional() {
     <section className="flex-col flex gap-6 w-full">
       <div className="flex items-center gap-2 mb-4">
         <Briefcase className="h-5 w-5 text-primary" />
-        <h3 className="text-lg font-semibold text-foreground">
-          Informações Profissionais
-        </h3>
+        <h3 className="text-lg font-semibold text-foreground">Informações Profissionais</h3>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <SelectFormField
@@ -51,10 +49,7 @@ export function Professional() {
       <div className="space-y-4">
         <p className="text-sm font-medium">Experiência Profissional</p>
         {fields.map((field, index) => (
-          <div
-            key={field.id}
-            className="grid md:grid-cols-3 gap-4 items-end relative"
-          >
+          <div key={field.id} className="grid md:grid-cols-3 gap-4 items-end relative">
             <InputFormField
               control={form.control}
               label="Local de Trabalho"

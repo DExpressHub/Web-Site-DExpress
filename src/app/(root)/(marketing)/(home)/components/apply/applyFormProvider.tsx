@@ -45,7 +45,7 @@ export function ApplyFormProvider({ children }: { children: React.ReactNode }) {
         optionalPhoneNumber: data.optionalPhoneNumber,
         desiredPositionId: data.desiredPositionId,
         availabilityDate: data.availabilityDate,
-        ProfessionalExperience: data.ProfessionalExperience,
+        ProfessionalExperience: data.ProfessionalExperience || [],
         highestDegreeId: data.highestDegreeId,
         courses: data.courses,
         languages: data.languages,
