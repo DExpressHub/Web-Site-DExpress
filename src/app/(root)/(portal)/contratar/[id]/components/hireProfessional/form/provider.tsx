@@ -29,7 +29,7 @@ export const biSchema = z
   .string()
   .trim()
   .min(1, { message: 'O BI é obrigatório' })
-  .length(13, { message: 'O BI deve ter exatamente 13 caracteres.' })
+  .length(14, { message: 'O BI deve ter exatamente 14 caracteres.' })
   .refine((val) => /^\d{8}/.test(val), {
     message: 'O BI deve começar com 8 dígitos.',
   })
