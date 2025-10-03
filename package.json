@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "dev": "next dev --turbo --port 5173",
+    "dev": "next dev --turbo --port 4200",
     "build": "next build",
-    "start": "next start --port 5173",
+    "start": "next start --port 4200",
     "lint": "eslint --fix",
     "type-check": "tsc --noEmit"
   },
