@@ -1,3 +1,5 @@
+import { contacts } from '@/config/contacts'
+
 export default function PrivacyPage() {
   return (
     <main className="py-32 max-[120rem] mx-auto px-4 w-full">
@@ -168,9 +170,9 @@ export default function PrivacyPage() {
                 informações pessoais, contacte-nos através de:
               </p>
               <ul className="list-none text-muted-foreground space-y-2 ml-4">
-                <li>E-mail: privacidade@dexpress.com.ao</li>
-                <li>Telefone: +244 937 760 239</li>
-                <li>WhatsApp: +244 937 759 809</li>
+                <li>E-mail: {contacts.geralEmail}</li>
+                <li>Telefone: {contacts.geralPhoneNumber.label}</li>
+                <li>WhatsApp: {contacts.geralPhoneNumber.label}</li>
                 <li>Endereço: [Endereço da empresa em Angola]</li>
               </ul>
             </section>

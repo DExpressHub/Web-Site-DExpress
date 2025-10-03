@@ -22,7 +22,7 @@ type SearchContextValue = {
 const SearchContext = createContext<SearchContextValue | null>(null)
 
 export function SearchProvider({ children }: { children: React.ReactNode }) {
-  const [filters, setFilters] = useState<FiltersProfessional>({})
+  const [filters, setFilters] = useState<FiltersProfessional>({ limit: 3 })
   const [hasSearched, setHasSearched] = useState(true)
 
   const { error, isError, result, isFetching } = useListPaginatedProfessional(filters, hasSearched)
