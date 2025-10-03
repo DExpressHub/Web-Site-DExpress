@@ -12,6 +12,7 @@ import { Newsletter } from './newsletter'
 import { Button } from '@/components/ui/button'
 import { useScrollTo } from '@/hooks/useScrollTo'
 import { links } from '@/config/links'
+import { contacts } from '@/config/contacts'
 
 export function Footer() {
   const pathname = usePathname()
@@ -125,18 +126,18 @@ export function Footer() {
                 <Mail className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
                 <a
                   className="text-muted-foreground text-sm hover:text-primary transition-colors duration-200 break-all"
-                  href="mailto:dexpressgeral@gmail.com"
+                  href={`mailto:${contacts.geralEmail}`}
                 >
-                  dexpressgeral@gmail.com
+                  {contacts.geralEmail}
                 </a>
               </div>
               <div className="flex items-start space-x-3">
                 <Phone className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
                 <a
                   className="text-muted-foreground text-sm hover:text-primary transition-colors duration-200"
-                  href="tel:999999999"
+                  href={`tel:${contacts.geralPhoneNumber.number}`}
                 >
-                  999 999 999
+                  {contacts.geralPhoneNumber.label}
                 </a>
               </div>
               <div className="flex items-start space-x-3">

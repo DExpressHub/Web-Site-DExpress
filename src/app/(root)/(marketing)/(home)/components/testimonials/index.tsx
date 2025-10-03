@@ -39,9 +39,7 @@ export function TestimonialsSection() {
           </p>
         </div>
 
-
-          <MarqueeDemoVertical />
-
+        <MarqueeDemoVertical />
 
         {/* Trust Indicators */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t">

@@ -4,13 +4,7 @@ import { Input } from '../ui/input'
 
 import { InputFormFieldProps } from './type'
 
-import {
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormMessage,
-} from '@/components/ui/form'
+import { FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form'
 
 export function InputFormField<T extends FieldValues>(props: InputFormFieldProps<T>) {
   const { control, name, placeholder, label, type, disabled } = props
@@ -23,13 +17,7 @@ export function InputFormField<T extends FieldValues>(props: InputFormFieldProps
         <FormItem>
           <FormLabel>{label}</FormLabel>
           <FormControl>
-            <Input
-              {...field}
-              className="h-12"
-              disabled={disabled}
-              placeholder={placeholder}
-              type={type}
-            />
+            <Input {...field} disabled={disabled} placeholder={placeholder} type={type} />
           </FormControl>
           <FormMessage />
         </FormItem>

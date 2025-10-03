@@ -1,5 +1,6 @@
 'use client'
 import { Check } from 'lucide-react'
+import { useMemo } from 'react'
 
 import { useBecomeClient } from '../becomeClients/becomeClientContext'
 
@@ -11,6 +12,14 @@ import { links } from '@/config/links'
 
 export function PlanSection() {
   const { handleSetPlan, plans } = useBecomeClient()
+
+  const orderedPlans = useMemo(() => {
+    return [
+      plans.find((p) => p.name === 'Básico'),
+      plans.find((p) => p.name === 'Profissional'),
+      plans.find((p) => p.name === 'Premium'),
+    ].filter(Boolean)
+  }, [plans])
 
   return (
     <section className="py-20 bg-linear-to-br from-primary/5 to-accent/5" id={links.planos}>
@@ -25,7 +34,8 @@ export function PlanSection() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-4 lg:gap-8 max-w-6xl w-full mx-auto">
-          {plans.map((plan) => {
+          {orderedPlans?.map((plan) => {
+            if (!plan) return null
             const IconComponent = plan.icon
 
             return (

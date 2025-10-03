@@ -4,6 +4,7 @@ import { BecomeClientForm } from './becomeClientForm'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { links } from '@/config/links'
+import { contacts } from '@/config/contacts'
 
 export function BecomeClientSection() {
   const infoBlocks = [
@@ -16,7 +17,7 @@ export function BecomeClientSection() {
     {
       icon: Phone,
       title: 'Suporte ao Cliente',
-      content: '+244 999 000 000',
+      content: contacts.geralPhoneNumber.label,
       description: 'Seg-Sex: 8h às 18h',
     },
     {
