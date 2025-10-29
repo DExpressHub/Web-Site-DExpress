@@ -1,4 +1,4 @@
-import { League_Spartan as Secondary, Exo as Primary } from 'next/font/google'
+import { League_Spartan as Secondary, Inter as Primary } from 'next/font/google'
 
 export const fontPrimary = Primary({
   subsets: ['latin'],

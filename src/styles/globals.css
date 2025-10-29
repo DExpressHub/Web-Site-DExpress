@@ -41,9 +41,6 @@
     --sidebar-accent-foreground: oklch(0.5146 0.0282 259.7922);
     --sidebar-border: oklch(0.887 0.0093 258.3378);
     --sidebar-ring: oklch(0.6389 0.1982 311.1459);
-    --font-sans: 'Inter var', sans-serif;
-    --font-serif: 'Libre Baskerville', serif;
-    --font-mono: 'Fira Code', monospace;
     --radius: 0.75rem;
     --shadow-x: 0;
     --shadow-y: 0.3rem;
@@ -73,7 +70,6 @@
       var(--primary-variant)
     );
     --gradient-secondary: linear-gradient(135deg, var(--accent), var(--muted));
-
     --shadow-elegant: 0 10px 30px -10px var(--primary) / 0.3;
     --shadow-soft: 0 4px 20px -4px var(--muted-foreground) / 0.1;
   }
@@ -111,9 +107,6 @@
     --sidebar-accent-foreground: oklch(0.8965 0.0362 299.7011);
     --sidebar-border: oklch(0.3454 0.0443 300.619);
     --sidebar-ring: oklch(0.6389 0.1982 311.1459);
-    --font-sans: 'Inter var', sans-serif;
-    --font-serif: 'Libre Baskerville', serif;
-    --font-mono: 'Fira Code', monospace;
     --radius: 0.75rem;
     --shadow-x: 0;
     --shadow-y: 0.3rem;

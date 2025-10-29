@@ -20,10 +20,10 @@ export function SocialProof() {
           +K
         </div>
       </div>
-      <div>
+      {/*<div>
         <div className="font-bold text-lg">+2.500 profissionais</div>
         <div className="text-sm text-muted-foreground">cadastradas na plataforma</div>
-      </div>
+      </div>*/}
     </div>
   )
 }
