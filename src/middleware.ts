@@ -13,6 +13,8 @@ const PUBLIC_REGEX = [
   /^\/pergunta-frequente$/,
   /^\/politica-de-privacidade$/,
   /^\/termos-de-uso$/,
+  /^\/recuperar-senha$/,
+  /^\/recuperar-senha\/redefinir$/,
 ]
 
 function isPublicRoute(pathname: string): boolean {

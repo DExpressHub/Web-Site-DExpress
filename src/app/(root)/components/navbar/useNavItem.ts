@@ -12,7 +12,7 @@ export function useNavItem() {
       { label: 'Trabalhe Connosco', href: links.trabalheConosco },
       { label: 'Planos', href: links.planos },
       { label: 'Depoimentos', href: links.depoimentos },
-      { label: 'Para Empresas', href: links.paraEmpresas },
+      { label: 'Cadastra a Sua Empresa', href: links.paraEmpresas },
     ],
     [],
   )

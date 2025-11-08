@@ -14,4 +14,5 @@ export const links = {
   faq: 'pergunta-frequente',
   politicaPrivacidade: 'politica-de-privacidade',
   termosUso: 'termos-de-uso',
+  recuperarSenha: 'recuperar-senha',
 } as const

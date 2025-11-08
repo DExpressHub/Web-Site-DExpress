@@ -23,8 +23,8 @@ export function BecomeClientSection() {
     {
       icon: MapPin,
       title: 'Cobertura',
-      content: 'Atendemos todo território nacional',
-      description: 'Presença em várias províncias',
+      content: 'Atendemos em toda Luanda',
+      description: 'Presença em várias principais pontos de Luanda',
     },
   ]
 
@@ -36,8 +36,9 @@ export function BecomeClientSection() {
             Cadastre a Sua Empresa
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Conecte sua empresa às oportunidades da nossa plataforma. Preencha seus dados básicos e
-            dê o primeiro passo para se tornar nosso cliente.
+            Conecte sua empresa às oportunidades da nossa plataforma. Preencha
+            seus dados básicos e dê o primeiro passo para se tornar nosso
+            cliente.
           </p>
         </div>
 
@@ -45,10 +46,13 @@ export function BecomeClientSection() {
           {/* Informações */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-foreground mb-6">Como funciona?</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-6">
+                Como funciona?
+              </h3>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                Preencha o formulário com as informações solicitadas. Nossa equipe analisará sua
-                solicitação e entrará em contato para dar continuidade ao processo de integração.
+                Preencha o formulário com as informações solicitadas. Nossa
+                equipe analisará sua solicitação e entrará em contato para dar
+                continuidade ao processo de integração.
               </p>
             </div>
 
@@ -62,9 +66,15 @@ export function BecomeClientSection() {
                       <Icon className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground mb-1">{info.title}</h4>
-                      <p className="text-lg text-foreground mb-1">{info.content}</p>
-                      <p className="text-sm text-muted-foreground">{info.description}</p>
+                      <h4 className="font-semibold text-foreground mb-1">
+                        {info.title}
+                      </h4>
+                      <p className="text-lg text-foreground mb-1">
+                        {info.content}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {info.description}
+                      </p>
                     </div>
                   </div>
                 )
@@ -76,11 +86,14 @@ export function BecomeClientSection() {
               <CardContent className="p-6">
                 <div className="flex items-center space-x-3 mb-3">
                   <FileText className="w-5 h-5 text-primary" />
-                  <h4 className="font-semibold text-foreground">Dúvidas sobre o cadastro</h4>
+                  <h4 className="font-semibold text-foreground">
+                    Dúvidas sobre o cadastro
+                  </h4>
                 </div>
                 <p className="text-muted-foreground text-sm">
-                  Consulte nossa FAQ para entender como funciona o processo de aprovação e quais são
-                  os benefícios para clientes da plataforma.
+                  Consulte nossa FAQ para entender como funciona o processo de
+                  aprovação e quais são os benefícios para clientes da
+                  plataforma.
                 </p>
               </CardContent>
             </Card>
