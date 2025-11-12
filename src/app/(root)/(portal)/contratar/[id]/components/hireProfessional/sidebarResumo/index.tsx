@@ -8,9 +8,9 @@ import { useHireFormClient } from '../form/provider'
 import { serviceFrequency as serviceFrequencyOptions } from '@/constants/'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { ProfessionalDetails } from '@/types/professional'
+import { Profissional } from '@/types/professional'
 
-export function SidebarResumo({ professional }: { professional: ProfessionalDetails }) {
+export function SidebarResumo({ professional }: { professional: Profissional }) {
   const { form, user } = useHireFormClient()
 
   const serviceFrequency = useWatch({
@@ -46,7 +46,7 @@ export function SidebarResumo({ professional }: { professional: ProfessionalDeta
               alt={professional.fullName}
               className="w-12 h-12 rounded-full object-cover"
               height={48}
-              src={professional.profileImage}
+              src={professional.profileImage ?? ''}
               width={48}
             />
             <div>

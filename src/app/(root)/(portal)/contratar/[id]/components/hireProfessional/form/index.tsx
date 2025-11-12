@@ -12,8 +12,8 @@ import { SelectFormField } from '@/components/SelectFormField'
 import { TextareaFormField } from '@/components/textareaFormField'
 import { serviceFrequency } from '@/constants'
 import { useServiceRequestsUseCase } from '@/hooks/servicesRequests/useCreateServicesRequest'
-import { ProfessionalDetails } from '@/types/professional'
 import { InputFormField } from '@/components/inputFormField'
+import { Profissional } from '@/types/professional'
 const reset = {
   description: '',
   serviceFrequency: '',
@@ -22,7 +22,7 @@ const reset = {
   requesterPhoneNumber: '',
 }
 
-export const HireForm = ({ professional }: { professional: ProfessionalDetails }) => {
+export const HireForm = ({ professional }: { professional: Profissional }) => {
   const { isPending, createServiceRequestAsync } = useServiceRequestsUseCase()
   const { form, user } = useHireFormClient()
 
