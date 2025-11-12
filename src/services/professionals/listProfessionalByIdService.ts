@@ -2,15 +2,15 @@ import 'server-only'
 
 import { api } from '@/lib/api'
 import { handleApiError } from '@/utils/handleApiError'
-import { ProfessionalDetails } from '@/types/professional'
+import { type Profissional } from '@/types/professional'
 import { ServiceResponse } from '@/types/serviceResponse'
 
 export async function listProfessionalByIdService(
   id: string,
-): Promise<ServiceResponse<ProfessionalDetails>> {
+): Promise<ServiceResponse<Profissional>> {
   try {
     const response = await api(`professionals/${id}`)
-    const result = await response.json<ProfessionalDetails>()
+    const result = await response.json<Profissional>()
 
     return {
       success: true,

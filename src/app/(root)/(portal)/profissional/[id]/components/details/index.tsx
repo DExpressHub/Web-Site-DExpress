@@ -1,21 +1,24 @@
 import { ProfessionalHeader } from '../header'
-import { ProfessionalStats } from '../stats'
-import { ProfessionalLanguages } from '../languages'
-import { ProfessionalCourses } from '../courses'
 import { ProfessionalSkills } from '../skills'
-import { ApplyCard } from '../applyCard'
+import { ProfessionalCourses } from '../courses'
+import { ProfessionalLanguages } from '../languages'
 
-import { Card } from '@/components/ui/card'
+import { ApplyCard } from '../applyCard'
+import { Card, CardContent } from '@/components/ui/card'
 import { listProfessionalByIdService } from '@/services/professionals/listProfessionalByIdService'
-import { ProfessionalDetails as ProfessionalDetailsType } from '@/types/professional'
+import { Profissional } from '@/types/professional'
+import { ProfessionalSidebar } from '../sidebar'
 
 interface ProfessionalDetailsProps {
   id: string
   isAuthenticated: boolean
 }
-export async function ProfessionalDetails({ id, isAuthenticated }: ProfessionalDetailsProps) {
-  let professional: ProfessionalDetailsType | null = null
 
+export async function ProfessionalDetails({
+  id,
+  isAuthenticated,
+}: ProfessionalDetailsProps) {
+  let professional: Profissional | null = null
   const result = await listProfessionalByIdService(id)
 
   if (result.success) {
@@ -25,33 +28,31 @@ export async function ProfessionalDetails({ id, isAuthenticated }: ProfessionalD
   if (!professional) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-500">Profissional não encontrado.</p>
+        <p className="">Profissional não encontrado.</p>
       </div>
     )
   }
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {/* Card Principal */}
       <div className="lg:col-span-2 space-y-6">
-        <Card className="p-6">
-          <ProfessionalHeader professional={professional} />
-          <ProfessionalStats professional={professional} />
+        <Card className="h-full">
+          <CardContent className="py-5 flex flex-col gap-4">
+            <ProfessionalHeader professional={professional} />
+            <ProfessionalSkills skills={professional.professionalSkills} />
+            <ProfessionalCourses courses={professional.professionalCourses} />
+            <ProfessionalLanguages
+              languages={professional.professionalLanguages}
+            />
+          </CardContent>
         </Card>
-        <ProfessionalSkills skills={professional.professionalSkills} />
       </div>
 
-      <div className="space-y-6">
+      {/* Sidebar */}
+      <div className="space-y-6  flex-col-reverse">
+        <ProfessionalSidebar professional={professional} />
         <ApplyCard
-          className="hidden lg:block"
-          isAuthenticated={isAuthenticated}
-          professional={professional}
-        />
-
-        <ProfessionalCourses courses={professional.professionalCourses} />
-        <ProfessionalLanguages languages={professional.professionalLanguages} />
-
-        <ApplyCard
-          className="lg:hidden"
           isAuthenticated={isAuthenticated}
           professional={professional}
         />

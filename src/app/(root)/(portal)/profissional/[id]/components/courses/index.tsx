@@ -9,8 +9,10 @@ export function ProfessionalCourses({ courses }: ProfessionalCoursesProps) {
   if (courses.length === 0) return null
 
   return (
-    <Card className="p-6">
-      <h3 className="font-semibold text-foreground mb-4">Cursos e Certificações</h3>
+    <div className="space-y-2">
+      <h3 className="font-semibold text-foreground mb-4">
+        Cursos e Certificações
+      </h3>
       <div className="flex flex-wrap gap-2">
         {courses.map((item, index) => (
           <Badge key={index} variant="outline">
@@ -18,6 +20,6 @@ export function ProfessionalCourses({ courses }: ProfessionalCoursesProps) {
           </Badge>
         ))}
       </div>
-    </Card>
+    </div>
   )
 }

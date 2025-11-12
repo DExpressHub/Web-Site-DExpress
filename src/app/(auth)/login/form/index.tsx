@@ -17,10 +17,24 @@ export function LoginForm() {
     <CardContent>
       <Form {...form}>
         <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
-          <InputFormField control={form.control} label="Email" name="email" type="email" />
-          <InputFormField control={form.control} label="Senha" name="password" type="password" />
+          <InputFormField
+            control={form.control}
+            label="Email"
+            name="email"
+            type="email"
+          />
+          <InputFormField
+            control={form.control}
+            label="Senha"
+            name="password"
+            type="password"
+          />
 
-          <Button className="w-full cursor-pointer" disabled={isPending} type="submit">
+          <Button
+            className="w-full cursor-pointer"
+            disabled={isPending}
+            type="submit"
+          >
             {isPending ? (
               <span className="flex items-center gap-2">
                 <LucideLoader2 className="animate-spin h-5 w-5" /> Entrando
@@ -38,6 +52,15 @@ export function LoginForm() {
                 href={`/${links.cadastrar}`}
               >
                 Cadastre-se
+              </Link>
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Esqueceu a Senha?{' '}
+              <Link
+                className="text-primary hover:underline font-medium"
+                href={`/${links.recuperarSenha}`}
+              >
+                Recuperar a Senha
               </Link>
             </p>
           </div>

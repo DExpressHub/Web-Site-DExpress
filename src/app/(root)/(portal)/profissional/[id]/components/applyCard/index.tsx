@@ -18,7 +18,11 @@ type ApplyCardProps = {
   }
 }
 
-export function ApplyCard({ professional, className, isAuthenticated }: ApplyCardProps) {
+export function ApplyCard({
+  professional,
+  className,
+  isAuthenticated,
+}: ApplyCardProps) {
   const { push } = useRouter()
   const handleNavigate = useCallback(async () => {
     if (!isAuthenticated) {
@@ -33,7 +37,9 @@ export function ApplyCard({ professional, className, isAuthenticated }: ApplyCar
 
   return (
     <Card className={cn('p-6', className)}>
-      <h3 className="font-semibold text-foreground mb-4">Contratar Profissional</h3>
+      <h3 className="font-semibold text-foreground mb-4">
+        Contratar Profissional
+      </h3>
       <div className="space-y-4">
         <Button
           className={cn(buttonVariants({ className: 'w-full cursor-pointer' }))}

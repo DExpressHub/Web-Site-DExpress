@@ -30,3 +30,12 @@ export type ValidateAuthResponse = {
   userId?: string
   email?: string
 }
+
+// src/types/auth.ts
+export interface ForgotPasswordRequest {
+  email: string
+}
+
+export interface ForgotPasswordResponse {
+  message: string
+}
