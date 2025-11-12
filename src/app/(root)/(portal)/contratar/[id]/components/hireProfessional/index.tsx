@@ -3,11 +3,11 @@ import { HireForm } from './form'
 import { HireFormClientProvider } from './form/provider'
 
 import { listProfessionalByIdService } from '@/services/professionals/listProfessionalByIdService'
-import { ProfessionalDetails } from '@/types/professional'
+import { Profissional } from '@/types/professional'
 import { GetCurrentUserResponse } from '@/types/users'
 
 export async function HireProfessional({ id, user }: { id: string; user: GetCurrentUserResponse }) {
-  let professional: ProfessionalDetails | null = null
+  let professional: Profissional | null = null
 
   const result = await listProfessionalByIdService(id)
 

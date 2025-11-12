@@ -22,7 +22,7 @@ export type Profissional = {
   hasMedicalCertificate: boolean
   hasTrainingCertificate: boolean
   locationId: string
-  profileImage: string | null
+  profileImage: string
   genderId: string
   birthDate: string
   hasChildren: boolean
