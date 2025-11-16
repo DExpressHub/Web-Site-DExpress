@@ -4,6 +4,7 @@ import {
   MessageSquare,
   ArrowRight,
   Sparkles,
+  Users,
 } from 'lucide-react'
 
 import { Card, CardContent } from '@/components/ui/card'
@@ -15,8 +16,7 @@ export function HowItWorks() {
       icon: UserPlus,
       title: 'Cadastro',
       number: '01',
-      description:
-        'Crie seu perfil em poucos minutos, seja como empregador ou profissional.',
+      description: 'Crie sua conta  em qualquer dispositivo',
       gradient: 'from-violet-500 to-purple-600',
       bgGradient: 'from-violet-500/10 via-purple-500/5 to-transparent',
       shadowColor: 'hover:shadow-violet-500/20',
@@ -25,26 +25,37 @@ export function HowItWorks() {
       icon: Search,
       title: 'Busca',
       number: '02',
-      description:
-        'Encontre a melhor correspondência com filtros personalizados.',
+      description: 'Acede nossa base de dados de profissionais',
       gradient: 'from-blue-500 to-cyan-600',
       bgGradient: 'from-blue-500/10 via-cyan-500/5 to-transparent',
       shadowColor: 'hover:shadow-blue-500/20',
     },
     {
       icon: MessageSquare,
-      title: 'Conexão',
+      title: 'Contratação',
       number: '03',
       description:
-        'Converse diretamente e finalize a contratação com facilidade.',
+        'Contrate profissionais ideais para atender suas necessidades',
       gradient: 'from-emerald-500 to-teal-600',
       bgGradient: 'from-emerald-500/10 via-teal-500/5 to-transparent',
       shadowColor: 'hover:shadow-emerald-500/20',
     },
+    {
+      icon: Users,
+      title: 'Conexão',
+      number: '04',
+      description: 'E nós cuidamos de tudo',
+      gradient: 'from-violet-500 to-purple-600',
+      bgGradient: 'from-violet-500/10 via-purple-500/5 to-transparent',
+      shadowColor: 'hover:shadow-violet-500/20',
+    },
   ]
 
   return (
-    <section className="relative py-24 overflow-hidden" id={links.comoFunciona}>
+    <section
+      className="relative py-24 min-h-screen overflow-hidden"
+      id={links.comoFunciona}
+    >
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background" />
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl animate-pulse" />
@@ -63,26 +74,26 @@ export function HowItWorks() {
             Como Funciona?
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Conecte-se em apenas 3 passos simples
+            Conecte-se em apenas 4 passos simples
           </p>
         </div>
 
         {/* Steps */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {steps.map((step, index) => {
             const Icon = step.icon
 
             return (
               <div key={index} className="relative group">
                 {/* Connecting Arrow */}
-                {index < steps.length - 1 && (
+                {/*{index < steps.length - 1 && (
                   <div className="hidden md:flex absolute -right-4 top-24 z-10 items-center justify-center w-8 h-8">
                     <ArrowRight className="w-6 h-6 text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-1 transition-all duration-300" />
                   </div>
-                )}
+                )}*/}
 
                 <Card
-                  className={`relative overflow-hidden border-0 bg-card/50 backdrop-blur-sm ${step.shadowColor} hover:shadow-2xl transition-all duration-500 hover:-translate-y-2`}
+                  className={`relative h-[300px] overflow-hidden border-0 bg-card/50 backdrop-blur-sm ${step.shadowColor} hover:shadow-2xl transition-all duration-500 hover:-translate-y-2`}
                 >
                   {/* Gradient Background */}
                   <div

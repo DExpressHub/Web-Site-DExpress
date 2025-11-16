@@ -24,7 +24,7 @@ export function SearchSection() {
             <CardHeader className="bg-linear-to-r from-primary/5 to-accent/5">
               <CardTitle className="flex items-center gap-2 text-xl">
                 <Search className="w-5 h-5 text-primary" />
-                Buscar Profissionais
+                Pesquisar um professional
               </CardTitle>
             </CardHeader>
             <CardContent className="p-8">
