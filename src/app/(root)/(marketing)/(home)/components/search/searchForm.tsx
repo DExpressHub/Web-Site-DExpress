@@ -72,7 +72,7 @@ export function SearchForm() {
               ) : (
                 <>
                   <Search className="w-5 h-5" />
-                  <span>Buscar</span>
+                  <span>Filtrar professional</span>
                 </>
               )}
             </Button>

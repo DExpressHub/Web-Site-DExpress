@@ -92,9 +92,8 @@ export default function TermsPage() {
               </h2>
               <p className="text-muted-foreground leading-relaxed">
                 A D Express atua como facilitadora do contacto entre empregadores e profissionais.
-                Não somos responsáveis por disputas, danos ou questões que possam surgir da relação
-                de trabalho estabelecida entre as partes. Recomendamos que todas as relações de
-                trabalho sejam formalizadas através de contratos adequados.
+                Recomendamos que todas as relações de trabalho sejam formalizadas através de
+                contratos adequados.
               </p>
             </section>
 
